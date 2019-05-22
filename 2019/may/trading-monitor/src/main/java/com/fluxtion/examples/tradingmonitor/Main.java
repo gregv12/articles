@@ -55,6 +55,7 @@ public class Main {
             } catch (NumberFormatException numberFormatException) {
             }
             inFile = generate(rowCount, new File(DEFAULT_OURFILENAME), true);
+            return;
         }
         if (inFile.exists()) {
             System.out.println("processing file:" + inFile.getCanonicalPath());
