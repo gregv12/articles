@@ -115,7 +115,10 @@ public class FluxtionBuilder {
     }
 
     @SepBuilder(name = "PortfolioTradeMonitor",
-            packageName = "com.fluxtion.examples.tradingmonitor.generated.portfolio")
+            packageName = "com.fluxtion.examples.tradingmonitor.generated.portfolio",
+            outputDir = "src/main/java",
+            cleanOutputDir = true
+    )
 //    @Disabled
     public void buildPortfolioAnalyser(SEPConfig cfg) {
         PortfolioTradePos portfolio = cfg.addPublicNode(new PortfolioTradePos(), "portfolio");
