@@ -1,0 +1,5 @@
+word frequency sample test
+test frequency
+old old old
+train word word
+
