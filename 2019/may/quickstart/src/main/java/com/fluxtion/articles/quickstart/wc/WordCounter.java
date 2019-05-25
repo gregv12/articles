@@ -21,18 +21,7 @@ package com.fluxtion.articles.quickstart.wc;
 import com.fluxtion.api.annotations.EventHandler;
 import com.fluxtion.api.annotations.FilterType;
 import com.fluxtion.api.annotations.TearDown;
-import com.fluxtion.builder.annotation.SepBuilder;
-import com.fluxtion.builder.node.SEPConfig;
-import com.fluxtion.ext.streaming.api.group.GroupBy;
-import com.fluxtion.ext.streaming.api.numeric.MutableNumber;
-import static com.fluxtion.ext.streaming.builder.event.EventSelect.select;
-import com.fluxtion.ext.streaming.builder.log.LogBuilder;
 import com.fluxtion.ext.text.api.event.CharEvent;
-import com.fluxtion.ext.text.api.event.EofEvent;
-import static com.fluxtion.ext.text.builder.ascii.AsciiHelper.wordSplitter;
-import com.fluxtion.ext.text.builder.math.WordFrequency;
-import static java.util.Collections.frequency;
-import org.apache.commons.lang3.mutable.MutableInt;
 
 /**
  * Word count logic replicating behaviour of unix wc for bytes:
