@@ -48,20 +48,6 @@ import static com.fluxtion.ext.text.builder.math.WordFrequency.wordFrequency;
 public class EventProcessorBuilders {
 
     /**
-     * Fluxtion builder for Unix-like wc function
-     * @param cfg SEPConfig context
-     */
-    @SepBuilder(name = "Wc",
-            packageName = "com.fluxtion.articles.quickstart.wc.generated",
-            outputDir = "src/main/java",
-            cleanOutputDir = true
-    )
-    public void buildWc(SEPConfig cfg) {
-        cfg.addNode(new WordCounter());
-        cfg.supportDirtyFiltering = false;
-    }
-
-    /**
      * Fluxtion builder for word frequency analyser
      * @param cfg SEPConfig context
      */

@@ -21,6 +21,7 @@ package com.fluxtion.articles.quickstart.wc;
 import com.fluxtion.api.annotations.EventHandler;
 import com.fluxtion.api.annotations.FilterType;
 import com.fluxtion.api.annotations.TearDown;
+import com.fluxtion.builder.annotation.SepInstance;
 import com.fluxtion.ext.text.api.event.CharEvent;
 
 /**
@@ -31,10 +32,21 @@ import com.fluxtion.ext.text.api.event.CharEvent;
  *
  * Processes a {@link CharEvent} and keeps a running total of chars, words and
  * lines. Each of the annotated EventHandler methods is an entry point for event
- * processing. Some of the methods supply optional filters.
+ * processing. Some of the methods supply optional filters.<p>
+ *
+ * As the generated sep contains only this node the {@link SepInstance}
+ * annotation is used to mark this class to included in a static event
+ * processor.
  *
  * @author Greg Higgins
  */
+@SepInstance(
+        name = "Wc",
+        packageName = "com.fluxtion.articles.quickstart.wc.generated",
+        outputDir = "src/main/java",
+        cleanOutputDir = true,
+        supportDirtyFiltering = false
+)
 public class WordCounter {
 
     public transient int wordCount;
