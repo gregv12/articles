@@ -36,6 +36,11 @@ public class Events {
         public int temp() {
             return temp;
         }
+
+        @Override
+        public String toString() {
+            return "TempEvent{" + "temp=" + temp + "C}";
+        }
     }
 
     public static class StartOfDay extends Event {

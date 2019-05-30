@@ -10,8 +10,9 @@ Without this configuration present, some functionality in the IDE may be limited
         <configurations>
             <configuration id="run WordFreq" profiles=""/>
             <configuration id="run allstats" profiles=""/>
-            <configuration id="run tempMonitor" profiles=""/>
             <configuration id="run run WC" profiles=""/>
+            <configuration id="run tempMonitor" profiles=""/>
+            <configuration id="run lambdaFilter" profiles=""/>
         </configurations>
     </config-data>
 </project-shared-configuration>

@@ -16,6 +16,7 @@
  */
 package com.fluxtion.articles.quickstart;
 
+import com.fluxtion.articles.quickstart.tempFilter.generated.TempFilter;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.EndOfDay;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.StartOfDay;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.TempEvent;
@@ -48,20 +49,23 @@ public class Main {
             case "tempmonitor":
                 runTempMonitor();
                 break;
+            case "lambdafilter":
+                runLambda();
+                break;
             default:
                 throw new RuntimeException("program option not supported:" + program);
         }
     }
-    
-    private static File checkFile(String[] args) throws IOException{
+
+    private static File checkFile(String[] args) throws IOException {
         File inFile = new File(args[1]);
         if (!inFile.exists()) {
             throw new RuntimeException("cannot find file:" + inFile.getCanonicalPath());
         }
         return inFile;
     }
-    
-    private static void runTempMonitor(){
+
+    private static void runTempMonitor() {
         TempMonitor monitor = new TempMonitor();
         monitor.init();
         //uncomment to have only WARNING
@@ -94,7 +98,17 @@ public class Main {
         monitor.onEvent(new TempEvent(24));
         monitor.onEvent(new TempEvent(20));
         monitor.onEvent(new TempEvent(20));
-        monitor.onEvent(new EndOfDay()); 
+        monitor.onEvent(new EndOfDay());
+    }
+
+    private static void runLambda() {
+        TempFilter tempFilter = new TempFilter();
+        tempFilter.init();
+        tempFilter.onEvent(new TempEvent(10));
+        tempFilter.onEvent(new TempEvent(19));
+        tempFilter.onEvent(new TempEvent(22));
+        tempFilter.onEvent(new TempEvent(27));
+        tempFilter.onEvent(new TempEvent(18));
     }
 
 }

@@ -21,8 +21,8 @@ import com.fluxtion.articles.quickstart.tempmonitor.Events;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.EndOfDay;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.StartOfDay;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.TempEvent;
-import com.fluxtion.articles.quickstart.wc.WordCounter;
 import com.fluxtion.articles.quickstart.wordfrequency.StatsPrinter;
+import com.fluxtion.builder.annotation.Disabled;
 import com.fluxtion.builder.annotation.SepBuilder;
 import com.fluxtion.builder.node.SEPConfig;
 import com.fluxtion.ext.streaming.api.Wrapper;
@@ -48,7 +48,31 @@ import static com.fluxtion.ext.text.builder.math.WordFrequency.wordFrequency;
 public class EventProcessorBuilders {
 
     /**
-     * Fluxtion builder for word frequency analyser
+     * Declarative form for simple filter using lambda.
+     *
+     * @param cfg
+     */
+    @SepBuilder(name = "TempFilter",
+            packageName = "com.fluxtion.articles.quickstart.tempFilter.generated",
+            outputDir = "src/main/java",
+            cleanOutputDir = true
+    )
+    public void buildLambda(SEPConfig cfg) {
+        select(Events.TempEvent.class)
+                .filter(t -> t.temp() > 20)
+                .console("Too hot!! ");
+
+    }
+
+    /**
+     * Fluxtion builder for word frequency analyser. Mixes imperative and
+     * declarative
+     * forms:
+     * <ul>
+     * <li>Nodes are added imperatively using cfg.addNode
+     * <li>wordFrequency uses declarative groupBy internally
+     * </ul>
+     *
      * @param cfg SEPConfig context
      */
     @SepBuilder(name = "WordFrequency",
@@ -56,14 +80,21 @@ public class EventProcessorBuilders {
             outputDir = "src/main/java",
             cleanOutputDir = true
     )
+    @Disabled
     public void buildWordFrequency(SEPConfig cfg) {
         cfg.addNode(new StatsPrinter(
                 cfg.addNode(wordFrequency(wordSplitter()))
         ));
     }
-    
+
     /**
-     * Fluxtion builder for daily temperature monitoring and AC/Heating signals
+     * Fluxtion builder for daily temperature monitoring and AC/Heating signals. Explicit 
+     * mixing of declarative and imperative forms:
+     * <ul>
+     * <li>
+     * <li>
+     * </ul>
+     *
      * @param cfg SEPConfig context
      */
     @SepBuilder(name = "TempMonitor",
@@ -71,7 +102,8 @@ public class EventProcessorBuilders {
             outputDir = "src/main/java",
             cleanOutputDir = true
     )
-    public void buildTemperatureMonitor(SEPConfig cfg){
+    @Disabled
+    public void buildTemperatureMonitor(SEPConfig cfg) {
         //select a stream of events
         Wrapper<TempEvent> tempStream = select(Events.TempEvent.class);
         Wrapper<StartOfDay> newDay = select(StartOfDay.class);
