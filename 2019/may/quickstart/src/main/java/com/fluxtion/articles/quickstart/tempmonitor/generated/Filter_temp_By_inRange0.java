@@ -40,7 +40,7 @@ public class Filter_temp_By_inRange0 extends AbstractFilterWrapper<TempEvent> {
   @OnEvent
   public boolean onEvent() {
     boolean oldValue = result;
-    result = f.inRange((double) ((TempEvent) source_0.event()).temp());
+    result = (boolean) f.inRange((double) ((TempEvent) source_0.event()).temp());
     //this is probably right - to be tested
     //return (!notifyOnChangeOnly | !oldValue) & result;
     return (!notifyOnChangeOnly & result) | ((!oldValue) & result);
