@@ -27,7 +27,10 @@ public class Events {
 
     public static class TempEvent extends Event {
 
-        private final int temp;
+        private int temp;
+
+        public TempEvent() {
+        }
 
         public TempEvent(int temp) {
             this.temp = temp;
@@ -37,6 +40,16 @@ public class Events {
             return temp;
         }
 
+        public int getTemp() {
+            return temp;
+        }
+
+        public void setTemp(int temp) {
+            this.temp = temp;
+        }
+
+        
+        
         @Override
         public String toString() {
             return "TempEvent{" + "temp=" + temp + "C}";
