@@ -10,7 +10,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <fluxtion.ver>1.7.15</fluxtion.ver>
+        <fluxtion.ver>1.7.18-SNAPSHOT</fluxtion.ver>
     </properties>
     
     <description>An example referenced to in starting fluxtion article may 2019</description>
@@ -114,17 +114,22 @@
             <artifactId>fluxtion-text-api</artifactId>
             <version>${fluxtion.ver}</version>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>com.fluxtion</groupId>
             <artifactId>fluxtion-builder</artifactId>
             <version>${fluxtion.ver}</version>
-        </dependency>
+        </dependency>-->
+<!--        <dependency>
+            <groupId>com.fluxtion</groupId>
+            <artifactId>generator</artifactId>
+            <version>${fluxtion.ver}</version>
+        </dependency>-->
         <!--builder as provided scope, minimises classpath at runtime-->
         <dependency>
             <groupId>com.fluxtion.extension</groupId>
             <artifactId>fluxtion-text-builder</artifactId>
             <version>${fluxtion.ver}</version>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
         <!--needed for Charstreaming-->
         <dependency>

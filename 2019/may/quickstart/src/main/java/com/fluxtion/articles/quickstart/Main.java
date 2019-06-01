@@ -16,7 +16,7 @@
  */
 package com.fluxtion.articles.quickstart;
 
-import com.fluxtion.articles.quickstart.tempFilter.generated.TempFilter;
+//import com.fluxtion.articles.quickstart.tempFilter.generated.TempFilter;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.EndOfDay;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.StartOfDay;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.TempEvent;
@@ -102,13 +102,13 @@ public class Main {
     }
 
     private static void runLambda() {
-        TempFilter tempFilter = new TempFilter();
-        tempFilter.init();
-        tempFilter.onEvent(new TempEvent(10));
-        tempFilter.onEvent(new TempEvent(19));
-        tempFilter.onEvent(new TempEvent(22));
-        tempFilter.onEvent(new TempEvent(27));
-        tempFilter.onEvent(new TempEvent(18));
+//        TempFilter tempFilter = new TempFilter();
+//        tempFilter.init();
+//        tempFilter.onEvent(new TempEvent(10));
+//        tempFilter.onEvent(new TempEvent(19));
+//        tempFilter.onEvent(new TempEvent(22));
+//        tempFilter.onEvent(new TempEvent(27));
+//        tempFilter.onEvent(new TempEvent(18));
     }
 
 }
