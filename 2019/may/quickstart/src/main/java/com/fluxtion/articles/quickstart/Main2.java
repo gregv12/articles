@@ -18,7 +18,7 @@ package com.fluxtion.articles.quickstart;
 
 import com.fluxtion.api.lifecycle.EventHandler;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.TempEvent;
-import com.fluxtion.articles.quickstart.timer.TimeSignal;
+import static com.fluxtion.ext.streaming.api.stream.TimerFilter.throttle;
 import static com.fluxtion.ext.streaming.builder.event.EventSelect.select;
 import static com.fluxtion.generator.compiler.InprocessSepCompiler.sepInstance;
 
@@ -30,8 +30,10 @@ public class Main2 {
 
     public static void main(String[] args) throws Exception {
         EventHandler handler = sepInstance(c -> {
-            select(TempEvent.class).filter(t -> t.temp() > 20).console("Too hot!! ");
-            c.addNode(new TimeSignal(null));
+            select(TempEvent.class).filter(t -> t.temp() > 20).console("Too hot!! ")
+                    .filter(throttle(3))
+                    .filter(t -> t.temp() > 20)
+                    .console("throttled temp");
         }, "com.fluxtion.articles.quickstart.inline", "MyHandler");
         handler.onEvent(new TempEvent(0));
         handler.onEvent(new TempEvent(15));
