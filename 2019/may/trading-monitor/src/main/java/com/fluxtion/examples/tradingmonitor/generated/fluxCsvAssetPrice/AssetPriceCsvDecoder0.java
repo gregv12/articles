@@ -13,7 +13,6 @@ import com.fluxtion.ext.text.api.csv.ValidationLogger;
 import com.fluxtion.ext.text.api.event.CharEvent;
 import com.fluxtion.ext.text.api.event.EofEvent;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import static com.fluxtion.ext.text.api.ascii.Conversion.*;
@@ -39,12 +38,15 @@ public class AssetPriceCsvDecoder0 implements RowProcessor<AssetPrice> {
   private int writeIndex = 0;
   //target
   private AssetPrice target;
-  //source field index: 0
+  //source field index: -1
+  private final CharSequenceView setEventTime = seq.view();
+  private int fieldName_eventTime = -1;
+  //source field index: -1
   private final CharSequenceView setPrice = seq.view();
-  private int fieldName_price = 0;
-  //source field index: 0
+  private int fieldName_price = -1;
+  //source field index: -1
   private final CharSequenceView setSymbol = seq.view();
-  private int fieldName_symbol = 0;
+  private int fieldName_symbol = -1;
   //processing state and meta-data
   private int rowNumber;
   private final HashMap fieldMap = new HashMap<>();
@@ -96,6 +98,8 @@ public class AssetPriceCsvDecoder0 implements RowProcessor<AssetPrice> {
       c[0] = Character.toLowerCase(c[0]);
       headers.add(new String(c));
     }
+    fieldName_eventTime = headers.indexOf("eventTime");
+    fieldMap.put(fieldName_eventTime, "setEventTime");
     fieldName_price = headers.indexOf("price");
     fieldMap.put(fieldName_price, "setPrice");
     if (fieldName_price < 0) {
@@ -113,6 +117,13 @@ public class AssetPriceCsvDecoder0 implements RowProcessor<AssetPrice> {
   private boolean updateTarget() {
     try {
       updateFieldIndex();
+      fieldIndex = fieldName_eventTime;
+      if (fieldIndex > 0) {
+        setEventTime.subSequence(
+            delimIndex[fieldName_eventTime], delimIndex[fieldName_eventTime + 1] - 1);
+      }
+      target.setEventTime(atol(setEventTime));
+
       fieldIndex = fieldName_price;
       setPrice.subSequence(delimIndex[fieldName_price], delimIndex[fieldName_price + 1] - 1);
       target.setPrice(atod(setPrice));
@@ -174,6 +185,7 @@ public class AssetPriceCsvDecoder0 implements RowProcessor<AssetPrice> {
   @Initialise
   public void init() {
     target = new AssetPrice();
+    fieldMap.put(fieldName_eventTime, "setEventTime");
     fieldMap.put(fieldName_price, "setPrice");
     fieldMap.put(fieldName_symbol, "setSymbol");
   }
