@@ -74,6 +74,7 @@ public class FluxtionBuilder {
             outputDir = "src/main/java",
             cleanOutputDir = true
     )
+//    @Disabled
     public void buildAssetAnalyser(SEPConfig cfg) {
         //entry points subsrcibe to events
         Wrapper<Deal> deals = select(Deal.class);

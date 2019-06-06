@@ -13,6 +13,7 @@ import com.fluxtion.ext.text.api.csv.ValidationLogger;
 import com.fluxtion.ext.text.api.event.CharEvent;
 import com.fluxtion.ext.text.api.event.EofEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import static com.fluxtion.ext.text.api.ascii.Conversion.*;
@@ -118,12 +119,11 @@ public class AssetPriceCsvDecoder0 implements RowProcessor<AssetPrice> {
     try {
       updateFieldIndex();
       fieldIndex = fieldName_eventTime;
-      if (fieldIndex > 0) {
+      if (fieldIndex > -1) {
         setEventTime.subSequence(
             delimIndex[fieldName_eventTime], delimIndex[fieldName_eventTime + 1] - 1);
+        target.setEventTime(atol(setEventTime));
       }
-      target.setEventTime(atol(setEventTime));
-
       fieldIndex = fieldName_price;
       setPrice.subSequence(delimIndex[fieldName_price], delimIndex[fieldName_price + 1] - 1);
       target.setPrice(atod(setPrice));
