@@ -50,10 +50,10 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
   private final Map_temp_By_max0 map_temp_By_max0_1 = new Map_temp_By_max0();
   private final Min min_2 = new Min();
   private final Map_temp_By_min0 map_temp_By_min0_3 = new Map_temp_By_min0();
-  private final MsgBuilder4 msgBuilder4_7 = new MsgBuilder4();
-  private final MsgBuilder6 msgBuilder6_9 = new MsgBuilder6();
-  private final MsgBuilder8 msgBuilder8_10 = new MsgBuilder8();
-  private final MsgBuilder10 msgBuilder10_11 = new MsgBuilder10();
+  private final MsgBuilder1 msgBuilder1_7 = new MsgBuilder1();
+  private final MsgBuilder3 msgBuilder3_9 = new MsgBuilder3();
+  private final MsgBuilder5 msgBuilder5_10 = new MsgBuilder5();
+  private final MsgBuilder7 msgBuilder7_11 = new MsgBuilder7();
   private final AsciiConsoleLogger asciiConsoleLogger_8 = new AsciiConsoleLogger();
   private final NumericPredicates numericPredicates_12 = new NumericPredicates();
   private final Filter_temp_By_greaterThan0 filter_temp_By_greaterThan0_13 =
@@ -82,10 +82,10 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
   private boolean isDirty_map_temp_By_addValue0_5 = false;
   private boolean isDirty_map_temp_By_max0_1 = false;
   private boolean isDirty_map_temp_By_min0_3 = false;
-  private boolean isDirty_msgBuilder4_7 = false;
-  private boolean isDirty_msgBuilder6_9 = false;
-  private boolean isDirty_msgBuilder8_10 = false;
-  private boolean isDirty_msgBuilder10_11 = false;
+  private boolean isDirty_msgBuilder1_7 = false;
+  private boolean isDirty_msgBuilder3_9 = false;
+  private boolean isDirty_msgBuilder5_10 = false;
+  private boolean isDirty_msgBuilder7_11 = false;
   private boolean isDirty_push_TempEvent_To_airConAndHeatingOff0_21 = false;
   private boolean isDirty_push_TempEvent_To_airConOn0_15 = false;
   private boolean isDirty_push_TempEvent_To_heatingOn0_18 = false;
@@ -112,10 +112,10 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     filter_temp_By_lessThan0_17.f = numericPredicates_16;
     map_temp_By_addValue0_5.setAlwaysReset(false);
     map_temp_By_addValue0_5.setNotifyOnChangeOnly(false);
-    map_temp_By_addValue0_5.setResetImmediate(true);
+    map_temp_By_addValue0_5.setResetImmediate(false);
     map_temp_By_addValue0_5.filterSubject = handlerTempEvent;
     map_temp_By_addValue0_5.f = average_4;
-    map_temp_By_addValue0_5.resetNotifier = handlerStartOfDay;
+    map_temp_By_addValue0_5.resetNotifier = handlerEndOfDay;
     map_temp_By_max0_1.setAlwaysReset(false);
     map_temp_By_max0_1.setNotifyOnChangeOnly(true);
     map_temp_By_max0_1.setResetImmediate(true);
@@ -128,18 +128,18 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     map_temp_By_min0_3.filterSubject = handlerTempEvent;
     map_temp_By_min0_3.f = min_2;
     map_temp_By_min0_3.resetNotifier = handlerStartOfDay;
-    msgBuilder4_7.source_ReusableEventHandler_3 = handlerStartOfDay;
-    msgBuilder4_7.logLevel = (int) 3;
-    msgBuilder4_7.initCapacity = (int) 256;
-    msgBuilder6_9.source_Map_temp_By_max0_5 = map_temp_By_max0_1;
-    msgBuilder6_9.logLevel = (int) 3;
-    msgBuilder6_9.initCapacity = (int) 256;
-    msgBuilder8_10.source_Map_temp_By_min0_7 = map_temp_By_min0_3;
-    msgBuilder8_10.logLevel = (int) 3;
-    msgBuilder8_10.initCapacity = (int) 256;
-    msgBuilder10_11.source_BooleanFilter_9 = booleanFilter_6;
-    msgBuilder10_11.logLevel = (int) 3;
-    msgBuilder10_11.initCapacity = (int) 256;
+    msgBuilder1_7.source_ReusableEventHandler_0 = handlerStartOfDay;
+    msgBuilder1_7.logLevel = (int) 3;
+    msgBuilder1_7.initCapacity = (int) 256;
+    msgBuilder3_9.source_Map_temp_By_max0_2 = map_temp_By_max0_1;
+    msgBuilder3_9.logLevel = (int) 3;
+    msgBuilder3_9.initCapacity = (int) 256;
+    msgBuilder5_10.source_Map_temp_By_min0_4 = map_temp_By_min0_3;
+    msgBuilder5_10.logLevel = (int) 3;
+    msgBuilder5_10.initCapacity = (int) 256;
+    msgBuilder7_11.source_BooleanFilter_6 = booleanFilter_6;
+    msgBuilder7_11.logLevel = (int) 3;
+    msgBuilder7_11.initCapacity = (int) 256;
     push_TempEvent_To_airConAndHeatingOff0_21.filterSubject = filter_temp_By_inRange0_20;
     push_TempEvent_To_airConAndHeatingOff0_21.f = environmentalController_14;
     push_TempEvent_To_airConOn0_15.filterSubject = filter_temp_By_greaterThan0_13;
@@ -148,10 +148,10 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     push_TempEvent_To_heatingOn0_18.f = environmentalController_14;
     asciiConsoleLogger_8.initCapacity = (int) 512;
     asciiConsoleLogger_8.msgBuilders = new MsgBuilder[4];
-    asciiConsoleLogger_8.msgBuilders[0] = msgBuilder4_7;
-    asciiConsoleLogger_8.msgBuilders[1] = msgBuilder6_9;
-    asciiConsoleLogger_8.msgBuilders[2] = msgBuilder8_10;
-    asciiConsoleLogger_8.msgBuilders[3] = msgBuilder10_11;
+    asciiConsoleLogger_8.msgBuilders[0] = msgBuilder1_7;
+    asciiConsoleLogger_8.msgBuilders[1] = msgBuilder3_9;
+    asciiConsoleLogger_8.msgBuilders[2] = msgBuilder5_10;
+    asciiConsoleLogger_8.msgBuilders[3] = msgBuilder7_11;
     numericPredicates_12.doubleLimit_0 = (double) 25.0;
     numericPredicates_12.doubleLimit_1 = (double) Double.NaN;
     numericPredicates_16.doubleLimit_0 = (double) 12.0;
@@ -197,12 +197,15 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     isDirty_handlerEndOfDay = true;
     handlerEndOfDay.onEvent(typedEvent);
     if (isDirty_handlerEndOfDay) {
+      map_temp_By_addValue0_5.resetNotification(handlerEndOfDay);
+    }
+    if (isDirty_handlerEndOfDay) {
       isDirty_booleanFilter_6 = booleanFilter_6.updated();
     }
     if (isDirty_booleanFilter_6) {
-      isDirty_msgBuilder10_11 = msgBuilder10_11.buildMessage();
-      if (isDirty_msgBuilder10_11) {
-        asciiConsoleLogger_8.publishMessage(msgBuilder10_11);
+      isDirty_msgBuilder7_11 = msgBuilder7_11.buildMessage();
+      if (isDirty_msgBuilder7_11) {
+        asciiConsoleLogger_8.publishMessage(msgBuilder7_11);
       }
     }
     //event stack unwind callbacks
@@ -214,14 +217,13 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     isDirty_handlerStartOfDay = true;
     handlerStartOfDay.onEvent(typedEvent);
     if (isDirty_handlerStartOfDay) {
-      map_temp_By_addValue0_5.resetNotification(handlerStartOfDay);
       map_temp_By_max0_1.resetNotification(handlerStartOfDay);
       map_temp_By_min0_3.resetNotification(handlerStartOfDay);
     }
     if (isDirty_handlerStartOfDay) {
-      isDirty_msgBuilder4_7 = msgBuilder4_7.buildMessage();
-      if (isDirty_msgBuilder4_7) {
-        asciiConsoleLogger_8.publishMessage(msgBuilder4_7);
+      isDirty_msgBuilder1_7 = msgBuilder1_7.buildMessage();
+      if (isDirty_msgBuilder1_7) {
+        asciiConsoleLogger_8.publishMessage(msgBuilder1_7);
       }
     }
     //event stack unwind callbacks
@@ -247,15 +249,15 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
       isDirty_map_temp_By_min0_3 = map_temp_By_min0_3.onEvent();
     }
     if (isDirty_map_temp_By_max0_1) {
-      isDirty_msgBuilder6_9 = msgBuilder6_9.buildMessage();
-      if (isDirty_msgBuilder6_9) {
-        asciiConsoleLogger_8.publishMessage(msgBuilder6_9);
+      isDirty_msgBuilder3_9 = msgBuilder3_9.buildMessage();
+      if (isDirty_msgBuilder3_9) {
+        asciiConsoleLogger_8.publishMessage(msgBuilder3_9);
       }
     }
     if (isDirty_map_temp_By_min0_3) {
-      isDirty_msgBuilder8_10 = msgBuilder8_10.buildMessage();
-      if (isDirty_msgBuilder8_10) {
-        asciiConsoleLogger_8.publishMessage(msgBuilder8_10);
+      isDirty_msgBuilder5_10 = msgBuilder5_10.buildMessage();
+      if (isDirty_msgBuilder5_10) {
+        asciiConsoleLogger_8.publishMessage(msgBuilder5_10);
       }
     }
     if (isDirty_handlerTempEvent) {
@@ -285,18 +287,18 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     switch (typedEvent.filterString()) {
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[CHANGE_FILTER]
       case ("CHANGE_FILTER"):
-        isDirty_msgBuilder4_7 = msgBuilder4_7.controlLogIdFilter(typedEvent);
-        isDirty_msgBuilder6_9 = msgBuilder6_9.controlLogIdFilter(typedEvent);
-        isDirty_msgBuilder8_10 = msgBuilder8_10.controlLogIdFilter(typedEvent);
-        isDirty_msgBuilder10_11 = msgBuilder10_11.controlLogIdFilter(typedEvent);
+        isDirty_msgBuilder1_7 = msgBuilder1_7.controlLogIdFilter(typedEvent);
+        isDirty_msgBuilder3_9 = msgBuilder3_9.controlLogIdFilter(typedEvent);
+        isDirty_msgBuilder5_10 = msgBuilder5_10.controlLogIdFilter(typedEvent);
+        isDirty_msgBuilder7_11 = msgBuilder7_11.controlLogIdFilter(typedEvent);
         afterEvent();
         return;
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[CHANGE_LEVEL]
       case ("CHANGE_LEVEL"):
-        isDirty_msgBuilder4_7 = msgBuilder4_7.controlLogLevelFilter(typedEvent);
-        isDirty_msgBuilder6_9 = msgBuilder6_9.controlLogLevelFilter(typedEvent);
-        isDirty_msgBuilder8_10 = msgBuilder8_10.controlLogLevelFilter(typedEvent);
-        isDirty_msgBuilder10_11 = msgBuilder10_11.controlLogLevelFilter(typedEvent);
+        isDirty_msgBuilder1_7 = msgBuilder1_7.controlLogLevelFilter(typedEvent);
+        isDirty_msgBuilder3_9 = msgBuilder3_9.controlLogLevelFilter(typedEvent);
+        isDirty_msgBuilder5_10 = msgBuilder5_10.controlLogLevelFilter(typedEvent);
+        isDirty_msgBuilder7_11 = msgBuilder7_11.controlLogLevelFilter(typedEvent);
         afterEvent();
         return;
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[RECORD_LEVEL]
@@ -326,10 +328,10 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     filter_temp_By_inRange0_20.resetAfterEvent();
     filter_temp_By_lessThan0_17.resetAfterEvent();
     filter_temp_By_greaterThan0_13.resetAfterEvent();
-    msgBuilder10_11.afterEvent();
-    msgBuilder8_10.afterEvent();
-    msgBuilder6_9.afterEvent();
-    msgBuilder4_7.afterEvent();
+    msgBuilder7_11.afterEvent();
+    msgBuilder5_10.afterEvent();
+    msgBuilder3_9.afterEvent();
+    msgBuilder1_7.afterEvent();
     map_temp_By_min0_3.resetAfterEvent();
     map_temp_By_max0_1.resetAfterEvent();
     map_temp_By_addValue0_5.resetAfterEvent();
@@ -344,10 +346,10 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     isDirty_map_temp_By_addValue0_5 = false;
     isDirty_map_temp_By_max0_1 = false;
     isDirty_map_temp_By_min0_3 = false;
-    isDirty_msgBuilder4_7 = false;
-    isDirty_msgBuilder6_9 = false;
-    isDirty_msgBuilder8_10 = false;
-    isDirty_msgBuilder10_11 = false;
+    isDirty_msgBuilder1_7 = false;
+    isDirty_msgBuilder3_9 = false;
+    isDirty_msgBuilder5_10 = false;
+    isDirty_msgBuilder7_11 = false;
     isDirty_push_TempEvent_To_airConAndHeatingOff0_21 = false;
     isDirty_push_TempEvent_To_airConOn0_15 = false;
     isDirty_push_TempEvent_To_heatingOn0_18 = false;
@@ -358,10 +360,10 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     map_temp_By_addValue0_5.init();
     map_temp_By_max0_1.init();
     map_temp_By_min0_3.init();
-    msgBuilder4_7.init();
-    msgBuilder6_9.init();
-    msgBuilder8_10.init();
-    msgBuilder10_11.init();
+    msgBuilder1_7.init();
+    msgBuilder3_9.init();
+    msgBuilder5_10.init();
+    msgBuilder7_11.init();
     asciiConsoleLogger_8.init();
     filter_temp_By_greaterThan0_13.init();
     filter_temp_By_lessThan0_17.init();

@@ -102,7 +102,7 @@ public class EventProcessorBuilders {
             outputDir = "src/main/java",
             cleanOutputDir = true
     )
-    @Disabled
+//    @Disabled
     public void buildTemperatureMonitor(SEPConfig cfg) {
         //select a stream of events
         Wrapper<TempEvent> tempStream = select(Events.TempEvent.class);
@@ -110,8 +110,8 @@ public class EventProcessorBuilders {
         Wrapper<EndOfDay> endOfDay = select(EndOfDay.class);
         //record daily temp stats and reset at start of day
         Wrapper<Number> max = tempStream.map(max(), TempEvent::temp).notifyOnChange(true).resetNotifier(newDay);
-        Wrapper<Number> min = tempStream.map(min(), TempEvent::temp).resetNotifier(newDay).notifyOnChange(true);
-        Wrapper<Number> avg = tempStream.map(avg(), TempEvent::temp).resetNotifier(newDay).notifierOverride(endOfDay);
+        Wrapper<Number> min = tempStream.map(min(), TempEvent::temp).notifyOnChange(true).resetNotifier(newDay);
+        Wrapper<Number> avg = tempStream.map(avg(), TempEvent::temp).publishAndReset(endOfDay);
         Log("===== Start of day {} =====", newDay, StartOfDay::day);
         Log("NEW max temp {}C", max, Number::intValue);
         Log("NEW min temp {}C", min, Number::intValue);
