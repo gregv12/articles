@@ -101,11 +101,11 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="Tick">
+        <node id="TimeEvent">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;Tick"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;TimeEvent"/>
                     <jGraph:Style properties="EVENT"/>
                 </jGraph:ShapeNode>
             </data>
@@ -119,11 +119,11 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="TimeEvent">
+        <node id="Tick">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;TimeEvent"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;Tick"/>
                     <jGraph:Style properties="EVENT"/>
                 </jGraph:ShapeNode>
             </data>
@@ -178,7 +178,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="11" source="Tick" target="clock">
+        <edge id="11" source="TimeEvent" target="clock">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -188,7 +188,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="13" source="TimeEvent" target="clock">
+        <edge id="13" source="Tick" target="clock">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
