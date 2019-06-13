@@ -27,16 +27,16 @@ import com.fluxtion.articles.quickstart.tempmonitor.Events.TempEvent;
  */
 public class EnvironmentalController {
 
-    public void airConOn(TempEvent temp) {
-        System.out.println("CONTROLLER::ON -> AIRCON temp:" + temp.temp());
+    public void airConOn(int temp) {
+        System.out.println("CONTROLLER::ON -> AIRCON temp:" + temp);
     }
 
-    public void heatingOn(TempEvent temp) {
-        System.out.println("CONTROLLER::ON -> HEATING temp:" + temp.temp());
+    public void heatingOn(int temp) {
+        System.out.println("CONTROLLER::ON -> HEATING temp:" + temp);
     }
 
-    public void airConAndHeatingOff(TempEvent temp) {
-        System.out.println("CONTROLLER::OFF -> AIRCON HEATING temp:" + temp.temp());
+    public void airConAndHeatingOff(int temp) {
+        System.out.println("CONTROLLER::OFF -> AIRCON HEATING temp:" + temp);
 
     }
 

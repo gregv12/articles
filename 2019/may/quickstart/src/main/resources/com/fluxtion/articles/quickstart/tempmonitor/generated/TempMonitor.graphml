@@ -2,20 +2,11 @@
     <key id="vertex_label" for="node" attr.name="nodeData" attr.type="string"/>
     <key id="edge_label" for="edge" attr.name="edgeData" attr.type="string"/>
     <graph edgedefault="directed">
-        <node id="map_temp_By_max0_1">
+        <node id="map_getTemp_By_asDouble0_0">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="map_temp_By_max0_1:&#10;Map_temp_By_max0"/>
-                    <jGraph:Style properties="NODE"/>
-                </jGraph:ShapeNode>
-            </data>
-        </node>
-        <node id="max_0">
-            <data key="vertex_label">
-                <jGraph:ShapeNode>
-                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="max_0:&#10;Max"/>
+                    <jGraph:label text="map_getTemp_By_asDouble0_0:&#10;Map_getTemp_By_asDouble0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
@@ -29,6 +20,15 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
+        <node id="map_Number_By_max0_2">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="map_Number_By_max0_2:&#10;Map_Number_By_max0"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
         <node id="handlerStartOfDay">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
@@ -38,29 +38,47 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="map_temp_By_min0_3">
+        <node id="max_1">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="map_temp_By_min0_3:&#10;Map_temp_By_min0"/>
+                    <jGraph:label text="max_1:&#10;Max"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="min_2">
+        <node id="map_Number_By_min0_4">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="min_2:&#10;Min"/>
+                    <jGraph:label text="map_Number_By_min0_4:&#10;Map_Number_By_min0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="map_temp_By_addValue0_5">
+        <node id="min_3">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="map_temp_By_addValue0_5:&#10;Map_temp_By_addValue0"/>
+                    <jGraph:label text="min_3:&#10;Min"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="map_Number_By_addValue0_6">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="map_Number_By_addValue0_6:&#10;Map_Number_By_addValue0"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="average_5">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="average_5:&#10;Average"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
@@ -74,155 +92,146 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="average_4">
+        <node id="booleanFilter_7">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="average_4:&#10;Average"/>
+                    <jGraph:label text="booleanFilter_7:&#10;BooleanFilter"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="booleanFilter_6">
+        <node id="msgBuilder4_8">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="booleanFilter_6:&#10;BooleanFilter"/>
-                    <jGraph:Style properties="NODE"/>
-                </jGraph:ShapeNode>
-            </data>
-        </node>
-        <node id="msgBuilder1_7">
-            <data key="vertex_label">
-                <jGraph:ShapeNode>
-                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;msgBuilder1_7:&#10;MsgBuilder1"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;msgBuilder4_8:&#10;MsgBuilder4"/>
                     <jGraph:Style properties="EVENTHANDLER"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="asciiConsoleLogger_8">
+        <node id="asciiConsoleLogger_9">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;asciiConsoleLogger_8:&#10;AsciiConsoleLogger"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;asciiConsoleLogger_9:&#10;AsciiConsoleLogger"/>
                     <jGraph:Style properties="EVENTHANDLER"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="msgBuilder3_9">
+        <node id="msgBuilder6_10">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;msgBuilder3_9:&#10;MsgBuilder3"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;msgBuilder6_10:&#10;MsgBuilder6"/>
                     <jGraph:Style properties="EVENTHANDLER"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="msgBuilder5_10">
+        <node id="msgBuilder8_11">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;msgBuilder5_10:&#10;MsgBuilder5"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;msgBuilder8_11:&#10;MsgBuilder8"/>
                     <jGraph:Style properties="EVENTHANDLER"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="msgBuilder7_11">
+        <node id="msgBuilder10_12">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;msgBuilder7_11:&#10;MsgBuilder7"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;msgBuilder10_12:&#10;MsgBuilder10"/>
                     <jGraph:Style properties="EVENTHANDLER"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="filter_temp_By_greaterThan0_13">
+        <node id="filter_Number_By_greaterThan0_14">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="filter_temp_By_greaterThan0_13:&#10;Filter_temp_By_greaterThan0"/>
+                    <jGraph:label text="filter_Number_By_greaterThan0_14:&#10;Filter_Number_By_greaterThan0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="numericPredicates_12">
+        <node id="numericPredicates_13">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="numericPredicates_12:&#10;NumericPredicates"/>
+                    <jGraph:label text="numericPredicates_13:&#10;NumericPredicates"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="push_TempEvent_To_airConOn0_15">
+        <node id="push_Number_To_airConOn0_16">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="push_TempEvent_To_airConOn0_15:&#10;Push_TempEvent_To_airConOn0"/>
+                    <jGraph:label text="push_Number_To_airConOn0_16:&#10;Push_Number_To_airConOn0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="environmentalController_14">
+        <node id="environmentalController_15">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="environmentalController_14:&#10;EnvironmentalController"/>
+                    <jGraph:label text="environmentalController_15:&#10;EnvironmentalController"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="filter_temp_By_lessThan0_17">
+        <node id="filter_Number_By_lessThan0_18">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="filter_temp_By_lessThan0_17:&#10;Filter_temp_By_lessThan0"/>
+                    <jGraph:label text="filter_Number_By_lessThan0_18:&#10;Filter_Number_By_lessThan0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="numericPredicates_16">
+        <node id="numericPredicates_17">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="numericPredicates_16:&#10;NumericPredicates"/>
+                    <jGraph:label text="numericPredicates_17:&#10;NumericPredicates"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="push_TempEvent_To_heatingOn0_18">
+        <node id="push_Number_To_heatingOn0_19">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="push_TempEvent_To_heatingOn0_18:&#10;Push_TempEvent_To_heatingOn0"/>
+                    <jGraph:label text="push_Number_To_heatingOn0_19:&#10;Push_Number_To_heatingOn0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="filter_temp_By_inRange0_20">
+        <node id="filter_Number_By_inRange0_21">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="filter_temp_By_inRange0_20:&#10;Filter_temp_By_inRange0"/>
+                    <jGraph:label text="filter_Number_By_inRange0_21:&#10;Filter_Number_By_inRange0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="numericPredicates_19">
+        <node id="numericPredicates_20">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="numericPredicates_19:&#10;NumericPredicates"/>
+                    <jGraph:label text="numericPredicates_20:&#10;NumericPredicates"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="push_TempEvent_To_airConAndHeatingOff0_21">
+        <node id="push_Number_To_airConAndHeatingOff0_22">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="push_TempEvent_To_airConAndHeatingOff0_21:&#10;Push_TempEvent_To_airConAndHeatingOff0"/>
+                    <jGraph:label text="push_Number_To_airConAndHeatingOff0_22:&#10;Push_Number_To_airConAndHeatingOff0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
@@ -263,197 +272,202 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <edge id="1" source="max_0" target="map_temp_By_max0_1">
+        <edge id="1" source="handlerTempEvent" target="map_getTemp_By_asDouble0_0">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="2" source="handlerTempEvent" target="map_temp_By_max0_1">
+        <edge id="2" source="handlerStartOfDay" target="map_Number_By_max0_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="3" source="handlerStartOfDay" target="map_temp_By_max0_1">
+        <edge id="3" source="map_getTemp_By_asDouble0_0" target="map_Number_By_max0_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="4" source="handlerTempEvent" target="map_temp_By_min0_3">
+        <edge id="4" source="max_1" target="map_Number_By_max0_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="5" source="min_2" target="map_temp_By_min0_3">
+        <edge id="5" source="map_getTemp_By_asDouble0_0" target="map_Number_By_min0_4">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="6" source="handlerStartOfDay" target="map_temp_By_min0_3">
+        <edge id="6" source="min_3" target="map_Number_By_min0_4">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="7" source="handlerEndOfDay" target="map_temp_By_addValue0_5">
+        <edge id="7" source="handlerStartOfDay" target="map_Number_By_min0_4">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="8" source="handlerTempEvent" target="map_temp_By_addValue0_5">
+        <edge id="8" source="average_5" target="map_Number_By_addValue0_6">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="9" source="average_4" target="map_temp_By_addValue0_5">
+        <edge id="9" source="map_getTemp_By_asDouble0_0" target="map_Number_By_addValue0_6">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="10" source="handlerEndOfDay" target="booleanFilter_6">
+        <edge id="10" source="handlerEndOfDay" target="map_Number_By_addValue0_6">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="11" source="map_temp_By_addValue0_5" target="booleanFilter_6">
+        <edge id="11" source="handlerEndOfDay" target="booleanFilter_7">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="12" source="handlerStartOfDay" target="msgBuilder1_7">
+        <edge id="12" source="map_Number_By_addValue0_6" target="booleanFilter_7">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="13" source="msgBuilder1_7" target="asciiConsoleLogger_8">
+        <edge id="13" source="handlerStartOfDay" target="msgBuilder4_8">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="14" source="msgBuilder3_9" target="asciiConsoleLogger_8">
+        <edge id="14" source="msgBuilder4_8" target="asciiConsoleLogger_9">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="15" source="map_temp_By_max0_1" target="msgBuilder3_9">
+        <edge id="15" source="msgBuilder6_10" target="asciiConsoleLogger_9">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="16" source="msgBuilder5_10" target="asciiConsoleLogger_8">
+        <edge id="16" source="map_Number_By_max0_2" target="msgBuilder6_10">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="17" source="map_temp_By_min0_3" target="msgBuilder5_10">
+        <edge id="17" source="msgBuilder8_11" target="asciiConsoleLogger_9">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="18" source="msgBuilder7_11" target="asciiConsoleLogger_8">
+        <edge id="18" source="map_Number_By_min0_4" target="msgBuilder8_11">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="19" source="booleanFilter_6" target="msgBuilder7_11">
+        <edge id="19" source="msgBuilder10_12" target="asciiConsoleLogger_9">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="20" source="numericPredicates_12" target="filter_temp_By_greaterThan0_13">
+        <edge id="20" source="booleanFilter_7" target="msgBuilder10_12">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="21" source="handlerTempEvent" target="filter_temp_By_greaterThan0_13">
+        <edge id="21" source="numericPredicates_13" target="filter_Number_By_greaterThan0_14">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="22" source="filter_temp_By_greaterThan0_13" target="push_TempEvent_To_airConOn0_15">
+        <edge id="22" source="map_getTemp_By_asDouble0_0" target="filter_Number_By_greaterThan0_14">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="23" source="push_TempEvent_To_airConOn0_15" target="environmentalController_14">
+        <edge id="23" source="push_Number_To_airConOn0_16" target="environmentalController_15">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="24" source="handlerTempEvent" target="filter_temp_By_lessThan0_17">
+        <edge id="24" source="filter_Number_By_greaterThan0_14" target="push_Number_To_airConOn0_16">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="25" source="numericPredicates_16" target="filter_temp_By_lessThan0_17">
+        <edge id="25" source="numericPredicates_17" target="filter_Number_By_lessThan0_18">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="26" source="filter_temp_By_lessThan0_17" target="push_TempEvent_To_heatingOn0_18">
+        <edge id="26" source="map_getTemp_By_asDouble0_0" target="filter_Number_By_lessThan0_18">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="27" source="push_TempEvent_To_heatingOn0_18" target="environmentalController_14">
+        <edge id="27" source="filter_Number_By_lessThan0_18" target="push_Number_To_heatingOn0_19">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="28" source="numericPredicates_19" target="filter_temp_By_inRange0_20">
+        <edge id="28" source="push_Number_To_heatingOn0_19" target="environmentalController_15">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="29" source="handlerTempEvent" target="filter_temp_By_inRange0_20">
+        <edge id="29" source="map_getTemp_By_asDouble0_0" target="filter_Number_By_inRange0_21">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="30" source="filter_temp_By_inRange0_20" target="push_TempEvent_To_airConAndHeatingOff0_21">
+        <edge id="30" source="numericPredicates_20" target="filter_Number_By_inRange0_21">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="31" source="push_TempEvent_To_airConAndHeatingOff0_21" target="environmentalController_14">
+        <edge id="31" source="push_Number_To_airConAndHeatingOff0_22" target="environmentalController_15">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="32" source="TempEvent" target="handlerTempEvent">
+        <edge id="32" source="filter_Number_By_inRange0_21" target="push_Number_To_airConAndHeatingOff0_22">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="33" source="StartOfDay" target="handlerStartOfDay">
+        <edge id="33" source="TempEvent" target="handlerTempEvent">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="34" source="EndOfDay" target="handlerEndOfDay">
+        <edge id="34" source="StartOfDay" target="handlerStartOfDay">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="35" source="LogControlEvent" target="msgBuilder1_7">
+        <edge id="35" source="EndOfDay" target="handlerEndOfDay">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="36" source="LogControlEvent" target="asciiConsoleLogger_8">
+        <edge id="36" source="LogControlEvent" target="msgBuilder4_8">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="37" source="LogControlEvent" target="msgBuilder3_9">
+        <edge id="37" source="LogControlEvent" target="asciiConsoleLogger_9">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="38" source="LogControlEvent" target="msgBuilder5_10">
+        <edge id="38" source="LogControlEvent" target="msgBuilder6_10">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="39" source="LogControlEvent" target="msgBuilder7_11">
+        <edge id="39" source="LogControlEvent" target="msgBuilder8_11">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="40" source="LogControlEvent" target="msgBuilder10_12">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>

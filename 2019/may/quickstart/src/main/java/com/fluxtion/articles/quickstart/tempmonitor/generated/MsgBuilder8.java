@@ -9,17 +9,17 @@ import com.fluxtion.ext.streaming.api.log.MsgBuilder;
  *
  * @author Greg Higgins
  */
-public class MsgBuilder3 extends MsgBuilder {
+public class MsgBuilder8 extends MsgBuilder {
 
   //source operand inputs
-  public com.fluxtion.articles.quickstart.tempmonitor.generated.Map_temp_By_max0
-      source_Map_temp_By_max0_2;
+  public com.fluxtion.articles.quickstart.tempmonitor.generated.Map_Number_By_min0
+      source_Map_Number_By_min0_7;
 
   @OnEvent
   public boolean buildMessage() {
     if (!isGoodToLog()) return false;
-    msgSink.append("NEW max temp ");
-    msgSink.append(((java.lang.Number) source_Map_temp_By_max0_2.event()).intValue());
+    msgSink.append("NEW day min temp ");
+    msgSink.append(((java.lang.Number) source_Map_Number_By_min0_7.event()).intValue());
     msgSink.append("C");
     msgSink.append('\n');
     return true;

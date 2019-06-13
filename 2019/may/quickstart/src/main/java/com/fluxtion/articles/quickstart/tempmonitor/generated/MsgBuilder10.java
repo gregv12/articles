@@ -9,20 +9,17 @@ import com.fluxtion.ext.streaming.api.log.MsgBuilder;
  *
  * @author Greg Higgins
  */
-public class MsgBuilder1 extends MsgBuilder {
+public class MsgBuilder10 extends MsgBuilder {
 
   //source operand inputs
-  public com.fluxtion.ext.streaming.api.ReusableEventHandler source_ReusableEventHandler_0;
+  public com.fluxtion.ext.streaming.api.test.BooleanFilter source_BooleanFilter_9;
 
   @OnEvent
   public boolean buildMessage() {
     if (!isGoodToLog()) return false;
-    msgSink.append("===== Start of day ");
-    msgSink.append(
-        ((com.fluxtion.articles.quickstart.tempmonitor.Events.StartOfDay)
-                source_ReusableEventHandler_0.event())
-            .day());
-    msgSink.append(" =====");
+    msgSink.append("NEW day avg temp ");
+    msgSink.append(((java.lang.Number) source_BooleanFilter_9.event()).doubleValue());
+    msgSink.append("C");
     msgSink.append('\n');
     return true;
   }
