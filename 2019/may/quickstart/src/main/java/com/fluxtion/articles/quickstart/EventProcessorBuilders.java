@@ -39,7 +39,7 @@ import static com.fluxtion.ext.text.builder.math.WordFrequency.wordFrequency;
 
 /**
  * A set of static event processor builders for the quick start examples. Each
- * builder is a method annotated with {@link SepBuilder} annotation. FLuxtion
+ * builder is a method annotated with {@link SepBuilder} annotation. Fluxtion
  * maven plugin scans for the annotated methods and generates a processor for
  * each method.
  *
@@ -57,11 +57,11 @@ public class EventProcessorBuilders {
             outputDir = "src/main/java",
             cleanOutputDir = true
     )
+//    @Disabled
     public void buildLambda(SEPConfig cfg) {
         select(Events.TempEvent.class)
                 .filter(t -> t.temp() > 20)
                 .console("Too hot!! ");
-
     }
 
     /**
@@ -80,7 +80,7 @@ public class EventProcessorBuilders {
             outputDir = "src/main/java",
             cleanOutputDir = true
     )
-    @Disabled
+//    @Disabled
     public void buildWordFrequency(SEPConfig cfg) {
         cfg.addNode(new StatsPrinter(
                 cfg.addNode(wordFrequency(wordSplitter()))
@@ -102,26 +102,29 @@ public class EventProcessorBuilders {
             outputDir = "src/main/java",
             cleanOutputDir = true
     )
-    @Disabled
+//    @Disabled
     public void buildTemperatureMonitor(SEPConfig cfg) {
-        //select a stream of events
-        Wrapper<TempEvent> tempStream = select(Events.TempEvent.class);
+        //select a stream of tmep values from temperature events
+        Wrapper<Number> tempInC = select(TempEvent::getTemp);
+        //start/end of day triggers
         Wrapper<StartOfDay> newDay = select(StartOfDay.class);
         Wrapper<EndOfDay> endOfDay = select(EndOfDay.class);
-        //record daily temp stats and reset at start of day
-        Wrapper<Number> max = tempStream.map(max(), TempEvent::temp).notifyOnChange(true).resetNotifier(newDay);
-        Wrapper<Number> min = tempStream.map(min(), TempEvent::temp).resetNotifier(newDay).notifyOnChange(true);
-        Wrapper<Number> avg = tempStream.map(avg(), TempEvent::temp).resetNotifier(newDay).notifierOverride(endOfDay);
+        //log daily temp max/min stats and reset at start of day
+        Wrapper<Number> max = tempInC.map(max()).notifyOnChange(true).resetNotifier(newDay);
+        Wrapper<Number> min = tempInC.map(min()).notifyOnChange(true).resetNotifier(newDay);
+        //publish daily average at end of day
+        Wrapper<Number> avg = tempInC.map(avg()).publishAndReset(endOfDay);
         Log("===== Start of day {} =====", newDay, StartOfDay::day);
-        Log("NEW max temp {}C", max, Number::intValue);
-        Log("NEW min temp {}C", min, Number::intValue);
-        Log("NEW avg temp {}C", avg, Number::doubleValue);
+        Log("NEW day max temp {}C", max, Number::intValue);
+        Log("NEW day min temp {}C", min, Number::intValue);
+        Log("NEW day avg temp {}C", avg, Number::doubleValue);
         //heating + airconditioning signals to controller
-        final int acOnTemp = 25;
+        final double acOnTemp = 25;
         final int heatingOnTemp = 12;
         EnvironmentalController controller = new EnvironmentalController();
-        tempStream.filter(TempEvent::temp, gt(acOnTemp)).notifyOnChange(true).push(controller::airConOn);
-        tempStream.filter(TempEvent::temp, lt(heatingOnTemp)).notifyOnChange(true).push(controller::heatingOn);
-        tempStream.filter(TempEvent::temp, inBand(heatingOnTemp, acOnTemp)).notifyOnChange(true).push(controller::airConAndHeatingOff);
+        tempInC.filter(gt(acOnTemp)).notifyOnChange(true).push(controller::airConOn);
+        tempInC.filter(lt(heatingOnTemp)).notifyOnChange(true).push(controller::heatingOn);
+        tempInC.filter(inBand(heatingOnTemp, acOnTemp)).notifyOnChange(true).push(controller::airConAndHeatingOff);
     }
+
 }

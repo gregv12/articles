@@ -1,46 +1,49 @@
-package com.fluxtion.articles.largefiles.generated;
+package com.fluxtion.articles.quickstart.tempmonitor.generated;
 
 import com.fluxtion.api.annotations.AfterEvent;
 import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.articles.largefiles.generated.Map_Voter_By_apply0;
+import com.fluxtion.articles.quickstart.tempmonitor.generated.Map_getTemp_By_asDouble0;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.Stateful;
 import com.fluxtion.ext.streaming.api.Test;
 import com.fluxtion.ext.streaming.api.Wrapper;
+import com.fluxtion.ext.streaming.api.numeric.MutableNumber;
 import com.fluxtion.ext.streaming.api.stream.AbstractFilterWrapper;
-import com.fluxtion.ext.streaming.api.stream.ListCollector;
-import java.util.List;
+import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Average;
 
 /**
- * Generated mapper function wrapper for a reference type.
+ * generated mapper function wrapper for a numeric primitive.
  *
  * <ul>
- *   <li>output class : {@link List}
- *   <li>input class : {@link Object}
- *   <li>map function : {@link ListCollector#addItem}
+ *   <li>output class : {@link Number}
+ *   <li>input class : {@link Number}
+ *   <li>map function : {@link Average#addValue}
  * </ul>
  *
  * @author Greg Higgins
  */
-public class Map_Object_By_addItem0 extends AbstractFilterWrapper<List> {
+public class Map_Number_By_addValue0 extends AbstractFilterWrapper<Number> {
 
-  public Map_Voter_By_apply0 filterSubject;
+  public Map_getTemp_By_asDouble0 filterSubject;
   private boolean filterSubjectUpdated;
-  @NoEventReference public ListCollector f;
-  private List result;
+  @NoEventReference public Average f;
+  private double result;
   @NoEventReference public Object resetNotifier;
   private boolean parentReset = false;
+  private MutableNumber value;
+  private MutableNumber oldValue;
 
   @OnEvent
   public boolean onEvent() {
-    List oldValue = result;
+    oldValue.set(result);
     if (filterSubjectUpdated) {
-      result = f.addItem((Object) ((Object) filterSubject.event()));
+      result = f.addValue((double) ((Number) filterSubject.event()).doubleValue());
     }
-    return !notifyOnChangeOnly || (!result.equals(oldValue));
+    value.set(result);
+    return !notifyOnChangeOnly | (!oldValue.equals(value));
   }
 
   private boolean allSourcesUpdated() {
@@ -49,7 +52,7 @@ public class Map_Object_By_addItem0 extends AbstractFilterWrapper<List> {
   }
 
   @OnParentUpdate("filterSubject")
-  public void updated_filterSubject(Map_Voter_By_apply0 updated) {
+  public void updated_filterSubject(Map_getTemp_By_asDouble0 updated) {
     filterSubjectUpdated = true;
   }
 
@@ -57,6 +60,7 @@ public class Map_Object_By_addItem0 extends AbstractFilterWrapper<List> {
   public void resetNotification(Object resetNotifier) {
     parentReset = true;
     if (isResetImmediate()) {
+      result = 0;
       f.reset();
       parentReset = false;
     }
@@ -65,30 +69,33 @@ public class Map_Object_By_addItem0 extends AbstractFilterWrapper<List> {
   @AfterEvent
   public void resetAfterEvent() {
     if (parentReset | alwaysReset) {
+      result = 0;
       f.reset();
     }
     parentReset = false;
   }
 
   @Override
-  public FilterWrapper<List> resetNotifier(Object resetNotifier) {
+  public FilterWrapper<Number> resetNotifier(Object resetNotifier) {
     this.resetNotifier = resetNotifier;
     return this;
   }
 
   @Override
-  public List event() {
-    return result;
+  public Number event() {
+    return value;
   }
 
   @Override
-  public Class<List> eventClass() {
-    return List.class;
+  public Class<Number> eventClass() {
+    return Number.class;
   }
 
   @Initialise
   public void init() {
-    result = null;
+    result = 0;
+    value = new MutableNumber();
+    oldValue = new MutableNumber();
     filterSubjectUpdated = false;
   }
 }

@@ -14,30 +14,17 @@
  * along with this program.  If not, see 
  * <http://www.mongodb.com/licensing/server-side-public-license>.
  */
-package com.fluxtion.articles.quickstart.tempmonitor;
+package com.fluxtion.examples.servicestarter.service;
 
-import com.fluxtion.articles.quickstart.tempmonitor.Events.TempEvent;
+import java.util.Map;
 
 /**
- * Controls air conditioning and heating systems. Receives notifications from an
- * external monitor/rules engine and pushes control signals to individual
- * systems.
  *
  * @author V12 Technology Ltd.
  */
-public class EnvironmentalController {
-
-    public void airConOn(int temp) {
-        System.out.println("CONTROLLER::ON -> AIRCON temp:" + temp);
-    }
-
-    public void heatingOn(int temp) {
-        System.out.println("CONTROLLER::ON -> HEATING temp:" + temp);
-    }
-
-    public void airConAndHeatingOff(int temp) {
-        System.out.println("CONTROLLER::OFF -> AIRCON HEATING temp:" + temp);
-
-    }
-
+public interface Service {
+    default void init(Map cfg, Platform platform){};
+    void ready(Platform platform);
+    default void running(Platform platform){};
+    default void stopped(Platform platform){};
 }

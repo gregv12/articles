@@ -40,7 +40,7 @@ public final class GroupBy_5 implements GroupBy<MutableNumber> {
     {
       int value = instance.aggregateCount4;
       value = AggregateCount.increment((int) event.hashCode(), (int) value);
-      target.set((long) value);
+      target.set((double) value);
       instance.aggregateCount4 = value;
     }
     return allMatched;

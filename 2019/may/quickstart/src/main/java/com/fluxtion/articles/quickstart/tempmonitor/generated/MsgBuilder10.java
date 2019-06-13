@@ -17,7 +17,7 @@ public class MsgBuilder10 extends MsgBuilder {
   @OnEvent
   public boolean buildMessage() {
     if (!isGoodToLog()) return false;
-    msgSink.append("NEW avg temp ");
+    msgSink.append("NEW day avg temp ");
     msgSink.append(((java.lang.Number) source_BooleanFilter_9.event()).doubleValue());
     msgSink.append("C");
     msgSink.append('\n');

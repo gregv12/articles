@@ -8,12 +8,11 @@ import com.fluxtion.api.annotations.OnParentUpdate;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.TempEvent;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.ReusableEventHandler;
-import com.fluxtion.ext.streaming.api.Stateful;
 import com.fluxtion.ext.streaming.api.Test;
 import com.fluxtion.ext.streaming.api.Wrapper;
 import com.fluxtion.ext.streaming.api.numeric.MutableNumber;
 import com.fluxtion.ext.streaming.api.stream.AbstractFilterWrapper;
-import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Min;
+import com.fluxtion.ext.streaming.api.stream.StreamFunctions;
 
 /**
  * generated mapper function wrapper for a numeric primitive.
@@ -21,65 +20,25 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Min;
  * <ul>
  *   <li>output class : {@link Number}
  *   <li>input class : {@link TempEvent}
- *   <li>map function : {@link Min#min}
+ *   <li>map function : {@link StreamFunctions#asDouble}
  * </ul>
  *
  * @author Greg Higgins
  */
-public class Map_temp_By_min0 extends AbstractFilterWrapper<Number> {
+public class Map_getTemp_By_asDouble0 extends AbstractFilterWrapper<Number> {
 
   public ReusableEventHandler filterSubject;
   private boolean filterSubjectUpdated;
-  @NoEventReference public Min f;
   private double result;
-  @NoEventReference public Object resetNotifier;
-  private boolean parentReset = false;
   private MutableNumber value;
   private MutableNumber oldValue;
 
   @OnEvent
   public boolean onEvent() {
     oldValue.set(result);
-    if (filterSubjectUpdated) {
-      result = f.min((double) ((TempEvent) filterSubject.event()).temp());
-    }
+    result = StreamFunctions.asDouble((double) ((TempEvent) filterSubject.event()).getTemp());
     value.set(result);
     return !notifyOnChangeOnly | (!oldValue.equals(value));
-  }
-
-  private boolean allSourcesUpdated() {
-    boolean updated = filterSubjectUpdated;
-    return updated;
-  }
-
-  @OnParentUpdate("filterSubject")
-  public void updated_filterSubject(ReusableEventHandler updated) {
-    filterSubjectUpdated = true;
-  }
-
-  @OnParentUpdate("resetNotifier")
-  public void resetNotification(Object resetNotifier) {
-    parentReset = true;
-    if (isResetImmediate()) {
-      result = 0;
-      f.reset();
-      parentReset = false;
-    }
-  }
-
-  @AfterEvent
-  public void resetAfterEvent() {
-    if (parentReset | alwaysReset) {
-      result = 0;
-      f.reset();
-    }
-    parentReset = false;
-  }
-
-  @Override
-  public FilterWrapper<Number> resetNotifier(Object resetNotifier) {
-    this.resetNotifier = resetNotifier;
-    return this;
   }
 
   @Override

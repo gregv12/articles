@@ -40,7 +40,7 @@ public final class GroupBy_2 implements GroupBy<MutableNumber> {
     {
       int value = instance.aggregateCount1;
       value = AggregateCount.increment((int) event.hashCode(), (int) value);
-      target.set((long) value);
+      target.set((double) value);
       instance.aggregateCount1 = value;
     }
     return allMatched;

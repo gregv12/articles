@@ -5,9 +5,8 @@ import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.articles.quickstart.tempmonitor.Events.TempEvent;
+import com.fluxtion.articles.quickstart.tempmonitor.generated.Map_getTemp_By_asDouble0;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
-import com.fluxtion.ext.streaming.api.ReusableEventHandler;
 import com.fluxtion.ext.streaming.api.Stateful;
 import com.fluxtion.ext.streaming.api.Test;
 import com.fluxtion.ext.streaming.api.Wrapper;
@@ -20,15 +19,15 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Max;
  *
  * <ul>
  *   <li>output class : {@link Number}
- *   <li>input class : {@link TempEvent}
+ *   <li>input class : {@link Number}
  *   <li>map function : {@link Max#max}
  * </ul>
  *
  * @author Greg Higgins
  */
-public class Map_temp_By_max0 extends AbstractFilterWrapper<Number> {
+public class Map_Number_By_max0 extends AbstractFilterWrapper<Number> {
 
-  public ReusableEventHandler filterSubject;
+  public Map_getTemp_By_asDouble0 filterSubject;
   private boolean filterSubjectUpdated;
   @NoEventReference public Max f;
   private double result;
@@ -41,7 +40,7 @@ public class Map_temp_By_max0 extends AbstractFilterWrapper<Number> {
   public boolean onEvent() {
     oldValue.set(result);
     if (filterSubjectUpdated) {
-      result = f.max((double) ((TempEvent) filterSubject.event()).temp());
+      result = f.max((double) ((Number) filterSubject.event()).doubleValue());
     }
     value.set(result);
     return !notifyOnChangeOnly | (!oldValue.equals(value));
@@ -53,7 +52,7 @@ public class Map_temp_By_max0 extends AbstractFilterWrapper<Number> {
   }
 
   @OnParentUpdate("filterSubject")
-  public void updated_filterSubject(ReusableEventHandler updated) {
+  public void updated_filterSubject(Map_getTemp_By_asDouble0 updated) {
     filterSubjectUpdated = true;
   }
 
