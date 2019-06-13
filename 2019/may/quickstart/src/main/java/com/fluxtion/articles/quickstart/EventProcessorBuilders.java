@@ -16,7 +16,6 @@
  */
 package com.fluxtion.articles.quickstart;
 
-import com.fluxtion.api.partition.LambdaReflection.SerializableFunction;
 import com.fluxtion.articles.quickstart.tempmonitor.EnvironmentalController;
 import com.fluxtion.articles.quickstart.tempmonitor.Events;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.EndOfDay;
@@ -27,11 +26,9 @@ import com.fluxtion.builder.annotation.Disabled;
 import com.fluxtion.builder.annotation.SepBuilder;
 import com.fluxtion.builder.node.SEPConfig;
 import com.fluxtion.ext.streaming.api.Wrapper;
-import com.fluxtion.ext.streaming.api.numeric.MutableNumber;
 import static com.fluxtion.ext.streaming.api.stream.NumericPredicates.gt;
 import static com.fluxtion.ext.streaming.api.stream.NumericPredicates.lt;
 import static com.fluxtion.ext.streaming.api.stream.NumericPredicates.inBand;
-import com.fluxtion.ext.streaming.api.stream.StreamFunctions;
 import static com.fluxtion.ext.streaming.builder.event.EventSelect.select;
 import static com.fluxtion.ext.streaming.builder.log.LogBuilder.*;
 import static com.fluxtion.ext.streaming.builder.stream.StreamFunctionsBuilder.max;
