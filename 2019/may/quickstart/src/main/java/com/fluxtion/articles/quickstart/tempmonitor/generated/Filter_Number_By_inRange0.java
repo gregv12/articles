@@ -5,7 +5,7 @@ import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.articles.quickstart.tempmonitor.generated.Map_getTemp_By_asDouble0;
+import com.fluxtion.articles.quickstart.tempmonitor.generated.Map_getTemp_With_asDouble0;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.Test;
 import com.fluxtion.ext.streaming.api.Wrapper;
@@ -25,8 +25,8 @@ import com.fluxtion.ext.streaming.api.stream.NumericPredicates;
 public class Filter_Number_By_inRange0 extends AbstractFilterWrapper<Number> {
 
   //source operand inputs
-  public Map_getTemp_By_asDouble0 filterSubject;
-  public Map_getTemp_By_asDouble0 source_0;
+  public Map_getTemp_With_asDouble0 filterSubject;
+  public Map_getTemp_With_asDouble0 source_0;
   @NoEventReference public NumericPredicates f;
   @NoEventReference public Object resetNotifier;
   private boolean parentReset = false;

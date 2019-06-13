@@ -109,10 +109,9 @@ public class EventProcessorBuilders {
         //start/end of day triggers
         Wrapper<StartOfDay> newDay = select(StartOfDay.class);
         Wrapper<EndOfDay> endOfDay = select(EndOfDay.class);
-        //log daily temp max/min stats and reset at start of day
+        //record daily temp max/min stats reset at start of day. Publish daily average at end of day
         Wrapper<Number> max = tempInC.map(max()).notifyOnChange(true).resetNotifier(newDay);
         Wrapper<Number> min = tempInC.map(min()).notifyOnChange(true).resetNotifier(newDay);
-        //publish daily average at end of day
         Wrapper<Number> avg = tempInC.map(avg()).publishAndReset(endOfDay);
         Log("===== Start of day {} =====", newDay, StartOfDay::day);
         Log("NEW day max temp {}C", max, Number::intValue);

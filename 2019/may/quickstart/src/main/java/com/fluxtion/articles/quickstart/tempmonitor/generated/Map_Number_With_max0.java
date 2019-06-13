@@ -5,7 +5,7 @@ import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.articles.quickstart.tempmonitor.generated.Map_getTemp_By_asDouble0;
+import com.fluxtion.articles.quickstart.tempmonitor.generated.Map_getTemp_With_asDouble0;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.Stateful;
 import com.fluxtion.ext.streaming.api.Test;
@@ -25,9 +25,9 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Max;
  *
  * @author Greg Higgins
  */
-public class Map_Number_By_max0 extends AbstractFilterWrapper<Number> {
+public class Map_Number_With_max0 extends AbstractFilterWrapper<Number> {
 
-  public Map_getTemp_By_asDouble0 filterSubject;
+  public Map_getTemp_With_asDouble0 filterSubject;
   private boolean filterSubjectUpdated;
   @NoEventReference public Max f;
   private double result;
@@ -52,7 +52,7 @@ public class Map_Number_By_max0 extends AbstractFilterWrapper<Number> {
   }
 
   @OnParentUpdate("filterSubject")
-  public void updated_filterSubject(Map_getTemp_By_asDouble0 updated) {
+  public void updated_filterSubject(Map_getTemp_With_asDouble0 updated) {
     filterSubjectUpdated = true;
   }
 

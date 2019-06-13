@@ -5,6 +5,7 @@ import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
+import com.fluxtion.api.partition.LambdaReflection.SerializableFunction;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.TempEvent;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.ReusableEventHandler;
@@ -25,7 +26,7 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions;
  *
  * @author Greg Higgins
  */
-public class Map_getTemp_By_asDouble0 extends AbstractFilterWrapper<Number> {
+public class Map_getTemp_With_asDouble0 extends AbstractFilterWrapper<Number> {
 
   public ReusableEventHandler filterSubject;
   private boolean filterSubjectUpdated;

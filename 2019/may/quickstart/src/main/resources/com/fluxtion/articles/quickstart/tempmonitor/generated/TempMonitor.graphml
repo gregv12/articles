@@ -2,11 +2,11 @@
     <key id="vertex_label" for="node" attr.name="nodeData" attr.type="string"/>
     <key id="edge_label" for="edge" attr.name="edgeData" attr.type="string"/>
     <graph edgedefault="directed">
-        <node id="map_getTemp_By_asDouble0_0">
+        <node id="map_getTemp_With_asDouble0_0">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="map_getTemp_By_asDouble0_0:&#10;Map_getTemp_By_asDouble0"/>
+                    <jGraph:label text="map_getTemp_With_asDouble0_0:&#10;Map_getTemp_With_asDouble0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
@@ -20,11 +20,11 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="map_Number_By_max0_2">
+        <node id="map_Number_With_max0_2">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="map_Number_By_max0_2:&#10;Map_Number_By_max0"/>
+                    <jGraph:label text="map_Number_With_max0_2:&#10;Map_Number_With_max0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
@@ -47,11 +47,11 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="map_Number_By_min0_4">
+        <node id="map_Number_With_min0_4">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="map_Number_By_min0_4:&#10;Map_Number_By_min0"/>
+                    <jGraph:label text="map_Number_With_min0_4:&#10;Map_Number_With_min0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
@@ -65,11 +65,11 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="map_Number_By_addValue0_6">
+        <node id="map_Number_With_addValue0_6">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="map_Number_By_addValue0_6:&#10;Map_Number_By_addValue0"/>
+                    <jGraph:label text="map_Number_With_addValue0_6:&#10;Map_Number_With_addValue0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
@@ -272,52 +272,52 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <edge id="1" source="handlerTempEvent" target="map_getTemp_By_asDouble0_0">
+        <edge id="1" source="handlerTempEvent" target="map_getTemp_With_asDouble0_0">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="2" source="handlerStartOfDay" target="map_Number_By_max0_2">
+        <edge id="2" source="handlerStartOfDay" target="map_Number_With_max0_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="3" source="map_getTemp_By_asDouble0_0" target="map_Number_By_max0_2">
+        <edge id="3" source="map_getTemp_With_asDouble0_0" target="map_Number_With_max0_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="4" source="max_1" target="map_Number_By_max0_2">
+        <edge id="4" source="max_1" target="map_Number_With_max0_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="5" source="map_getTemp_By_asDouble0_0" target="map_Number_By_min0_4">
+        <edge id="5" source="map_getTemp_With_asDouble0_0" target="map_Number_With_min0_4">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="6" source="min_3" target="map_Number_By_min0_4">
+        <edge id="6" source="min_3" target="map_Number_With_min0_4">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="7" source="handlerStartOfDay" target="map_Number_By_min0_4">
+        <edge id="7" source="handlerStartOfDay" target="map_Number_With_min0_4">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="8" source="average_5" target="map_Number_By_addValue0_6">
+        <edge id="8" source="map_getTemp_With_asDouble0_0" target="map_Number_With_addValue0_6">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="9" source="map_getTemp_By_asDouble0_0" target="map_Number_By_addValue0_6">
+        <edge id="9" source="average_5" target="map_Number_With_addValue0_6">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="10" source="handlerEndOfDay" target="map_Number_By_addValue0_6">
+        <edge id="10" source="handlerEndOfDay" target="map_Number_With_addValue0_6">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -327,7 +327,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="12" source="map_Number_By_addValue0_6" target="booleanFilter_7">
+        <edge id="12" source="map_Number_With_addValue0_6" target="booleanFilter_7">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -347,7 +347,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="16" source="map_Number_By_max0_2" target="msgBuilder6_10">
+        <edge id="16" source="map_Number_With_max0_2" target="msgBuilder6_10">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -357,7 +357,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="18" source="map_Number_By_min0_4" target="msgBuilder8_11">
+        <edge id="18" source="map_Number_With_min0_4" target="msgBuilder8_11">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -377,7 +377,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="22" source="map_getTemp_By_asDouble0_0" target="filter_Number_By_greaterThan0_14">
+        <edge id="22" source="map_getTemp_With_asDouble0_0" target="filter_Number_By_greaterThan0_14">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -397,7 +397,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="26" source="map_getTemp_By_asDouble0_0" target="filter_Number_By_lessThan0_18">
+        <edge id="26" source="map_getTemp_With_asDouble0_0" target="filter_Number_By_lessThan0_18">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -412,7 +412,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="29" source="map_getTemp_By_asDouble0_0" target="filter_Number_By_inRange0_21">
+        <edge id="29" source="map_getTemp_With_asDouble0_0" target="filter_Number_By_inRange0_21">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>

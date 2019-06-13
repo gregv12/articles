@@ -43,15 +43,16 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
       new ReusableEventHandler(2147483647, StartOfDay.class);
   private final ReusableEventHandler handlerTempEvent =
       new ReusableEventHandler(2147483647, TempEvent.class);
-  private final Map_getTemp_By_asDouble0 map_getTemp_By_asDouble0_0 =
-      new Map_getTemp_By_asDouble0();
-  private final Map_Number_By_addValue0 map_Number_By_addValue0_6 = new Map_Number_By_addValue0();
+  private final Map_getTemp_With_asDouble0 map_getTemp_With_asDouble0_0 =
+      new Map_getTemp_With_asDouble0();
+  private final Map_Number_With_addValue0 map_Number_With_addValue0_6 =
+      new Map_Number_With_addValue0();
   private final BooleanFilter booleanFilter_7 =
-      new BooleanFilter(map_Number_By_addValue0_6, handlerEndOfDay);
+      new BooleanFilter(map_Number_With_addValue0_6, handlerEndOfDay);
   private final Max max_1 = new Max();
-  private final Map_Number_By_max0 map_Number_By_max0_2 = new Map_Number_By_max0();
+  private final Map_Number_With_max0 map_Number_With_max0_2 = new Map_Number_With_max0();
   private final Min min_3 = new Min();
-  private final Map_Number_By_min0 map_Number_By_min0_4 = new Map_Number_By_min0();
+  private final Map_Number_With_min0 map_Number_With_min0_4 = new Map_Number_With_min0();
   private final MsgBuilder4 msgBuilder4_8 = new MsgBuilder4();
   private final MsgBuilder6 msgBuilder6_10 = new MsgBuilder6();
   private final MsgBuilder8 msgBuilder8_11 = new MsgBuilder8();
@@ -82,10 +83,10 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
   private boolean isDirty_handlerEndOfDay = false;
   private boolean isDirty_handlerStartOfDay = false;
   private boolean isDirty_handlerTempEvent = false;
-  private boolean isDirty_map_Number_By_addValue0_6 = false;
-  private boolean isDirty_map_Number_By_max0_2 = false;
-  private boolean isDirty_map_Number_By_min0_4 = false;
-  private boolean isDirty_map_getTemp_By_asDouble0_0 = false;
+  private boolean isDirty_map_Number_With_addValue0_6 = false;
+  private boolean isDirty_map_Number_With_max0_2 = false;
+  private boolean isDirty_map_Number_With_min0_4 = false;
+  private boolean isDirty_map_getTemp_With_asDouble0_0 = false;
   private boolean isDirty_msgBuilder4_8 = false;
   private boolean isDirty_msgBuilder6_10 = false;
   private boolean isDirty_msgBuilder8_11 = false;
@@ -99,50 +100,50 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     filter_Number_By_greaterThan0_14.setAlwaysReset(false);
     filter_Number_By_greaterThan0_14.setNotifyOnChangeOnly(true);
     filter_Number_By_greaterThan0_14.setResetImmediate(true);
-    filter_Number_By_greaterThan0_14.filterSubject = map_getTemp_By_asDouble0_0;
-    filter_Number_By_greaterThan0_14.source_0 = map_getTemp_By_asDouble0_0;
+    filter_Number_By_greaterThan0_14.filterSubject = map_getTemp_With_asDouble0_0;
+    filter_Number_By_greaterThan0_14.source_0 = map_getTemp_With_asDouble0_0;
     filter_Number_By_greaterThan0_14.f = numericPredicates_13;
     filter_Number_By_inRange0_21.setAlwaysReset(false);
     filter_Number_By_inRange0_21.setNotifyOnChangeOnly(true);
     filter_Number_By_inRange0_21.setResetImmediate(true);
-    filter_Number_By_inRange0_21.filterSubject = map_getTemp_By_asDouble0_0;
-    filter_Number_By_inRange0_21.source_0 = map_getTemp_By_asDouble0_0;
+    filter_Number_By_inRange0_21.filterSubject = map_getTemp_With_asDouble0_0;
+    filter_Number_By_inRange0_21.source_0 = map_getTemp_With_asDouble0_0;
     filter_Number_By_inRange0_21.f = numericPredicates_20;
     filter_Number_By_lessThan0_18.setAlwaysReset(false);
     filter_Number_By_lessThan0_18.setNotifyOnChangeOnly(true);
     filter_Number_By_lessThan0_18.setResetImmediate(true);
-    filter_Number_By_lessThan0_18.filterSubject = map_getTemp_By_asDouble0_0;
-    filter_Number_By_lessThan0_18.source_0 = map_getTemp_By_asDouble0_0;
+    filter_Number_By_lessThan0_18.filterSubject = map_getTemp_With_asDouble0_0;
+    filter_Number_By_lessThan0_18.source_0 = map_getTemp_With_asDouble0_0;
     filter_Number_By_lessThan0_18.f = numericPredicates_17;
-    map_Number_By_addValue0_6.setAlwaysReset(false);
-    map_Number_By_addValue0_6.setNotifyOnChangeOnly(false);
-    map_Number_By_addValue0_6.setResetImmediate(false);
-    map_Number_By_addValue0_6.filterSubject = map_getTemp_By_asDouble0_0;
-    map_Number_By_addValue0_6.f = average_5;
-    map_Number_By_addValue0_6.resetNotifier = handlerEndOfDay;
-    map_Number_By_max0_2.setAlwaysReset(false);
-    map_Number_By_max0_2.setNotifyOnChangeOnly(true);
-    map_Number_By_max0_2.setResetImmediate(true);
-    map_Number_By_max0_2.filterSubject = map_getTemp_By_asDouble0_0;
-    map_Number_By_max0_2.f = max_1;
-    map_Number_By_max0_2.resetNotifier = handlerStartOfDay;
-    map_Number_By_min0_4.setAlwaysReset(false);
-    map_Number_By_min0_4.setNotifyOnChangeOnly(true);
-    map_Number_By_min0_4.setResetImmediate(true);
-    map_Number_By_min0_4.filterSubject = map_getTemp_By_asDouble0_0;
-    map_Number_By_min0_4.f = min_3;
-    map_Number_By_min0_4.resetNotifier = handlerStartOfDay;
-    map_getTemp_By_asDouble0_0.setAlwaysReset(false);
-    map_getTemp_By_asDouble0_0.setNotifyOnChangeOnly(false);
-    map_getTemp_By_asDouble0_0.setResetImmediate(true);
-    map_getTemp_By_asDouble0_0.filterSubject = handlerTempEvent;
+    map_Number_With_addValue0_6.setAlwaysReset(false);
+    map_Number_With_addValue0_6.setNotifyOnChangeOnly(false);
+    map_Number_With_addValue0_6.setResetImmediate(false);
+    map_Number_With_addValue0_6.filterSubject = map_getTemp_With_asDouble0_0;
+    map_Number_With_addValue0_6.f = average_5;
+    map_Number_With_addValue0_6.resetNotifier = handlerEndOfDay;
+    map_Number_With_max0_2.setAlwaysReset(false);
+    map_Number_With_max0_2.setNotifyOnChangeOnly(true);
+    map_Number_With_max0_2.setResetImmediate(true);
+    map_Number_With_max0_2.filterSubject = map_getTemp_With_asDouble0_0;
+    map_Number_With_max0_2.f = max_1;
+    map_Number_With_max0_2.resetNotifier = handlerStartOfDay;
+    map_Number_With_min0_4.setAlwaysReset(false);
+    map_Number_With_min0_4.setNotifyOnChangeOnly(true);
+    map_Number_With_min0_4.setResetImmediate(true);
+    map_Number_With_min0_4.filterSubject = map_getTemp_With_asDouble0_0;
+    map_Number_With_min0_4.f = min_3;
+    map_Number_With_min0_4.resetNotifier = handlerStartOfDay;
+    map_getTemp_With_asDouble0_0.setAlwaysReset(false);
+    map_getTemp_With_asDouble0_0.setNotifyOnChangeOnly(false);
+    map_getTemp_With_asDouble0_0.setResetImmediate(true);
+    map_getTemp_With_asDouble0_0.filterSubject = handlerTempEvent;
     msgBuilder4_8.source_ReusableEventHandler_3 = handlerStartOfDay;
     msgBuilder4_8.logLevel = (int) 3;
     msgBuilder4_8.initCapacity = (int) 256;
-    msgBuilder6_10.source_Map_Number_By_max0_5 = map_Number_By_max0_2;
+    msgBuilder6_10.source_Map_Number_With_max0_5 = map_Number_With_max0_2;
     msgBuilder6_10.logLevel = (int) 3;
     msgBuilder6_10.initCapacity = (int) 256;
-    msgBuilder8_11.source_Map_Number_By_min0_7 = map_Number_By_min0_4;
+    msgBuilder8_11.source_Map_Number_With_min0_7 = map_Number_With_min0_4;
     msgBuilder8_11.logLevel = (int) 3;
     msgBuilder8_11.initCapacity = (int) 256;
     msgBuilder10_12.source_BooleanFilter_9 = booleanFilter_7;
@@ -205,7 +206,7 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     isDirty_handlerEndOfDay = true;
     handlerEndOfDay.onEvent(typedEvent);
     if (isDirty_handlerEndOfDay) {
-      map_Number_By_addValue0_6.resetNotification(handlerEndOfDay);
+      map_Number_With_addValue0_6.resetNotification(handlerEndOfDay);
     }
     if (isDirty_handlerEndOfDay) {
       isDirty_booleanFilter_7 = booleanFilter_7.updated();
@@ -225,8 +226,8 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     isDirty_handlerStartOfDay = true;
     handlerStartOfDay.onEvent(typedEvent);
     if (isDirty_handlerStartOfDay) {
-      map_Number_By_max0_2.resetNotification(handlerStartOfDay);
-      map_Number_By_min0_4.resetNotification(handlerStartOfDay);
+      map_Number_With_max0_2.resetNotification(handlerStartOfDay);
+      map_Number_With_min0_4.resetNotification(handlerStartOfDay);
     }
     if (isDirty_handlerStartOfDay) {
       isDirty_msgBuilder4_8 = msgBuilder4_8.buildMessage();
@@ -243,41 +244,41 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     isDirty_handlerTempEvent = true;
     handlerTempEvent.onEvent(typedEvent);
     if (isDirty_handlerTempEvent) {
-      isDirty_map_getTemp_By_asDouble0_0 = map_getTemp_By_asDouble0_0.onEvent();
-      if (isDirty_map_getTemp_By_asDouble0_0) {
-        map_Number_By_addValue0_6.updated_filterSubject(map_getTemp_By_asDouble0_0);
-        map_Number_By_max0_2.updated_filterSubject(map_getTemp_By_asDouble0_0);
-        map_Number_By_min0_4.updated_filterSubject(map_getTemp_By_asDouble0_0);
+      isDirty_map_getTemp_With_asDouble0_0 = map_getTemp_With_asDouble0_0.onEvent();
+      if (isDirty_map_getTemp_With_asDouble0_0) {
+        map_Number_With_addValue0_6.updated_filterSubject(map_getTemp_With_asDouble0_0);
+        map_Number_With_max0_2.updated_filterSubject(map_getTemp_With_asDouble0_0);
+        map_Number_With_min0_4.updated_filterSubject(map_getTemp_With_asDouble0_0);
       }
     }
-    if (isDirty_map_getTemp_By_asDouble0_0) {
-      isDirty_map_Number_By_addValue0_6 = map_Number_By_addValue0_6.onEvent();
+    if (isDirty_map_getTemp_With_asDouble0_0) {
+      isDirty_map_Number_With_addValue0_6 = map_Number_With_addValue0_6.onEvent();
     }
-    if (isDirty_map_getTemp_By_asDouble0_0) {
-      isDirty_map_Number_By_max0_2 = map_Number_By_max0_2.onEvent();
+    if (isDirty_map_getTemp_With_asDouble0_0) {
+      isDirty_map_Number_With_max0_2 = map_Number_With_max0_2.onEvent();
     }
-    if (isDirty_map_getTemp_By_asDouble0_0) {
-      isDirty_map_Number_By_min0_4 = map_Number_By_min0_4.onEvent();
+    if (isDirty_map_getTemp_With_asDouble0_0) {
+      isDirty_map_Number_With_min0_4 = map_Number_With_min0_4.onEvent();
     }
-    if (isDirty_map_Number_By_max0_2) {
+    if (isDirty_map_Number_With_max0_2) {
       isDirty_msgBuilder6_10 = msgBuilder6_10.buildMessage();
       if (isDirty_msgBuilder6_10) {
         asciiConsoleLogger_9.publishMessage(msgBuilder6_10);
       }
     }
-    if (isDirty_map_Number_By_min0_4) {
+    if (isDirty_map_Number_With_min0_4) {
       isDirty_msgBuilder8_11 = msgBuilder8_11.buildMessage();
       if (isDirty_msgBuilder8_11) {
         asciiConsoleLogger_9.publishMessage(msgBuilder8_11);
       }
     }
-    if (isDirty_map_getTemp_By_asDouble0_0) {
+    if (isDirty_map_getTemp_With_asDouble0_0) {
       isDirty_filter_Number_By_greaterThan0_14 = filter_Number_By_greaterThan0_14.onEvent();
     }
-    if (isDirty_map_getTemp_By_asDouble0_0) {
+    if (isDirty_map_getTemp_With_asDouble0_0) {
       isDirty_filter_Number_By_lessThan0_18 = filter_Number_By_lessThan0_18.onEvent();
     }
-    if (isDirty_map_getTemp_By_asDouble0_0) {
+    if (isDirty_map_getTemp_With_asDouble0_0) {
       isDirty_filter_Number_By_inRange0_21 = filter_Number_By_inRange0_21.onEvent();
     }
     if (isDirty_filter_Number_By_inRange0_21) {
@@ -343,9 +344,9 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     msgBuilder8_11.afterEvent();
     msgBuilder6_10.afterEvent();
     msgBuilder4_8.afterEvent();
-    map_Number_By_min0_4.resetAfterEvent();
-    map_Number_By_max0_2.resetAfterEvent();
-    map_Number_By_addValue0_6.resetAfterEvent();
+    map_Number_With_min0_4.resetAfterEvent();
+    map_Number_With_max0_2.resetAfterEvent();
+    map_Number_With_addValue0_6.resetAfterEvent();
     isDirty_asciiConsoleLogger_9 = false;
     isDirty_booleanFilter_7 = false;
     isDirty_filter_Number_By_greaterThan0_14 = false;
@@ -354,10 +355,10 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     isDirty_handlerEndOfDay = false;
     isDirty_handlerStartOfDay = false;
     isDirty_handlerTempEvent = false;
-    isDirty_map_Number_By_addValue0_6 = false;
-    isDirty_map_Number_By_max0_2 = false;
-    isDirty_map_Number_By_min0_4 = false;
-    isDirty_map_getTemp_By_asDouble0_0 = false;
+    isDirty_map_Number_With_addValue0_6 = false;
+    isDirty_map_Number_With_max0_2 = false;
+    isDirty_map_Number_With_min0_4 = false;
+    isDirty_map_getTemp_With_asDouble0_0 = false;
     isDirty_msgBuilder4_8 = false;
     isDirty_msgBuilder6_10 = false;
     isDirty_msgBuilder8_11 = false;
@@ -369,10 +370,10 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
 
   @Override
   public void init() {
-    map_getTemp_By_asDouble0_0.init();
-    map_Number_By_addValue0_6.init();
-    map_Number_By_max0_2.init();
-    map_Number_By_min0_4.init();
+    map_getTemp_With_asDouble0_0.init();
+    map_Number_With_addValue0_6.init();
+    map_Number_With_max0_2.init();
+    map_Number_With_min0_4.init();
     msgBuilder4_8.init();
     msgBuilder6_10.init();
     msgBuilder8_11.init();
