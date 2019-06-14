@@ -88,17 +88,17 @@ public class VoterCsvDecoder0 implements RowProcessor<Voter> {
   private boolean updateTarget() {
     try {
       updateFieldIndex();
-      fieldIndex = fieldIndex_4;
-      setDateString.subSequenceNoOffset(delimIndex[fieldIndex_4], delimIndex[fieldIndex_4 + 1] - 1);
-      target.setDateString(subSeq_0.subSequence(setDateString));
-
-      fieldIndex = fieldIndex_7;
-      setFirstName.subSequenceNoOffset(delimIndex[fieldIndex_7], delimIndex[fieldIndex_7 + 1] - 1);
-      target.setFirstName(subSeqBefore_1.subSequence(setFirstName));
-
-      fieldIndex = fieldIndex_7;
-      setFullName.subSequenceNoOffset(delimIndex[fieldIndex_7], delimIndex[fieldIndex_7 + 1] - 1);
-      target.setFullName(setFullName);
+//      fieldIndex = fieldIndex_4;
+//      setDateString.subSequenceNoOffset(delimIndex[fieldIndex_4], delimIndex[fieldIndex_4 + 1] - 1);
+//      target.setDateString(subSeq_0.subSequence(setDateString));
+//
+//      fieldIndex = fieldIndex_7;
+//      setFirstName.subSequenceNoOffset(delimIndex[fieldIndex_7], delimIndex[fieldIndex_7 + 1] - 1);
+//      target.setFirstName(subSeqBefore_1.subSequence(setFirstName));
+//
+//      fieldIndex = fieldIndex_7;
+//      setFullName.subSequenceNoOffset(delimIndex[fieldIndex_7], delimIndex[fieldIndex_7 + 1] - 1);
+//      target.setFullName(setFullName);
 
     } catch (Exception e) {
       logException("problem pushing data from row:", false, e);

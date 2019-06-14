@@ -9,8 +9,8 @@ import static com.fluxtion.ext.streaming.api.group.AggregateFunctions.Count;
 import com.fluxtion.ext.streaming.api.group.GroupBy;
 import static com.fluxtion.ext.streaming.api.stream.CharSeqFunctions.subSeqBefore;
 import static com.fluxtion.ext.streaming.api.stream.CharSeqFunctions.subSequence;
+import static com.fluxtion.ext.streaming.api.stream.NumericPredicates.equal;
 import static com.fluxtion.ext.streaming.api.util.GroupByPrint.printFrequencyMap;
-import static com.fluxtion.ext.streaming.api.util.GroupByPrint.printTopN;
 import static com.fluxtion.ext.streaming.builder.event.EventSelect.select;
 import static com.fluxtion.ext.streaming.builder.stream.StreamFunctionsBuilder.count;
 import com.fluxtion.ext.text.api.csv.RowProcessor;
@@ -20,6 +20,7 @@ import com.fluxtion.ext.text.builder.csv.CharTokenConfig;
 import static com.fluxtion.ext.text.builder.csv.CsvMarshallerBuilder.csvMarshaller;
 import java.io.File;
 import java.util.List;
+import static com.fluxtion.ext.streaming.api.util.GroupByPrint.printTopN;
 
 /**
  *
@@ -28,9 +29,9 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        CharStreamer.stream(new File("C:\\Users\\gregp\\Downloads\\indiv18\\itcont.txt"), 
+        CharStreamer.stream(new File("C:\\Users\\gregp\\Downloads\\indiv18\\itcont.txt"),
                 (Class<com.fluxtion.api.lifecycle.EventHandler>) Class.forName("com.fluxtion.articles.largefiles.generated.VoterProcessor"))
-                .async().stream();
+                .sync().stream();
     }
 
     @SepBuilder(name = "VoterProcessor",
@@ -45,42 +46,19 @@ public class Main {
                 .map(7, Voter::setFullName)
                 .tokenConfig(new CharTokenConfig('\n', '|', '\r')).build();
         //calcs and printing
-        Wrapper<String> eofTrigger = select(EofEvent.class).map(e -> "").console("Results\n--------------");
-        voter.map(count()).notifierOverride(eofTrigger).console("count:", Number::intValue);
-//        GroupBy notifierOverride = voter.group(Voter::getFirstName, Voter::hashCode, Count).notifierOverride(eofTrigger);
-        
-        
-        cfg.addNode(new ResultsPrinter(
-                voter.group(Voter::getFirstName, Voter::hashCode, Count),
-                voter.group(Voter::getDateString, Voter::hashCode, Count),
-                voter.map(count()),
-                voter.map(v->v.getFullName().toString()).map(new ListCollector()::addItem))
-        );
+        Wrapper<EofEvent> eofTrigger = select(EofEvent.class);
+        eofTrigger.map(e -> "").console("Results\n--------------");
+        //names
+        Wrapper<Number> nameCount = voter.map(count());
+        nameCount.notifierOverride(eofTrigger).console("count:", Number::intValue);
+//        voter.notifierOverride(nameCount.filter(equal(3))).console("3rd name:", Voter::getFullName);
+//        voter.notifierOverride(nameCount.filter(equal(46565))).console("46565th name:", Voter::getFullName);
+        //stats
+//        printTopN("\ngroupByName:\n-------------", 3, voter.group(Voter::getFirstName, Voter::hashCode, Count), eofTrigger);
+//        printFrequencyMap("\ngroupByDate:\n-------------", voter.group(Voter::getDateString, Voter::hashCode, Count), eofTrigger);
+
     }
 
-    public static class ResultsPrinter {
 
-        private final GroupBy<Number> groupByName;
-        private final GroupBy<Number> groupByDate;
-        private final Wrapper<Number> count;
-        private final Wrapper<List> nameList;
-
-        public ResultsPrinter(GroupBy groupByName, GroupBy groupByDate, Wrapper count, Wrapper<List> nameList) {
-            this.groupByName = groupByName;
-            this.groupByDate = groupByDate;
-            this.count = count;
-            this.nameList = nameList;
-        }
-
-        @EventHandler
-        public void eof(EofEvent eof) {
-//            System.out.println("results:");
-//            System.out.println("count:" + count.event().intValue() + "\n");
-            printTopN("groupByName:", groupByName, 3);
-            printFrequencyMap("groupByDate:", groupByDate);
-            System.out.println("3rd name:" + nameList.event().get(3));
-        }
-    }
-    
 
 }
