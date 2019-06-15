@@ -11,20 +11,20 @@
 </jGraph:ShapeNode>
 </data>
 </node>
-<node id="subSeq_0">
-<data key="vertex_label">
-<jGraph:ShapeNode>
-<jGraph:Geometry height="70" width="160" x="20" y="20"/>
-<jGraph:label text="subSeq_0:&#10;SubSeq"/>
-<jGraph:Style properties="NODE"/>
-</jGraph:ShapeNode>
-</data>
-</node>
 <node id="subSeqBefore_1">
 <data key="vertex_label">
 <jGraph:ShapeNode>
 <jGraph:Geometry height="70" width="160" x="20" y="20"/>
 <jGraph:label text="subSeqBefore_1:&#10;SubSeqBefore"/>
+<jGraph:Style properties="NODE"/>
+</jGraph:ShapeNode>
+</data>
+</node>
+<node id="subSeq_0">
+<data key="vertex_label">
+<jGraph:ShapeNode>
+<jGraph:Geometry height="70" width="160" x="20" y="20"/>
+<jGraph:label text="subSeq_0:&#10;SubSeq"/>
 <jGraph:Style properties="NODE"/>
 </jGraph:ShapeNode>
 </data>
@@ -164,12 +164,12 @@
 </jGraph:ShapeNode>
 </data>
 </node>
-<edge id="1" source="subSeq_0" target="voterCsvDecoder0_2">
+<edge id="1" source="subSeqBefore_1" target="voterCsvDecoder0_2">
 <data key="edge_label">
 <jGraph:ShapeEdge/>
 </data>
 </edge>
-<edge id="2" source="subSeqBefore_1" target="voterCsvDecoder0_2">
+<edge id="2" source="subSeq_0" target="voterCsvDecoder0_2">
 <data key="edge_label">
 <jGraph:ShapeEdge/>
 </data>

@@ -9,6 +9,8 @@ import static com.fluxtion.ext.streaming.api.group.AggregateFunctions.Count;
 import com.fluxtion.ext.streaming.api.group.GroupBy;
 import static com.fluxtion.ext.streaming.api.stream.CharSeqFunctions.subSeqBefore;
 import static com.fluxtion.ext.streaming.api.stream.CharSeqFunctions.subSequence;
+import static com.fluxtion.ext.streaming.api.stream.CharSeqFunctions.subString;
+import static com.fluxtion.ext.streaming.api.stream.CharSeqFunctions.subStringBefore;
 import static com.fluxtion.ext.streaming.api.stream.NumericPredicates.equal;
 import static com.fluxtion.ext.streaming.api.util.GroupByPrint.printFrequencyMap;
 import static com.fluxtion.ext.streaming.builder.event.EventSelect.select;
@@ -41,8 +43,8 @@ public class Main {
     )
     public void buildLambda(SEPConfig cfg) {
         RowProcessor<Voter> voter = csvMarshaller(Voter.class, 0)
-                .map(4, Voter::setDateString, subSequence(0, 6))
-                .map(7, Voter::setFirstName, subSeqBefore(','))
+                .map(4, Voter::setDateString, subString(0, 6))
+                .map(7, Voter::setFirstName, subStringBefore(','))
                 .map(7, Voter::setFullName)
                 .tokenConfig(new CharTokenConfig('\n', '|', '\r')).build();
         //calcs and printing

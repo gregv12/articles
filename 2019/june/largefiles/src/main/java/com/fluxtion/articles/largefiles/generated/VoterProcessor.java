@@ -81,8 +81,8 @@ public class VoterProcessor implements EventHandler, BatchHandler, Lifecycle {
     map_Voter_With_increment0_8.filterSubject = voterCsvDecoder0_2;
     map_Voter_With_increment0_8.f = count_7;
     voterCsvDecoder0_2.errorLog = validationLogger_11;
-    voterCsvDecoder0_2.subSeq_0 = subSeq_0;
     voterCsvDecoder0_2.subSeqBefore_1 = subSeqBefore_1;
+    voterCsvDecoder0_2.subSeq_0 = subSeq_0;
     consoleMsg_2.setMethodSupplier("intValue");
     validationLogSink_12.setPublishLogImmediately(true);
     validationLogger_11.logSink = validationLogSink_12;
@@ -92,12 +92,12 @@ public class VoterProcessor implements EventHandler, BatchHandler, Lifecycle {
   @Override
   public void onEvent(com.fluxtion.api.event.Event event) {
     switch (event.eventId()) {
-//      case (LogControlEvent.ID):
-//        {
-//          LogControlEvent typedEvent = (LogControlEvent) event;
-//          handleEvent(typedEvent);
-//          break;
-//        }
+      case (LogControlEvent.ID):
+        {
+          LogControlEvent typedEvent = (LogControlEvent) event;
+          handleEvent(typedEvent);
+          break;
+        }
       case (CharEvent.ID):
         {
           CharEvent typedEvent = (CharEvent) event;
@@ -110,12 +110,12 @@ public class VoterProcessor implements EventHandler, BatchHandler, Lifecycle {
           handleEvent(typedEvent);
           break;
         }
-//      case (RegisterEventHandler.ID):
-//        {
-//          RegisterEventHandler typedEvent = (RegisterEventHandler) event;
-//          handleEvent(typedEvent);
-//          break;
-//        }
+      case (RegisterEventHandler.ID):
+        {
+          RegisterEventHandler typedEvent = (RegisterEventHandler) event;
+          handleEvent(typedEvent);
+          break;
+        }
     }
   }
 

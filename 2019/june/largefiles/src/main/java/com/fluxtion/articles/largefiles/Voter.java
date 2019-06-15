@@ -10,27 +10,27 @@ public class Voter {
     private String firstName;
     private String fullName;
     
-    public CharSequence getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(CharSequence firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName.toString();
     }
 
-    public CharSequence getDateString() {
+    public String getDateString() {
         return dateString;
     }
 
-    public void setDateString(CharSequence dateString) {
+    public void setDateString(String dateString) {
         this.dateString = dateString.toString();
     }
 
-    public CharSequence getFullName() {
+    public String getFullName() {
         return fullName;
     }
 
-    public void setFullName(CharSequence fullName) {
+    public void setFullName(String fullName) {
         this.fullName = fullName.toString();
     }
     
