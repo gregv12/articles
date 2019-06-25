@@ -35,7 +35,6 @@ public class TempFilter implements EventHandler, BatchHandler, Lifecycle {
       new Filter_TempEvent_By_apply0();
   public final ConsoleLog consoleMsg_1 = new ConsoleLog(filter_TempEvent_By_apply0_1, "Too hot!! ");
   //Dirty flags
-  private boolean isDirty_consoleMsg_1 = false;
   private boolean isDirty_filter_TempEvent_By_apply0_1 = false;
   private boolean isDirty_handlerTempEvent = false;
   //Filter constants
@@ -69,7 +68,7 @@ public class TempFilter implements EventHandler, BatchHandler, Lifecycle {
       isDirty_filter_TempEvent_By_apply0_1 = filter_TempEvent_By_apply0_1.onEvent();
     }
     if (isDirty_filter_TempEvent_By_apply0_1) {
-      isDirty_consoleMsg_1 = consoleMsg_1.log();
+      consoleMsg_1.log();
     }
     //event stack unwind callbacks
     afterEvent();
@@ -78,7 +77,6 @@ public class TempFilter implements EventHandler, BatchHandler, Lifecycle {
   @Override
   public void afterEvent() {
     filter_TempEvent_By_apply0_1.resetAfterEvent();
-    isDirty_consoleMsg_1 = false;
     isDirty_filter_TempEvent_By_apply0_1 = false;
     isDirty_handlerTempEvent = false;
   }

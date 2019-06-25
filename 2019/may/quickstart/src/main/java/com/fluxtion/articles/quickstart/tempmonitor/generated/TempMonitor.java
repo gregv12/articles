@@ -75,7 +75,6 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
       new Push_Number_To_heatingOn0();
   private final EnvironmentalController environmentalController_15 = new EnvironmentalController();
   //Dirty flags
-  private boolean isDirty_asciiConsoleLogger_9 = false;
   private boolean isDirty_booleanFilter_7 = false;
   private boolean isDirty_filter_Number_By_greaterThan0_14 = false;
   private boolean isDirty_filter_Number_By_inRange0_21 = false;
@@ -83,7 +82,6 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
   private boolean isDirty_handlerEndOfDay = false;
   private boolean isDirty_handlerStartOfDay = false;
   private boolean isDirty_handlerTempEvent = false;
-  private boolean isDirty_map_Number_With_addValue0_6 = false;
   private boolean isDirty_map_Number_With_max0_2 = false;
   private boolean isDirty_map_Number_With_min0_4 = false;
   private boolean isDirty_map_getTemp_With_asDouble0_0 = false;
@@ -245,14 +243,9 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     handlerTempEvent.onEvent(typedEvent);
     if (isDirty_handlerTempEvent) {
       isDirty_map_getTemp_With_asDouble0_0 = map_getTemp_With_asDouble0_0.onEvent();
-      if (isDirty_map_getTemp_With_asDouble0_0) {
-        map_Number_With_addValue0_6.updated_filterSubject(map_getTemp_With_asDouble0_0);
-        map_Number_With_max0_2.updated_filterSubject(map_getTemp_With_asDouble0_0);
-        map_Number_With_min0_4.updated_filterSubject(map_getTemp_With_asDouble0_0);
-      }
     }
     if (isDirty_map_getTemp_With_asDouble0_0) {
-      isDirty_map_Number_With_addValue0_6 = map_Number_With_addValue0_6.onEvent();
+      map_Number_With_addValue0_6.onEvent();
     }
     if (isDirty_map_getTemp_With_asDouble0_0) {
       isDirty_map_Number_With_max0_2 = map_Number_With_max0_2.onEvent();
@@ -315,19 +308,16 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
         return;
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[RECORD_LEVEL]
       case ("RECORD_LEVEL"):
-        isDirty_asciiConsoleLogger_9 = true;
         asciiConsoleLogger_9.controlLevelLogging(typedEvent);
         afterEvent();
         return;
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[RECORD_NAME]
       case ("RECORD_NAME"):
-        isDirty_asciiConsoleLogger_9 = true;
         asciiConsoleLogger_9.controlIdLogging(typedEvent);
         afterEvent();
         return;
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[RECORD_TIME]
       case ("RECORD_TIME"):
-        isDirty_asciiConsoleLogger_9 = true;
         asciiConsoleLogger_9.controlTimeLogging(typedEvent);
         afterEvent();
         return;
@@ -347,7 +337,6 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     map_Number_With_min0_4.resetAfterEvent();
     map_Number_With_max0_2.resetAfterEvent();
     map_Number_With_addValue0_6.resetAfterEvent();
-    isDirty_asciiConsoleLogger_9 = false;
     isDirty_booleanFilter_7 = false;
     isDirty_filter_Number_By_greaterThan0_14 = false;
     isDirty_filter_Number_By_inRange0_21 = false;
@@ -355,7 +344,6 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
     isDirty_handlerEndOfDay = false;
     isDirty_handlerStartOfDay = false;
     isDirty_handlerTempEvent = false;
-    isDirty_map_Number_With_addValue0_6 = false;
     isDirty_map_Number_With_max0_2 = false;
     isDirty_map_Number_With_min0_4 = false;
     isDirty_map_getTemp_With_asDouble0_0 = false;

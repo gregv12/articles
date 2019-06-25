@@ -28,7 +28,6 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Min;
 public class Map_Number_With_min0 extends AbstractFilterWrapper<Number> {
 
   public Map_getTemp_With_asDouble0 filterSubject;
-  private boolean filterSubjectUpdated;
   @NoEventReference public Min f;
   private double result;
   @NoEventReference public Object resetNotifier;
@@ -39,21 +38,9 @@ public class Map_Number_With_min0 extends AbstractFilterWrapper<Number> {
   @OnEvent
   public boolean onEvent() {
     oldValue.set(result);
-    if (filterSubjectUpdated) {
-      result = f.min((double) ((Number) filterSubject.event()).doubleValue());
-    }
+    result = f.min((double) ((Number) filterSubject.event()).doubleValue());
     value.set(result);
     return !notifyOnChangeOnly | (!oldValue.equals(value));
-  }
-
-  private boolean allSourcesUpdated() {
-    boolean updated = filterSubjectUpdated;
-    return updated;
-  }
-
-  @OnParentUpdate("filterSubject")
-  public void updated_filterSubject(Map_getTemp_With_asDouble0 updated) {
-    filterSubjectUpdated = true;
   }
 
   @OnParentUpdate("resetNotifier")
@@ -96,6 +83,5 @@ public class Map_Number_With_min0 extends AbstractFilterWrapper<Number> {
     result = 0;
     value = new MutableNumber();
     oldValue = new MutableNumber();
-    filterSubjectUpdated = false;
   }
 }

@@ -28,7 +28,6 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions;
 public class Map_getTemp_With_asDouble0 extends AbstractFilterWrapper<Number> {
 
   public ReusableEventHandler filterSubject;
-  private boolean filterSubjectUpdated;
   private double result;
   private MutableNumber value;
   private MutableNumber oldValue;
@@ -56,6 +55,5 @@ public class Map_getTemp_With_asDouble0 extends AbstractFilterWrapper<Number> {
     result = 0;
     value = new MutableNumber();
     oldValue = new MutableNumber();
-    filterSubjectUpdated = false;
   }
 }

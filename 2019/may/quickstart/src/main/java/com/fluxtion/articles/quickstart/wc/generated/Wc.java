@@ -25,7 +25,7 @@ import com.fluxtion.ext.text.api.event.CharEvent;
 public class Wc implements EventHandler, BatchHandler, Lifecycle {
 
   //Node declarations
-  private final WordCounter wordCounter_1 = new WordCounter();
+  public final WordCounter processor = new WordCounter();
   //Dirty flags
 
   //Filter constants
@@ -48,32 +48,32 @@ public class Wc implements EventHandler, BatchHandler, Lifecycle {
     switch (typedEvent.filterId()) {
         //Event Class:[com.fluxtion.ext.text.api.event.CharEvent] filterId:[9]
       case (9):
-        wordCounter_1.onAnyChar(typedEvent);
-        wordCounter_1.onTabDelimiter(typedEvent);
+        processor.onAnyChar(typedEvent);
+        processor.onTabDelimiter(typedEvent);
         afterEvent();
         return;
         //Event Class:[com.fluxtion.ext.text.api.event.CharEvent] filterId:[10]
       case (10):
-        wordCounter_1.onAnyChar(typedEvent);
-        wordCounter_1.onEol(typedEvent);
+        processor.onAnyChar(typedEvent);
+        processor.onEol(typedEvent);
         afterEvent();
         return;
         //Event Class:[com.fluxtion.ext.text.api.event.CharEvent] filterId:[13]
       case (13):
-        wordCounter_1.onAnyChar(typedEvent);
-        wordCounter_1.onCarriageReturn(typedEvent);
+        processor.onAnyChar(typedEvent);
+        processor.onCarriageReturn(typedEvent);
         afterEvent();
         return;
         //Event Class:[com.fluxtion.ext.text.api.event.CharEvent] filterId:[32]
       case (32):
-        wordCounter_1.onAnyChar(typedEvent);
-        wordCounter_1.onSpaceDelimiter(typedEvent);
+        processor.onAnyChar(typedEvent);
+        processor.onSpaceDelimiter(typedEvent);
         afterEvent();
         return;
     }
     //Default, no filter methods
-    wordCounter_1.onAnyChar(typedEvent);
-    wordCounter_1.onUnmatchedChar(typedEvent);
+    processor.onAnyChar(typedEvent);
+    processor.onUnmatchedChar(typedEvent);
     //event stack unwind callbacks
     afterEvent();
   }
@@ -86,7 +86,7 @@ public class Wc implements EventHandler, BatchHandler, Lifecycle {
 
   @Override
   public void tearDown() {
-    wordCounter_1.printReport();
+    processor.printReport();
   }
 
   @Override
