@@ -5,14 +5,14 @@ import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.examples.tradingmonitor.generated.symbol.Filter_Number_By_lessThan0;
+import com.fluxtion.examples.tradingmonitor.generated.symbol.Map_Number_With_addValue0;
+import com.fluxtion.examples.tradingmonitor.generated.symbol.Map_Number_With_multiply1;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
-import com.fluxtion.ext.streaming.api.Stateful;
 import com.fluxtion.ext.streaming.api.Test;
 import com.fluxtion.ext.streaming.api.Wrapper;
 import com.fluxtion.ext.streaming.api.numeric.MutableNumber;
 import com.fluxtion.ext.streaming.api.stream.AbstractFilterWrapper;
-import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Count;
+import com.fluxtion.ext.streaming.api.stream.StreamFunctions;
 
 /**
  * generated mapper function wrapper for a numeric primitive.
@@ -20,65 +20,48 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Count;
  * <ul>
  *   <li>output class : {@link Number}
  *   <li>input class : {@link Number}
- *   <li>map function : {@link Count#increment}
+ *   <li>map function : {@link StreamFunctions#add}
  * </ul>
  *
  * @author Greg Higgins
  */
-public class Map_Number_By_increment0 extends AbstractFilterWrapper<Number> {
+public class Map_doubleValue_With_add0 extends AbstractFilterWrapper<Number> {
 
-  public Filter_Number_By_lessThan0 filterSubject;
+  public Map_Number_With_multiply1 filterSubject;
   private boolean filterSubjectUpdated;
-  @NoEventReference public Count f;
-  private int result;
-  @NoEventReference public Object resetNotifier;
-  private boolean parentReset = false;
+  public Map_Number_With_addValue0 source_0;
+  private boolean source_0Updated;
+  private double result;
   private MutableNumber value;
   private MutableNumber oldValue;
 
   @OnEvent
   public boolean onEvent() {
     oldValue.set(result);
-    if (filterSubjectUpdated) {
-      result = f.increment((Object) ((Number) filterSubject.event()));
+    if (allSourcesUpdated()) {
+      result =
+          StreamFunctions.add(
+              (double) ((Number) filterSubject.event()).doubleValue(),
+              (double) ((Number) source_0.event()).doubleValue());
     }
     value.set(result);
-    return !notifyOnChangeOnly | (!oldValue.equals(value));
+    return allSourcesUpdated() & !notifyOnChangeOnly | (!oldValue.equals(value));
   }
 
   private boolean allSourcesUpdated() {
     boolean updated = filterSubjectUpdated;
+    updated &= source_0Updated;
     return updated;
   }
 
   @OnParentUpdate("filterSubject")
-  public void updated_filterSubject(Filter_Number_By_lessThan0 updated) {
+  public void updated_filterSubject(Map_Number_With_multiply1 updated) {
     filterSubjectUpdated = true;
   }
 
-  @OnParentUpdate("resetNotifier")
-  public void resetNotification(Object resetNotifier) {
-    parentReset = true;
-    if (isResetImmediate()) {
-      result = 0;
-      f.reset();
-      parentReset = false;
-    }
-  }
-
-  @AfterEvent
-  public void resetAfterEvent() {
-    if (parentReset | alwaysReset) {
-      result = 0;
-      f.reset();
-    }
-    parentReset = false;
-  }
-
-  @Override
-  public FilterWrapper<Number> resetNotifier(Object resetNotifier) {
-    this.resetNotifier = resetNotifier;
-    return this;
+  @OnParentUpdate("source_0")
+  public void updated_source_0(Map_Number_With_addValue0 updated) {
+    source_0Updated = true;
   }
 
   @Override

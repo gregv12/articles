@@ -40,18 +40,16 @@ public class PortfolioTradeMonitor implements EventHandler, BatchHandler, Lifecy
   private final NodeWrapper nodeWrapper_1 = new NodeWrapper(portfolio);
   private final Filter_getPnl_By_lessThan0 filter_getPnl_By_lessThan0_3 =
       new Filter_getPnl_By_lessThan0();
-  private final Map_PortfolioTradePos_By_increment0 map_PortfolioTradePos_By_increment0_5 =
-      new Map_PortfolioTradePos_By_increment0();
+  private final Map_PortfolioTradePos_With_increment0 map_PortfolioTradePos_With_increment0_5 =
+      new Map_PortfolioTradePos_With_increment0();
   private final BooleanFilter booleanFilter_6 =
-      new BooleanFilter(map_PortfolioTradePos_By_increment0_5, handlerEofEvent);
+      new BooleanFilter(map_PortfolioTradePos_With_increment0_5, handlerEofEvent);
   public final ConsoleLog consoleMsg_1 =
-      new ConsoleLog(booleanFilter_6, "portfolio loss gt 10k count -> ");
+      new ConsoleLog(booleanFilter_6, "portfolio loss gt 1,000 breach count:");
   //Dirty flags
   private boolean isDirty_booleanFilter_6 = false;
-  private boolean isDirty_consoleMsg_1 = false;
   private boolean isDirty_filter_getPnl_By_lessThan0_3 = false;
   private boolean isDirty_handlerEofEvent = false;
-  private boolean isDirty_map_PortfolioTradePos_By_increment0_5 = false;
   private boolean isDirty_nodeWrapper_1 = false;
   private boolean isDirty_portfolio = false;
   //Filter constants
@@ -63,11 +61,11 @@ public class PortfolioTradeMonitor implements EventHandler, BatchHandler, Lifecy
     filter_getPnl_By_lessThan0_3.filterSubject = nodeWrapper_1;
     filter_getPnl_By_lessThan0_3.source_0 = nodeWrapper_1;
     filter_getPnl_By_lessThan0_3.f = numericPredicates_2;
-    map_PortfolioTradePos_By_increment0_5.setAlwaysReset(false);
-    map_PortfolioTradePos_By_increment0_5.setNotifyOnChangeOnly(false);
-    map_PortfolioTradePos_By_increment0_5.setResetImmediate(true);
-    map_PortfolioTradePos_By_increment0_5.filterSubject = filter_getPnl_By_lessThan0_3;
-    map_PortfolioTradePos_By_increment0_5.f = count_4;
+    map_PortfolioTradePos_With_increment0_5.setAlwaysReset(false);
+    map_PortfolioTradePos_With_increment0_5.setNotifyOnChangeOnly(false);
+    map_PortfolioTradePos_With_increment0_5.setResetImmediate(true);
+    map_PortfolioTradePos_With_increment0_5.filterSubject = filter_getPnl_By_lessThan0_3;
+    map_PortfolioTradePos_With_increment0_5.f = count_4;
     numericPredicates_2.doubleLimit_0 = (double) -1000.0;
     numericPredicates_2.doubleLimit_1 = (double) Double.NaN;
     consoleMsg_1.setMethodSupplier("doubleValue");
@@ -102,13 +100,9 @@ public class PortfolioTradeMonitor implements EventHandler, BatchHandler, Lifecy
     }
     if (isDirty_nodeWrapper_1) {
       isDirty_filter_getPnl_By_lessThan0_3 = filter_getPnl_By_lessThan0_3.onEvent();
-      if (isDirty_filter_getPnl_By_lessThan0_3) {
-        map_PortfolioTradePos_By_increment0_5.updated_filterSubject(filter_getPnl_By_lessThan0_3);
-      }
     }
     if (isDirty_filter_getPnl_By_lessThan0_3) {
-      isDirty_map_PortfolioTradePos_By_increment0_5 =
-          map_PortfolioTradePos_By_increment0_5.onEvent();
+      map_PortfolioTradePos_With_increment0_5.onEvent();
     }
     //event stack unwind callbacks
     afterEvent();
@@ -122,7 +116,7 @@ public class PortfolioTradeMonitor implements EventHandler, BatchHandler, Lifecy
       isDirty_booleanFilter_6 = booleanFilter_6.updated();
     }
     if (isDirty_booleanFilter_6) {
-      isDirty_consoleMsg_1 = consoleMsg_1.log();
+      consoleMsg_1.log();
     }
     //event stack unwind callbacks
     afterEvent();
@@ -130,13 +124,11 @@ public class PortfolioTradeMonitor implements EventHandler, BatchHandler, Lifecy
 
   @Override
   public void afterEvent() {
-    map_PortfolioTradePos_By_increment0_5.resetAfterEvent();
+    map_PortfolioTradePos_With_increment0_5.resetAfterEvent();
     filter_getPnl_By_lessThan0_3.resetAfterEvent();
     isDirty_booleanFilter_6 = false;
-    isDirty_consoleMsg_1 = false;
     isDirty_filter_getPnl_By_lessThan0_3 = false;
     isDirty_handlerEofEvent = false;
-    isDirty_map_PortfolioTradePos_By_increment0_5 = false;
     isDirty_nodeWrapper_1 = false;
     isDirty_portfolio = false;
   }
@@ -145,7 +137,7 @@ public class PortfolioTradeMonitor implements EventHandler, BatchHandler, Lifecy
   public void init() {
     portfolio.init();
     filter_getPnl_By_lessThan0_3.init();
-    map_PortfolioTradePos_By_increment0_5.init();
+    map_PortfolioTradePos_With_increment0_5.init();
     consoleMsg_1.init();
   }
 

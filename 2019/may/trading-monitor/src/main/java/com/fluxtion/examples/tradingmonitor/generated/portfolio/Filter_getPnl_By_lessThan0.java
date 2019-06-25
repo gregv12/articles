@@ -40,7 +40,7 @@ public class Filter_getPnl_By_lessThan0 extends AbstractFilterWrapper<PortfolioT
   @OnEvent
   public boolean onEvent() {
     boolean oldValue = result;
-    result = f.lessThan((double) ((PortfolioTradePos) source_0.event()).getPnl());
+    result = (boolean) f.lessThan((double) ((PortfolioTradePos) source_0.event()).getPnl());
     //this is probably right - to be tested
     //return (!notifyOnChangeOnly | !oldValue) & result;
     return (!notifyOnChangeOnly & result) | ((!oldValue) & result);

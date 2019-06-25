@@ -1,12 +1,11 @@
-package com.fluxtion.examples.tradingmonitor.generated.portfolio;
+package com.fluxtion.examples.tradingmonitor.generated.symbol;
 
 import com.fluxtion.api.annotations.AfterEvent;
 import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.examples.tradingmonitor.PortfolioTradePos;
-import com.fluxtion.examples.tradingmonitor.generated.portfolio.Filter_getPnl_By_lessThan0;
+import com.fluxtion.examples.tradingmonitor.generated.symbol.Filter_Number_By_outsideRange0;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.Stateful;
 import com.fluxtion.ext.streaming.api.Test;
@@ -20,16 +19,15 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Count;
  *
  * <ul>
  *   <li>output class : {@link Number}
- *   <li>input class : {@link PortfolioTradePos}
+ *   <li>input class : {@link Number}
  *   <li>map function : {@link Count#increment}
  * </ul>
  *
  * @author Greg Higgins
  */
-public class Map_PortfolioTradePos_By_increment0 extends AbstractFilterWrapper<Number> {
+public class Map_Number_With_increment1 extends AbstractFilterWrapper<Number> {
 
-  public Filter_getPnl_By_lessThan0 filterSubject;
-  private boolean filterSubjectUpdated;
+  public Filter_Number_By_outsideRange0 filterSubject;
   @NoEventReference public Count f;
   private int result;
   @NoEventReference public Object resetNotifier;
@@ -40,21 +38,9 @@ public class Map_PortfolioTradePos_By_increment0 extends AbstractFilterWrapper<N
   @OnEvent
   public boolean onEvent() {
     oldValue.set(result);
-    if (filterSubjectUpdated) {
-      result = f.increment((Object) ((PortfolioTradePos) filterSubject.event()));
-    }
+    result = f.increment((Object) ((Number) filterSubject.event()));
     value.set(result);
     return !notifyOnChangeOnly | (!oldValue.equals(value));
-  }
-
-  private boolean allSourcesUpdated() {
-    boolean updated = filterSubjectUpdated;
-    return updated;
-  }
-
-  @OnParentUpdate("filterSubject")
-  public void updated_filterSubject(Filter_getPnl_By_lessThan0 updated) {
-    filterSubjectUpdated = true;
   }
 
   @OnParentUpdate("resetNotifier")
@@ -97,6 +83,5 @@ public class Map_PortfolioTradePos_By_increment0 extends AbstractFilterWrapper<N
     result = 0;
     value = new MutableNumber();
     oldValue = new MutableNumber();
-    filterSubjectUpdated = false;
   }
 }

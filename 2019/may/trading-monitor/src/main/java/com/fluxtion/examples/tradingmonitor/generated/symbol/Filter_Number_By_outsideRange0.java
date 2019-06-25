@@ -5,7 +5,7 @@ import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.examples.tradingmonitor.generated.symbol.Map_getSize_By_addValue0;
+import com.fluxtion.examples.tradingmonitor.generated.symbol.Map_getSize_With_addValue0;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.Test;
 import com.fluxtion.ext.streaming.api.Wrapper;
@@ -25,8 +25,8 @@ import com.fluxtion.ext.streaming.api.stream.NumericPredicates;
 public class Filter_Number_By_outsideRange0 extends AbstractFilterWrapper<Number> {
 
   //source operand inputs
-  public Map_getSize_By_addValue0 filterSubject;
-  public Map_getSize_By_addValue0 source_0;
+  public Map_getSize_With_addValue0 filterSubject;
+  public Map_getSize_With_addValue0 source_0;
   @NoEventReference public NumericPredicates f;
   @NoEventReference public Object resetNotifier;
   private boolean parentReset = false;
@@ -39,7 +39,7 @@ public class Filter_Number_By_outsideRange0 extends AbstractFilterWrapper<Number
   @OnEvent
   public boolean onEvent() {
     boolean oldValue = result;
-    result = f.outsideRange((double) ((Number) filterSubject.event()).doubleValue());
+    result = (boolean) f.outsideRange((double) ((Number) filterSubject.event()).doubleValue());
     //this is probably right - to be tested
     //return (!notifyOnChangeOnly | !oldValue) & result;
     return (!notifyOnChangeOnly & result) | ((!oldValue) & result);

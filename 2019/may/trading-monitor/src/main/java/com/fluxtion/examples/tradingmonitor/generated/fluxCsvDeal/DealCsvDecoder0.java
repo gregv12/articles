@@ -129,20 +129,22 @@ public class DealCsvDecoder0 implements RowProcessor<Deal> {
       updateFieldIndex();
       fieldIndex = fieldName_eventTime;
       if (fieldIndex > -1) {
-        setEventTime.subSequence(
+        setEventTime.subSequenceNoOffset(
             delimIndex[fieldName_eventTime], delimIndex[fieldName_eventTime + 1] - 1);
         target.setEventTime(atol(setEventTime));
       }
       fieldIndex = fieldName_price;
-      setPrice.subSequence(delimIndex[fieldName_price], delimIndex[fieldName_price + 1] - 1);
+      setPrice.subSequenceNoOffset(
+          delimIndex[fieldName_price], delimIndex[fieldName_price + 1] - 1);
       target.setPrice(atod(setPrice));
 
       fieldIndex = fieldName_size;
-      setSize.subSequence(delimIndex[fieldName_size], delimIndex[fieldName_size + 1] - 1);
+      setSize.subSequenceNoOffset(delimIndex[fieldName_size], delimIndex[fieldName_size + 1] - 1);
       target.setSize(atoi(setSize));
 
       fieldIndex = fieldName_symbol;
-      setSymbol.subSequence(delimIndex[fieldName_symbol], delimIndex[fieldName_symbol + 1] - 1);
+      setSymbol.subSequenceNoOffset(
+          delimIndex[fieldName_symbol], delimIndex[fieldName_symbol + 1] - 1);
       target.setSymbol(setSymbol);
 
     } catch (Exception e) {

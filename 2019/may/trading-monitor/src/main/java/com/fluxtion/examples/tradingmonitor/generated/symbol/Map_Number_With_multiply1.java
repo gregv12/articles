@@ -5,11 +5,12 @@ import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.examples.tradingmonitor.generated.symbol.Map_getSize_By_multiply0;
+import com.fluxtion.examples.tradingmonitor.AssetPrice;
+import com.fluxtion.examples.tradingmonitor.generated.symbol.Map_getSize_With_addValue0;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
+import com.fluxtion.ext.streaming.api.ReusableEventHandler;
 import com.fluxtion.ext.streaming.api.Test;
 import com.fluxtion.ext.streaming.api.Wrapper;
-import com.fluxtion.ext.streaming.api.numeric.ConstantNumber;
 import com.fluxtion.ext.streaming.api.numeric.MutableNumber;
 import com.fluxtion.ext.streaming.api.stream.AbstractFilterWrapper;
 import com.fluxtion.ext.streaming.api.stream.StreamFunctions;
@@ -25,11 +26,12 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions;
  *
  * @author Greg Higgins
  */
-public class Map_Number_By_multiply0 extends AbstractFilterWrapper<Number> {
+public class Map_Number_With_multiply1 extends AbstractFilterWrapper<Number> {
 
-  public Map_getSize_By_multiply0 filterSubject;
+  public Map_getSize_With_addValue0 filterSubject;
   private boolean filterSubjectUpdated;
-  public ConstantNumber source_0;
+  public ReusableEventHandler source_0;
+  private boolean source_0Updated;
   private double result;
   private MutableNumber value;
   private MutableNumber oldValue;
@@ -41,7 +43,7 @@ public class Map_Number_By_multiply0 extends AbstractFilterWrapper<Number> {
       result =
           StreamFunctions.multiply(
               (double) ((Number) filterSubject.event()).doubleValue(),
-              (double) source_0.doubleValue());
+              (double) ((AssetPrice) source_0.event()).getPrice());
     }
     value.set(result);
     return allSourcesUpdated() & !notifyOnChangeOnly | (!oldValue.equals(value));
@@ -49,12 +51,18 @@ public class Map_Number_By_multiply0 extends AbstractFilterWrapper<Number> {
 
   private boolean allSourcesUpdated() {
     boolean updated = filterSubjectUpdated;
+    updated &= source_0Updated;
     return updated;
   }
 
   @OnParentUpdate("filterSubject")
-  public void updated_filterSubject(Map_getSize_By_multiply0 updated) {
+  public void updated_filterSubject(Map_getSize_With_addValue0 updated) {
     filterSubjectUpdated = true;
+  }
+
+  @OnParentUpdate("source_0")
+  public void updated_source_0(ReusableEventHandler updated) {
+    source_0Updated = true;
   }
 
   @Override

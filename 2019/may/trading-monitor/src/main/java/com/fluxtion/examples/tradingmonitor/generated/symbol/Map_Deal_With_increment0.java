@@ -8,11 +8,12 @@ import com.fluxtion.api.annotations.OnParentUpdate;
 import com.fluxtion.examples.tradingmonitor.Deal;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.ReusableEventHandler;
+import com.fluxtion.ext.streaming.api.Stateful;
 import com.fluxtion.ext.streaming.api.Test;
 import com.fluxtion.ext.streaming.api.Wrapper;
 import com.fluxtion.ext.streaming.api.numeric.MutableNumber;
 import com.fluxtion.ext.streaming.api.stream.AbstractFilterWrapper;
-import com.fluxtion.ext.streaming.api.stream.StreamFunctions;
+import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Count;
 
 /**
  * generated mapper function wrapper for a numeric primitive.
@@ -20,48 +21,52 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions;
  * <ul>
  *   <li>output class : {@link Number}
  *   <li>input class : {@link Deal}
- *   <li>map function : {@link StreamFunctions#multiply}
+ *   <li>map function : {@link Count#increment}
  * </ul>
  *
  * @author Greg Higgins
  */
-public class Map_getSize_By_multiply0 extends AbstractFilterWrapper<Number> {
+public class Map_Deal_With_increment0 extends AbstractFilterWrapper<Number> {
 
   public ReusableEventHandler filterSubject;
-  private boolean filterSubjectUpdated;
-  public ReusableEventHandler source_0;
-  private boolean source_0Updated;
-  private double result;
+  @NoEventReference public Count f;
+  private int result;
+  @NoEventReference public Object resetNotifier;
+  private boolean parentReset = false;
   private MutableNumber value;
   private MutableNumber oldValue;
 
   @OnEvent
   public boolean onEvent() {
     oldValue.set(result);
-    if (allSourcesUpdated()) {
-      result =
-          StreamFunctions.multiply(
-              (double) ((Deal) filterSubject.event()).getSize(),
-              (double) ((Deal) source_0.event()).getPrice());
-    }
+    result = f.increment((Object) ((Deal) filterSubject.event()));
     value.set(result);
-    return allSourcesUpdated() & !notifyOnChangeOnly | (!oldValue.equals(value));
+    return !notifyOnChangeOnly | (!oldValue.equals(value));
   }
 
-  private boolean allSourcesUpdated() {
-    boolean updated = filterSubjectUpdated;
-    updated &= source_0Updated;
-    return updated;
+  @OnParentUpdate("resetNotifier")
+  public void resetNotification(Object resetNotifier) {
+    parentReset = true;
+    if (isResetImmediate()) {
+      result = 0;
+      f.reset();
+      parentReset = false;
+    }
   }
 
-  @OnParentUpdate("filterSubject")
-  public void updated_filterSubject(ReusableEventHandler updated) {
-    filterSubjectUpdated = true;
+  @AfterEvent
+  public void resetAfterEvent() {
+    if (parentReset | alwaysReset) {
+      result = 0;
+      f.reset();
+    }
+    parentReset = false;
   }
 
-  @OnParentUpdate("source_0")
-  public void updated_source_0(ReusableEventHandler updated) {
-    source_0Updated = true;
+  @Override
+  public FilterWrapper<Number> resetNotifier(Object resetNotifier) {
+    this.resetNotifier = resetNotifier;
+    return this;
   }
 
   @Override
@@ -79,6 +84,5 @@ public class Map_getSize_By_multiply0 extends AbstractFilterWrapper<Number> {
     result = 0;
     value = new MutableNumber();
     oldValue = new MutableNumber();
-    filterSubjectUpdated = false;
   }
 }

@@ -33,7 +33,7 @@ import com.fluxtion.ext.text.api.annotation.CsvMarshaller;
 @CsvMarshaller(
         packageName = "com.fluxtion.examples.tradingmonitor.generated"
 )
-//@Disabled
+@Disabled
 public class Deal extends Event {
 
     private CharSequence symbol;
