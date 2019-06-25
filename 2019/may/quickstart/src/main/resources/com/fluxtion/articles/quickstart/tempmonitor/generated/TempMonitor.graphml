@@ -29,21 +29,21 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="handlerStartOfDay">
-            <data key="vertex_label">
-                <jGraph:ShapeNode>
-                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;handlerStartOfDay:&#10;ReusableEventHandler"/>
-                    <jGraph:Style properties="EVENTHANDLER"/>
-                </jGraph:ShapeNode>
-            </data>
-        </node>
         <node id="max_1">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
                     <jGraph:label text="max_1:&#10;Max"/>
                     <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="handlerStartOfDay">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;handlerStartOfDay:&#10;ReusableEventHandler"/>
+                    <jGraph:Style properties="EVENTHANDLER"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
@@ -277,17 +277,17 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="2" source="handlerStartOfDay" target="map_Number_With_max0_2">
+        <edge id="2" source="map_getTemp_With_asDouble0_0" target="map_Number_With_max0_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="3" source="map_getTemp_With_asDouble0_0" target="map_Number_With_max0_2">
+        <edge id="3" source="max_1" target="map_Number_With_max0_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="4" source="max_1" target="map_Number_With_max0_2">
+        <edge id="4" source="handlerStartOfDay" target="map_Number_With_max0_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -297,12 +297,12 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="6" source="min_3" target="map_Number_With_min0_4">
+        <edge id="6" source="handlerStartOfDay" target="map_Number_With_min0_4">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="7" source="handlerStartOfDay" target="map_Number_With_min0_4">
+        <edge id="7" source="min_3" target="map_Number_With_min0_4">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
