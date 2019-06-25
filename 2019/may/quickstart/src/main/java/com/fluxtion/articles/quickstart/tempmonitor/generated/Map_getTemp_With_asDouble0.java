@@ -5,7 +5,6 @@ import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.api.partition.LambdaReflection.SerializableFunction;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.TempEvent;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.ReusableEventHandler;

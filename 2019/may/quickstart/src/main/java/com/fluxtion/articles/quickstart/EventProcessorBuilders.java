@@ -82,9 +82,7 @@ public class EventProcessorBuilders {
     )
 //    @Disabled
     public void buildWordFrequency(SEPConfig cfg) {
-        cfg.addNode(new StatsPrinter(
-                cfg.addNode(wordFrequency(wordSplitter()))
-        ));
+        cfg.addNode(new StatsPrinter(cfg.addNode(wordFrequency(wordSplitter()))));
     }
 
     /**
