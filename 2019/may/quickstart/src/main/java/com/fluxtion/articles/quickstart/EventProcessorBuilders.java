@@ -21,20 +21,19 @@ import com.fluxtion.articles.quickstart.tempmonitor.Events;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.EndOfDay;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.StartOfDay;
 import com.fluxtion.articles.quickstart.tempmonitor.Events.TempEvent;
-import com.fluxtion.articles.quickstart.wordfrequency.StatsPrinter;
-import com.fluxtion.builder.annotation.Disabled;
 import com.fluxtion.builder.annotation.SepBuilder;
 import com.fluxtion.builder.node.SEPConfig;
 import com.fluxtion.ext.streaming.api.Wrapper;
 import static com.fluxtion.ext.streaming.api.stream.NumericPredicates.gt;
 import static com.fluxtion.ext.streaming.api.stream.NumericPredicates.lt;
 import static com.fluxtion.ext.streaming.api.stream.NumericPredicates.inBand;
+import static com.fluxtion.ext.streaming.api.util.GroupByPrint.printFrequencyMap;
 import static com.fluxtion.ext.streaming.builder.event.EventSelect.select;
 import static com.fluxtion.ext.streaming.builder.log.LogBuilder.*;
 import static com.fluxtion.ext.streaming.builder.stream.StreamFunctionsBuilder.max;
 import static com.fluxtion.ext.streaming.builder.stream.StreamFunctionsBuilder.avg;
 import static com.fluxtion.ext.streaming.builder.stream.StreamFunctionsBuilder.min;
-import static com.fluxtion.ext.text.builder.ascii.AsciiHelper.wordSplitter;
+import com.fluxtion.ext.text.api.event.EofEvent;
 import static com.fluxtion.ext.text.builder.math.WordFrequency.wordFrequency;
 
 /**
@@ -82,7 +81,7 @@ public class EventProcessorBuilders {
     )
 //    @Disabled
     public void buildWordFrequency(SEPConfig cfg) {
-        cfg.addNode(new StatsPrinter(cfg.addNode(wordFrequency(wordSplitter()))));
+        printFrequencyMap("Word frequency statistics", wordFrequency(), select(EofEvent.class));
     }
 
     /**

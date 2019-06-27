@@ -11,29 +11,38 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="byteBufferDelimiter_4">
+        <node id="byteBufferDelimiter_0">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;byteBufferDelimiter_4:&#10;ByteBufferDelimiter"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;byteBufferDelimiter_0:&#10;ByteBufferDelimiter"/>
                     <jGraph:Style properties="EVENTHANDLER"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="statsPrinter_3">
+        <node id="printFrequencyMap_2">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="statsPrinter_3:&#10;StatsPrinter"/>
+                    <jGraph:label text="printFrequencyMap_2:&#10;PrintFrequencyMap"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="asciiAnyCharMatcher_0_5">
+        <node id="handlerEofEvent">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;asciiAnyCharMatcher_0_5:&#10;AsciiAnyCharMatcher_0"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;handlerEofEvent:&#10;ReusableEventHandler"/>
+                    <jGraph:Style properties="EVENTHANDLER"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="asciiAnyCharMatcher_0_3">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;asciiAnyCharMatcher_0_3:&#10;AsciiAnyCharMatcher_0"/>
                     <jGraph:Style properties="EVENTHANDLER"/>
                 </jGraph:ShapeNode>
             </data>
@@ -47,27 +56,46 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <edge id="1" source="byteBufferDelimiter_4" target="groupBy_2_1">
+        <node id="EofEvent">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;EofEvent"/>
+                    <jGraph:Style properties="EVENT"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <edge id="1" source="byteBufferDelimiter_0" target="groupBy_2_1">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="2" source="groupBy_2_1" target="statsPrinter_3">
+        <edge id="2" source="groupBy_2_1" target="printFrequencyMap_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="3" source="asciiAnyCharMatcher_0_5" target="byteBufferDelimiter_4">
+        <edge id="3" source="handlerEofEvent" target="printFrequencyMap_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="4" source="CharEvent" target="byteBufferDelimiter_4">
+        <edge id="4" source="asciiAnyCharMatcher_0_3" target="byteBufferDelimiter_0">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="5" source="CharEvent" target="asciiAnyCharMatcher_0_5">
+        <edge id="5" source="CharEvent" target="byteBufferDelimiter_0">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="6" source="EofEvent" target="handlerEofEvent">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="7" source="CharEvent" target="asciiAnyCharMatcher_0_3">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
