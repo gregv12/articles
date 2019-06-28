@@ -30,9 +30,9 @@ public class Main2 {
 
     public static void main(String[] args) throws Exception {
         EventHandler handler = sepInstance(c -> {
-            select(TempEvent.class).filter(t -> t.temp() > 20).console("Too hot!! ")
+            select(TempEvent.class).filter(t -> t.getTemp()> 20).console("Too hot!! ")
                     .filter(throttle(3))
-                    .filter(t -> t.temp() > 20)
+                    .filter(t -> t.getTemp() > 20)
                     .console("throttled temp");
         }, "com.fluxtion.articles.quickstart.inline", "MyHandler");
         handler.onEvent(new TempEvent(0));

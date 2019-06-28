@@ -17,6 +17,8 @@
 package com.fluxtion.articles.quickstart.tempmonitor;
 
 import com.fluxtion.api.event.Event;
+import lombok.Data;
+import lombok.AllArgsConstructor;
 
 /**
  * Events for the temperature monitoring example.
@@ -25,51 +27,17 @@ import com.fluxtion.api.event.Event;
  */
 public class Events {
 
+    @Data
+    @AllArgsConstructor
     public static class TempEvent extends Event {
-
         private int temp;
-
-        public TempEvent() {
-        }
-
-        public TempEvent(int temp) {
-            this.temp = temp;
-        }
-
-        public int temp() {
-            return temp;
-        }
-
-        public int getTemp() {
-            return temp;
-        }
-
-        public void setTemp(int temp) {
-            this.temp = temp;
-        }
-
-        
-        
-        @Override
-        public String toString() {
-            return "TempEvent{" + "temp=" + temp + "C}";
-        }
     }
 
+    @Data
+    @AllArgsConstructor
     public static class StartOfDay extends Event {
-
         private final String day;
-
-        public StartOfDay(String day) {
-            this.day = day;
-        }
-
-        public String day() {
-            return day;
-        }
-
     }
 
-    public static class EndOfDay extends Event {
-    }
+    public static class EndOfDay extends Event {}
 }

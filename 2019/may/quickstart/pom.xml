@@ -120,6 +120,12 @@
             <version>${fluxtion.ver}</version>
             <!--<scope>provided</scope>-->
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>provided</scope>
+        </dependency>
         <!--needed for Charstreaming-->
         <dependency>
             <groupId>com.lmax</groupId>

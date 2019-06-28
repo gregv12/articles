@@ -21,7 +21,7 @@ public class MsgBuilder4 extends MsgBuilder {
     msgSink.append(
         ((com.fluxtion.articles.quickstart.tempmonitor.Events.StartOfDay)
                 source_ReusableEventHandler_3.event())
-            .day());
+            .getDay());
     msgSink.append(" =====");
     msgSink.append('\n');
     return true;

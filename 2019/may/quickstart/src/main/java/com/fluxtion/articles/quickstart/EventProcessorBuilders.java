@@ -35,12 +35,19 @@ import static com.fluxtion.ext.streaming.builder.stream.StreamFunctionsBuilder.a
 import static com.fluxtion.ext.streaming.builder.stream.StreamFunctionsBuilder.min;
 import com.fluxtion.ext.text.api.event.EofEvent;
 import static com.fluxtion.ext.text.builder.math.WordFrequency.wordFrequency;
+import com.fluxtion.generator.compiler.InprocessSepCompiler;
 
 /**
  * A set of static event processor builders for the quick start examples. Each
  * builder is a method annotated with {@link SepBuilder} annotation. Fluxtion
  * maven plugin scans for the annotated methods and generates a processor for
- * each method.
+ * each method.<p>
+ *
+ * The static event processors are generated ahead of time as part of the build
+ * process, the computational cost is paid only once not on every run of the
+ * application. In-process compilation is supported by
+ * {@link InprocessSepCompiler} but requires the application to include all the
+ * generator libraries Fluxtion requires.
  *
  * @author V12 Technology Ltd.
  */
@@ -59,7 +66,7 @@ public class EventProcessorBuilders {
 //    @Disabled
     public void buildLambda(SEPConfig cfg) {
         select(Events.TempEvent.class)
-                .filter(t -> t.temp() > 20)
+                .filter(t -> t.getTemp() > 20)
                 .console("Too hot!! ");
     }
 
@@ -85,7 +92,8 @@ public class EventProcessorBuilders {
     }
 
     /**
-     * Fluxtion builder for daily temperature monitoring and AC/Heating signals. Explicit 
+     * Fluxtion builder for daily temperature monitoring and AC/Heating signals.
+     * Explicit
      * mixing of declarative and imperative forms:
      * <ul>
      * <li>
@@ -110,7 +118,7 @@ public class EventProcessorBuilders {
         Wrapper<Number> max = tempInC.map(max()).notifyOnChange(true).resetNotifier(newDay);
         Wrapper<Number> min = tempInC.map(min()).notifyOnChange(true).resetNotifier(newDay);
         Wrapper<Number> avg = tempInC.map(avg()).publishAndReset(endOfDay);
-        Log("===== Start of day {} =====", newDay, StartOfDay::day);
+        Log("===== Start of day {} =====", newDay, StartOfDay::getDay);
         Log("NEW day max temp {}C", max, Number::intValue);
         Log("NEW day min temp {}C", min, Number::intValue);
         Log("NEW day avg temp {}C", avg, Number::doubleValue);
