@@ -1,11 +1,11 @@
-package com.fluxtion.articles.lombok.generated.aotlombok;
+package com.fluxtion.articles.lombok.temperature.generated.aotlombok;
 
 import com.fluxtion.api.annotations.AfterEvent;
 import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.articles.lombok.generated.aotlombok.Map_getTemp_With_asDouble0;
+import com.fluxtion.articles.lombok.temperature.generated.aotlombok.Map_getTemp_With_asDouble0;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.Stateful;
 import com.fluxtion.ext.streaming.api.Test;

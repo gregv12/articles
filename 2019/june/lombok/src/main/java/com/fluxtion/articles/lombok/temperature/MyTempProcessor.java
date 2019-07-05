@@ -14,7 +14,7 @@
  * along with this program.  If not, see 
  * <http://www.mongodb.com/licensing/server-side-public-license>.
  */
-package com.fluxtion.articles.lombok;
+package com.fluxtion.articles.lombok.temperature;
 
 /**
  *

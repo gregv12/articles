@@ -14,13 +14,13 @@
  * along with this program.  If not, see
  * <http://www.mongodb.com/licensing/server-side-public-license>.
  */
-package com.fluxtion.articles.lombok.generated.aotlombok;
+package com.fluxtion.articles.lombok.temperature.generated.aotlombok;
 
 import com.fluxtion.api.lifecycle.BatchHandler;
 import com.fluxtion.api.lifecycle.EventHandler;
 import com.fluxtion.api.lifecycle.Lifecycle;
-import com.fluxtion.articles.lombok.AotLombok.TempEvent;
-import com.fluxtion.articles.lombok.MyTempProcessor;
+import com.fluxtion.articles.lombok.temperature.AotLombok.TempEvent;
+import com.fluxtion.articles.lombok.temperature.MyTempProcessor;
 import com.fluxtion.ext.streaming.api.ReusableEventHandler;
 import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Max;
 
@@ -60,7 +60,7 @@ public class TempMonitor implements EventHandler, BatchHandler, Lifecycle {
   @Override
   public void onEvent(com.fluxtion.api.event.Event event) {
     switch (event.getClass().getName()) {
-      case ("com.fluxtion.articles.lombok.AotLombok$TempEvent"):
+      case ("com.fluxtion.articles.lombok.temperature.AotLombok$TempEvent"):
         {
           TempEvent typedEvent = (TempEvent) event;
           handleEvent(typedEvent);

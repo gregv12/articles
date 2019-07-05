@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fluxtion.articles.lombok;
+package com.fluxtion.articles.lombok.temperature;
 
 import com.fluxtion.api.event.Event;
 import com.fluxtion.api.lifecycle.EventHandler;
@@ -22,7 +22,7 @@ public class InlineNoLombok {
                 -> select(TempEvent::getTemp)
                         .map(max()).notifyOnChange(true)
                         .push(new MyTempProcessor()::setMaxTemp),
-                "com.fluxtion.articles.lombok.generated.nolombok", "TempMonitor");
+                "com.fluxtion.articles.lombok.temperature.generated.nolombok", "TempMonitor");
     }
     
 
