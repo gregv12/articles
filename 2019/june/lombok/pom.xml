@@ -8,9 +8,9 @@
     <name>fluxtion :: articles :: lombok-integration</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <fluxtion.ver>1.7.27</fluxtion.ver>
+        <maven.compiler.source>10</maven.compiler.source>
+        <maven.compiler.target>10</maven.compiler.target>
+        <fluxtion.ver>1.7.28-SNAPSHOT</fluxtion.ver>
     </properties>
     
     <description>Lombok sample for low code</description>
@@ -74,6 +74,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.8</version>
@@ -82,6 +87,6 @@
     </dependencies>  
     
     
-    
+
     
 </project>

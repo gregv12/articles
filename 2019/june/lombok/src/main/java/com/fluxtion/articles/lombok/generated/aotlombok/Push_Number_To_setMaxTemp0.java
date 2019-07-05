@@ -1,4 +1,4 @@
-package com.fluxtion.articles.lombok.generated.nolombok;
+package com.fluxtion.articles.lombok.generated.aotlombok;
 
 import com.fluxtion.api.annotations.AfterEvent;
 import com.fluxtion.api.annotations.Initialise;
@@ -6,8 +6,8 @@ import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
 import com.fluxtion.api.annotations.PushReference;
-import com.fluxtion.articles.lombok.Main.MyTempProcessor;
-import com.fluxtion.articles.lombok.generated.nolombok.Map_Number_With_max0;
+import com.fluxtion.articles.lombok.MyTempProcessor;
+import com.fluxtion.articles.lombok.generated.aotlombok.Map_Number_With_max0;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.Test;
 import com.fluxtion.ext.streaming.api.Wrapper;

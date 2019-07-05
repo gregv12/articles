@@ -70,12 +70,12 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="2" source="max_1" target="map_Number_With_max0_2">
+        <edge id="2" source="map_getTemp_With_asDouble0_0" target="map_Number_With_max0_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="3" source="map_getTemp_With_asDouble0_0" target="map_Number_With_max0_2">
+        <edge id="3" source="max_1" target="map_Number_With_max0_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
