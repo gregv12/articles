@@ -110,7 +110,7 @@ public class FlightDetailsCsvDecoder0 implements RowProcessor<FlightDetails> {
 
       fieldIndex = fieldIndex_8;
       setCarrier.subSequenceNoOffset(delimIndex[fieldIndex_8], delimIndex[fieldIndex_8 + 1] - 1);
-      target.setCarrier(setCarrier.toString());
+      target.setCarrier(setCarrier.intern());
 
     } catch (Exception e) {
       logException("problem pushing data from row:", false, e);
@@ -130,10 +130,11 @@ public class FlightDetailsCsvDecoder0 implements RowProcessor<FlightDetails> {
   private void logException(String prefix, boolean fatal, Exception e) {
     errorLog
         .getSb()
+        .append("FlightDetailsCsvDecoder0 ")
         .append(prefix)
         .append(rowNumber)
         .append(" fieldIndex:")
-        .append(fieldIndex)
+        .append(fieldIndex - 1)
         .append(" targetMethod:")
         .append(fieldMap.get(fieldIndex));
     if (fatal) {
@@ -144,7 +145,7 @@ public class FlightDetailsCsvDecoder0 implements RowProcessor<FlightDetails> {
   }
 
   private void logHeaderProblem(String prefix, boolean fatal, Exception e) {
-    errorLog.getSb().append(prefix).append(rowNumber);
+    errorLog.getSb().append("FlightDetailsCsvDecoder0 ").append(prefix).append(rowNumber);
     if (fatal) {
       errorLog.logFatal("");
       throw new RuntimeException(errorLog.getSb().toString(), e);

@@ -19,8 +19,9 @@ package com.fluxtion.articles.lombok.flight.generated;
 import com.fluxtion.api.lifecycle.BatchHandler;
 import com.fluxtion.api.lifecycle.EventHandler;
 import com.fluxtion.api.lifecycle.Lifecycle;
+import com.fluxtion.ext.streaming.api.ReusableEventHandler;
 import com.fluxtion.ext.streaming.api.log.LogControlEvent;
-import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Count;
+import com.fluxtion.ext.streaming.api.util.GroupByPrint.PrintGroupByValues;
 import com.fluxtion.ext.text.api.csv.Converters.IntConverter;
 import com.fluxtion.ext.text.api.csv.ValidationLogSink;
 import com.fluxtion.ext.text.api.csv.ValidationLogger;
@@ -30,20 +31,23 @@ import com.fluxtion.ext.text.api.event.EofEvent;
 public class FlightDelayAnalyser implements EventHandler, BatchHandler, Lifecycle {
 
   //Node declarations
-  private final Count count_4 = new Count();
+  private final ReusableEventHandler handlerEofEvent =
+      new ReusableEventHandler(2147483647, EofEvent.class);
   private final IntConverter intConverter_0 = new IntConverter(-1);
   private final FlightDetailsCsvDecoder0 flightDetailsCsvDecoder0_1 =
       new FlightDetailsCsvDecoder0();
   private final Filter_getDelay_By_positiveInt0 filter_getDelay_By_positiveInt0_2 =
       new Filter_getDelay_By_positiveInt0();
-  public final GroupBy_4 carrierDelayMap = new GroupBy_4();
-  public final Map_FlightDetails_With_increment0 totalFlights =
-      new Map_FlightDetails_With_increment0();
-  private final ValidationLogger validationLogger_6 = new ValidationLogger("validationLog");
-  private final ValidationLogSink validationLogSink_7 = new ValidationLogSink("validationLogSink");
+  private final GroupBy_4 groupBy_4_3 = new GroupBy_4();
+  private final PrintGroupByValues printGroupByValues_4 =
+      new PrintGroupByValues(
+          "\nFlight delay analysis\n========================", groupBy_4_3, handlerEofEvent);
+  private final ValidationLogger validationLogger_5 = new ValidationLogger("validationLog");
+  private final ValidationLogSink validationLogSink_6 = new ValidationLogSink("validationLogSink");
   //Dirty flags
   private boolean isDirty_filter_getDelay_By_positiveInt0_2 = false;
   private boolean isDirty_flightDetailsCsvDecoder0_1 = false;
+  private boolean isDirty_handlerEofEvent = false;
   //Filter constants
 
   public FlightDelayAnalyser() {
@@ -52,16 +56,11 @@ public class FlightDelayAnalyser implements EventHandler, BatchHandler, Lifecycl
     filter_getDelay_By_positiveInt0_2.setResetImmediate(true);
     filter_getDelay_By_positiveInt0_2.filterSubject = flightDetailsCsvDecoder0_1;
     filter_getDelay_By_positiveInt0_2.source_0 = flightDetailsCsvDecoder0_1;
-    flightDetailsCsvDecoder0_1.errorLog = validationLogger_6;
+    flightDetailsCsvDecoder0_1.errorLog = validationLogger_5;
     flightDetailsCsvDecoder0_1.intConverter_0 = intConverter_0;
-    carrierDelayMap.filter_getDelay_By_positiveInt00 = filter_getDelay_By_positiveInt0_2;
-    totalFlights.setAlwaysReset(false);
-    totalFlights.setNotifyOnChangeOnly(false);
-    totalFlights.setResetImmediate(true);
-    totalFlights.filterSubject = flightDetailsCsvDecoder0_1;
-    totalFlights.f = count_4;
-    validationLogSink_7.setPublishLogImmediately(true);
-    validationLogger_6.logSink = validationLogSink_7;
+    groupBy_4_3.filter_getDelay_By_positiveInt00 = filter_getDelay_By_positiveInt0_2;
+    validationLogSink_6.setPublishLogImmediately(true);
+    validationLogger_5.logSink = validationLogSink_6;
   }
 
   @Override
@@ -92,7 +91,7 @@ public class FlightDelayAnalyser implements EventHandler, BatchHandler, Lifecycl
     switch (typedEvent.filterString()) {
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[CHANGE_LOG_PROVIDER]
       case ("CHANGE_LOG_PROVIDER"):
-        validationLogSink_7.controlLogProvider(typedEvent);
+        validationLogSink_6.controlLogProvider(typedEvent);
         afterEvent();
         return;
     }
@@ -105,11 +104,8 @@ public class FlightDelayAnalyser implements EventHandler, BatchHandler, Lifecycl
     if (isDirty_flightDetailsCsvDecoder0_1) {
       isDirty_filter_getDelay_By_positiveInt0_2 = filter_getDelay_By_positiveInt0_2.onEvent();
       if (isDirty_filter_getDelay_By_positiveInt0_2) {
-        carrierDelayMap.updatefilter_getDelay_By_positiveInt00(filter_getDelay_By_positiveInt0_2);
+        groupBy_4_3.updatefilter_getDelay_By_positiveInt00(filter_getDelay_By_positiveInt0_2);
       }
-    }
-    if (isDirty_flightDetailsCsvDecoder0_1) {
-      totalFlights.onEvent();
     }
     //event stack unwind callbacks
     afterEvent();
@@ -117,15 +113,17 @@ public class FlightDelayAnalyser implements EventHandler, BatchHandler, Lifecycl
 
   public void handleEvent(EofEvent typedEvent) {
     //Default, no filter methods
+    isDirty_handlerEofEvent = true;
+    handlerEofEvent.onEvent(typedEvent);
     isDirty_flightDetailsCsvDecoder0_1 = flightDetailsCsvDecoder0_1.eof(typedEvent);
     if (isDirty_flightDetailsCsvDecoder0_1) {
       isDirty_filter_getDelay_By_positiveInt0_2 = filter_getDelay_By_positiveInt0_2.onEvent();
       if (isDirty_filter_getDelay_By_positiveInt0_2) {
-        carrierDelayMap.updatefilter_getDelay_By_positiveInt00(filter_getDelay_By_positiveInt0_2);
+        groupBy_4_3.updatefilter_getDelay_By_positiveInt00(filter_getDelay_By_positiveInt0_2);
       }
     }
-    if (isDirty_flightDetailsCsvDecoder0_1) {
-      totalFlights.onEvent();
+    if (isDirty_handlerEofEvent) {
+      printGroupByValues_4.printValues();
     }
     //event stack unwind callbacks
     afterEvent();
@@ -133,19 +131,18 @@ public class FlightDelayAnalyser implements EventHandler, BatchHandler, Lifecycl
 
   @Override
   public void afterEvent() {
-    totalFlights.resetAfterEvent();
     filter_getDelay_By_positiveInt0_2.resetAfterEvent();
     isDirty_filter_getDelay_By_positiveInt0_2 = false;
     isDirty_flightDetailsCsvDecoder0_1 = false;
+    isDirty_handlerEofEvent = false;
   }
 
   @Override
   public void init() {
     flightDetailsCsvDecoder0_1.init();
     filter_getDelay_By_positiveInt0_2.init();
-    carrierDelayMap.init();
-    totalFlights.init();
-    validationLogSink_7.init();
+    groupBy_4_3.init();
+    validationLogSink_6.init();
   }
 
   @Override

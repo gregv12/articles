@@ -19,10 +19,11 @@ package com.fluxtion.articles.lombok.flight;
 import com.fluxtion.builder.annotation.SepBuilder;
 import com.fluxtion.builder.node.SEPConfig;
 import static com.fluxtion.ext.streaming.api.stream.NumericPredicates.positive;
+import static com.fluxtion.ext.streaming.api.util.GroupByPrint.printValues;
 import static com.fluxtion.ext.streaming.builder.group.Group.groupBy;
-import static com.fluxtion.ext.streaming.builder.stream.StreamFunctionsBuilder.count;
+import com.fluxtion.ext.text.api.csv.Converters;
 import static com.fluxtion.ext.text.api.csv.Converters.defaultInt;
-import com.fluxtion.ext.text.builder.csv.CharTokenConfig;
+import static com.fluxtion.ext.text.api.event.EofEvent.eofTrigger;
 import static com.fluxtion.ext.text.builder.csv.CsvMarshallerBuilder.csvMarshaller;
 import lombok.Data;
 
@@ -34,15 +35,12 @@ public class FlightAnalyser {
 
     @SepBuilder(
             name = "FlightDelayAnalyser",
-            packageName = "com.fluxtion.articles.lombok.flight.generated",
-            outputDir = "src/main/java",
-            cleanOutputDir = true
+            packageName = "com.fluxtion.articles.lombok.flight.generated"
     )
     public void buildFlightProcessor(SEPConfig cfg) {
         var flightDetails = csvMarshaller(FlightDetails.class, 1)
-                .addEventPublisher(false)
                 .map(14, FlightDetails::setDelay).converter(14, defaultInt(-1))
-                .map(8, FlightDetails::setCarrier).tokenConfig(CharTokenConfig.WINDOWS).build();
+                .map(8, FlightDetails::setCarrier).converter(8, Converters::intern).build();
         //filter and group by
         var delayedFlight = flightDetails.filter(FlightDetails::getDelay, positive());
         var carrierDelay = groupBy(delayedFlight, FlightDetails::getCarrier, CarrierDelay.class);
@@ -51,9 +49,10 @@ public class FlightAnalyser {
         carrierDelay.avg(FlightDetails::getDelay, CarrierDelay::setAvgDelay);
         carrierDelay.count(CarrierDelay::setTotalFlights);
         carrierDelay.sum(FlightDetails::getDelay, CarrierDelay::setTotalDelayMins);
-        //public access to nodes
-        cfg.addPublicNode(carrierDelay.build(), "carrierDelayMap");
-        cfg.addPublicNode(count(flightDetails), "totalFlights");
+        //make public for testing
+        var delayByGroup = cfg.addPublicNode(carrierDelay.build(), "delayMap");
+        //dump to console, triggers on EofEvent
+        printValues("\nFlight delay analysis\n========================", delayByGroup, eofTrigger());
     }
 
     @Data //input data from CSV
@@ -71,4 +70,5 @@ public class FlightAnalyser {
         private int totalFlights;
         private int totalDelayMins;
     }
+
 }
