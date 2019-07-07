@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import static com.fluxtion.ext.text.api.ascii.Conversion.*;
+import static com.fluxtion.ext.text.api.csv.Converters.*;
 
 /**
  * Fluxtion generated CSV decoder.
@@ -110,7 +111,7 @@ public class FlightDetailsCsvDecoder0 implements RowProcessor<FlightDetails> {
 
       fieldIndex = fieldIndex_8;
       setCarrier.subSequenceNoOffset(delimIndex[fieldIndex_8], delimIndex[fieldIndex_8 + 1] - 1);
-      target.setCarrier(setCarrier.intern());
+      target.setCarrier(intern(setCarrier));
 
     } catch (Exception e) {
       logException("problem pushing data from row:", false, e);

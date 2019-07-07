@@ -38,10 +38,10 @@ public class FlightDelayAnalyser implements EventHandler, BatchHandler, Lifecycl
       new FlightDetailsCsvDecoder0();
   private final Filter_getDelay_By_positiveInt0 filter_getDelay_By_positiveInt0_2 =
       new Filter_getDelay_By_positiveInt0();
-  private final GroupBy_4 groupBy_4_3 = new GroupBy_4();
+  public final GroupBy_4 delayMap = new GroupBy_4();
   private final PrintGroupByValues printGroupByValues_4 =
       new PrintGroupByValues(
-          "\nFlight delay analysis\n========================", groupBy_4_3, handlerEofEvent);
+          "\nFlight delay analysis\n========================", delayMap, handlerEofEvent);
   private final ValidationLogger validationLogger_5 = new ValidationLogger("validationLog");
   private final ValidationLogSink validationLogSink_6 = new ValidationLogSink("validationLogSink");
   //Dirty flags
@@ -58,7 +58,7 @@ public class FlightDelayAnalyser implements EventHandler, BatchHandler, Lifecycl
     filter_getDelay_By_positiveInt0_2.source_0 = flightDetailsCsvDecoder0_1;
     flightDetailsCsvDecoder0_1.errorLog = validationLogger_5;
     flightDetailsCsvDecoder0_1.intConverter_0 = intConverter_0;
-    groupBy_4_3.filter_getDelay_By_positiveInt00 = filter_getDelay_By_positiveInt0_2;
+    delayMap.filter_getDelay_By_positiveInt00 = filter_getDelay_By_positiveInt0_2;
     validationLogSink_6.setPublishLogImmediately(true);
     validationLogger_5.logSink = validationLogSink_6;
   }
@@ -104,7 +104,7 @@ public class FlightDelayAnalyser implements EventHandler, BatchHandler, Lifecycl
     if (isDirty_flightDetailsCsvDecoder0_1) {
       isDirty_filter_getDelay_By_positiveInt0_2 = filter_getDelay_By_positiveInt0_2.onEvent();
       if (isDirty_filter_getDelay_By_positiveInt0_2) {
-        groupBy_4_3.updatefilter_getDelay_By_positiveInt00(filter_getDelay_By_positiveInt0_2);
+        delayMap.updatefilter_getDelay_By_positiveInt00(filter_getDelay_By_positiveInt0_2);
       }
     }
     //event stack unwind callbacks
@@ -119,7 +119,7 @@ public class FlightDelayAnalyser implements EventHandler, BatchHandler, Lifecycl
     if (isDirty_flightDetailsCsvDecoder0_1) {
       isDirty_filter_getDelay_By_positiveInt0_2 = filter_getDelay_By_positiveInt0_2.onEvent();
       if (isDirty_filter_getDelay_By_positiveInt0_2) {
-        groupBy_4_3.updatefilter_getDelay_By_positiveInt00(filter_getDelay_By_positiveInt0_2);
+        delayMap.updatefilter_getDelay_By_positiveInt00(filter_getDelay_By_positiveInt0_2);
       }
     }
     if (isDirty_handlerEofEvent) {
@@ -141,7 +141,7 @@ public class FlightDelayAnalyser implements EventHandler, BatchHandler, Lifecycl
   public void init() {
     flightDetailsCsvDecoder0_1.init();
     filter_getDelay_By_positiveInt0_2.init();
-    groupBy_4_3.init();
+    delayMap.init();
     validationLogSink_6.init();
   }
 
