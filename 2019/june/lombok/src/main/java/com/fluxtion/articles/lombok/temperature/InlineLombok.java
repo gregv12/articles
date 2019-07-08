@@ -24,7 +24,7 @@ public class InlineLombok {
                 -> select(TempEvent::getTemp)
                         .map(max()).notifyOnChange(true)
                         .push(new MyTempProcessor()::setMaxTemp),
-                "com.fluxtion.articles.lombok.temperature.generated.nolombok", "TempMonitor");
+                "com.fluxtion.articles.lombok.temperature.generated.lombok", "TempMonitor");
     }
 
     @Data

@@ -16,18 +16,28 @@
  */
 package com.fluxtion.articles.lombok.temperature;
 
+import com.fluxtion.api.lifecycle.EventHandler;
+import com.fluxtion.api.lifecycle.Lifecycle;
+import org.junit.Assert;
+import org.junit.Test;
+
 /**
  *
  * @author V12 Technology Ltd.
  */
-public class MyTempProcessor {
-
-    //for testing
-    public static int count = 0;
-
-    public void setMaxTemp(double maxTemp) {
-        System.out.println("new max temp:" + maxTemp);
-        count++;
+public class TempMonitorTest {
+    
+    @Test
+    public void testTemp() throws Exception{
+        EventHandler handler = new InlineLombok().handler();
+        ((Lifecycle)handler).init();
+        handler.onEvent(new InlineLombok.TempEvent(10));
+        handler.onEvent(new InlineLombok.TempEvent(9));
+        handler.onEvent(new InlineLombok.TempEvent(17));
+        handler.onEvent(new InlineLombok.TempEvent(16));
+        handler.onEvent(new InlineLombok.TempEvent(14));
+        handler.onEvent(new InlineLombok.TempEvent(24));
+        Assert.assertEquals(3, MyTempProcessor.count);
     }
-
+    
 }
