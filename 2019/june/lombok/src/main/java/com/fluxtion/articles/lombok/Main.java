@@ -23,7 +23,18 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- *
+ * Process a year's worth of all US flight landing records stored in CSV
+ * format, approximately 7 million flights. The solution demonstrates the use of GroupBy with aggregate functions
+ * to calculate delay average, count and sum.<p>
+ * 
+ * The yearly data is stored in CVS format
+ * @see
+ * <a href="http://stat-computing.org/dataexpo/2009/the-data.html">http://stat-computing.org/dataexpo/2009/the-data.html</a>.
+ * <p>
+ * 
+ * Download and unzip the file, then run pass the file location as an argument to this main
+ * 
+ * 
  * @author Greg Higgins greg.higgins@v12technology.com
  */
 public class Main {
