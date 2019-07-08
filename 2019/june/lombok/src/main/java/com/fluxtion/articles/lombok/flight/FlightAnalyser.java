@@ -52,7 +52,8 @@ public class FlightAnalyser {
         //make public for testing
         var delayByGroup = cfg.addPublicNode(carrierDelay.build(), "delayMap");
         //dump to console, triggers on EofEvent
-        printValues("\nFlight delay analysis\n========================", delayByGroup, eofTrigger());
+        printValues("\nFlight delay analysis\n========================",
+                delayByGroup, eofTrigger());
     }
 
     @Data //input data from CSV

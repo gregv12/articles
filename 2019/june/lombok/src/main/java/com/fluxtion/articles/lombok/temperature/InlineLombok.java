@@ -33,6 +33,4 @@ public class InlineLombok {
 
         private double temp;
     }
-
-
 }
