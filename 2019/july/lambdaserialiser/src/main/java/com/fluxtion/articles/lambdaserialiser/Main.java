@@ -16,6 +16,12 @@
  */
 package com.fluxtion.articles.lambdaserialiser;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.function.Function;
 
 /**
@@ -23,16 +29,27 @@ import java.util.function.Function;
  * @author V12 Technology Ltd.
  */
 public class Main {
-    
-    
-    public static void main(String[] args) {
-        serialise(s -> 1, "func1");
-        serialise(s -> (int)System.currentTimeMillis(), "funcRandom");
+
+    public static void main(String[] args) throws Exception {
+        if (false) {
+            serialise(s -> "hello - " + s, "func1");
+        }
+        System.out.println(deserialise("func1").apply("Greg"));
+        //rewrite func-1
+        serialise(s -> "goodbye - " + s, "func1");
+        System.out.println(deserialise("func1").apply("Greg"));
     }
-    
-    
-    public static String serialise(Function<String, Integer> f, String name){
-        return "";
+
+    public static <F extends Function & Serializable> void serialise(F f, String name) throws Exception {
+        try (var oos = new ObjectOutputStream(new FileOutputStream(new File(name)))) {
+            oos.writeObject(f);
+        }
     }
-    
+
+    public static <T, R, F extends Function<T, R>> F deserialise(String name) throws Exception {
+        try (var ois = new ObjectInputStream(new FileInputStream(name))) {
+            return (F) ois.readObject();
+        }
+    }
+
 }
