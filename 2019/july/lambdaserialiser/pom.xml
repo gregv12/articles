@@ -20,12 +20,35 @@
         </developer>
     </developers>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.fluxtion</groupId>
+                <artifactId>fluxtion-maven-plugin</artifactId>
+                <version>${fluxtion.ver}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>scan</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+            
     <dependencies>
         <!--runtime dependency - is minimal-->
         <dependency>
-            <groupId>com.fluxtion</groupId>
-            <artifactId>fluxtion-api</artifactId>
+            <groupId>com.fluxtion.extension</groupId>
+            <artifactId>fluxtion-streaming-builder</artifactId>
             <version>${fluxtion.ver}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
