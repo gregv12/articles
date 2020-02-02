@@ -12,14 +12,14 @@ import com.fluxtion.ext.streaming.api.log.MsgBuilder;
 public class MsgBuilder1 extends MsgBuilder {
 
   //source operand inputs
-  public com.fluxtion.ext.streaming.api.ReusableEventHandler source_ReusableEventHandler_0;
+  public com.fluxtion.ext.streaming.api.IntFilterEventHandler source_IntFilterEventHandler_0;
 
   @OnEvent
   public boolean buildMessage() {
     if (!isGoodToLog()) return false;
     msgSink.append("-> received [");
     msgSink.append(
-        ((com.fluxtion.articles.audit.Position) source_ReusableEventHandler_0.event()).toString());
+        ((com.fluxtion.articles.audit.Position) source_IntFilterEventHandler_0.event()).toString());
     msgSink.append("]");
     msgSink.append('\n');
     return true;

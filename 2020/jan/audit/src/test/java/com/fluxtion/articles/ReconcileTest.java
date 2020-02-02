@@ -17,7 +17,6 @@
  */
 package com.fluxtion.articles;
 
-import com.fluxtion.api.audit.EventLogControlEvent;
 import com.fluxtion.api.partition.Partitioner;
 import com.fluxtion.api.time.Tick;
 import com.fluxtion.articles.audit.Position;

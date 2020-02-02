@@ -7,7 +7,7 @@ import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
 import com.fluxtion.articles.audit.Position;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
-import com.fluxtion.ext.streaming.api.ReusableEventHandler;
+import com.fluxtion.ext.streaming.api.IntFilterEventHandler;
 import com.fluxtion.ext.streaming.api.Test;
 import com.fluxtion.ext.streaming.api.Wrapper;
 import com.fluxtion.ext.streaming.api.stream.AbstractFilterWrapper;
@@ -25,8 +25,8 @@ import com.fluxtion.ext.streaming.api.stream.AbstractFilterWrapper;
 public class Filter_getSource_By_equals0 extends AbstractFilterWrapper<Position> {
 
   //source operand inputs
-  public ReusableEventHandler filterSubject;
-  public ReusableEventHandler source_0;
+  public IntFilterEventHandler filterSubject;
+  public IntFilterEventHandler source_0;
   @NoEventReference public String f;
   @NoEventReference public Object resetNotifier;
   private boolean parentReset = false;

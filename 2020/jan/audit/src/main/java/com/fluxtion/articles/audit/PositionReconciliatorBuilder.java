@@ -17,15 +17,12 @@
  */
 package com.fluxtion.articles.audit;
 
-import com.fluxtion.api.audit.EventLogControlEvent;
-import com.fluxtion.api.audit.EventLogManager;
 import com.fluxtion.builder.annotation.SepBuilder;
 import com.fluxtion.builder.node.SEPConfig;
 import com.fluxtion.ext.streaming.api.Wrapper;
-import static com.fluxtion.ext.streaming.builder.event.EventSelect.select;
+import static com.fluxtion.ext.streaming.builder.factory.FilterBuilder.filter;
+import static com.fluxtion.ext.streaming.builder.factory.LibraryFunctionsBuilder.delta;
 import static com.fluxtion.ext.streaming.builder.log.LogBuilder.*;
-import static com.fluxtion.ext.streaming.builder.stream.StreamBuilder.stream;
-import static com.fluxtion.ext.streaming.builder.stream.StreamFunctionsBuilder.delta;
 
 /**
  *
@@ -38,8 +35,8 @@ public class PositionReconciliatorBuilder {
             packageName = "com.fluxtion.articles.audit.generated.reconcile"
     )
     public void buildCalc(SEPConfig cfg) {
-        Wrapper<Position> corePos = select(Position.class).filter(Position::getSource, "core"::equals).id("corePosition");
-        Wrapper<Position> coloPos = select(Position.class).filter(Position::getSource, "colo"::equals).id("coloPosition");
+        Wrapper<Position> corePos = filter(Position::getSource, "core"::equals).id("corePosition");
+        Wrapper<Position> coloPos = filter(Position::getSource, "colo"::equals).id("coloPosition"); 
         Log("-> received [{}]", Position.class);
         Trade outTrade = new Trade();
         corePos.push(Position::getBaseCcy, outTrade::setBaseCcy);
@@ -47,16 +44,10 @@ public class PositionReconciliatorBuilder {
         corePos.push(Position::getTradeType, outTrade::setTradeType);
         corePos.map(delta(), Position::getBase).push(outTrade::setBase).id("baseQuantiy");
         corePos.map(delta(), Position::getTerms).push(outTrade::setTerms).id("termsQuantiy");
-        Wrapper<Trade> clientTrade = stream(outTrade)
-                .filter(Trade::getTradeType, (s) -> s.startsWith("client") ).id("clientTrades")
+        Wrapper<Trade> clientTrade = filter(outTrade, Trade::getTradeType, (s) -> s.startsWith("client") )
+                .id("clientTrades")
                 .push(new HouseTradePublisher()::publishHouseTrade);
-
         Log("<- pushing client trade to colo [{}]", clientTrade);
-        
-//        Wrapper<Trade> build = filter("house"::equals, outTrade::getSource).build();
-//        build.console("house trsde");
-        //add the audit
-//        cfg.addAuditor(n+ew EventLogManager().tracingOn(EventLogControlEvent.LogLevel.INFO), "auditLogger");
     }
 
 }

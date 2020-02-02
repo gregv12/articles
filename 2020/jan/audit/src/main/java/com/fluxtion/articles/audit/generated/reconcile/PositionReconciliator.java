@@ -22,7 +22,7 @@ import com.fluxtion.api.lifecycle.Lifecycle;
 import com.fluxtion.articles.audit.HouseTradePublisher;
 import com.fluxtion.articles.audit.Position;
 import com.fluxtion.articles.audit.Trade;
-import com.fluxtion.ext.streaming.api.ReusableEventHandler;
+import com.fluxtion.ext.streaming.api.IntFilterEventHandler;
 import com.fluxtion.ext.streaming.api.log.AsciiConsoleLogger;
 import com.fluxtion.ext.streaming.api.log.LogControlEvent;
 import com.fluxtion.ext.streaming.api.log.MsgBuilder;
@@ -35,8 +35,8 @@ public class PositionReconciliator implements EventHandler, BatchHandler, Lifecy
   //Node declarations
   private final Delta delta_10 = new Delta();
   private final Delta delta_13 = new Delta();
-  private final ReusableEventHandler handlerPosition =
-      new ReusableEventHandler(2147483647, Position.class);
+  private final IntFilterEventHandler handlerPosition =
+      new IntFilterEventHandler(2147483647, Position.class);
   private final LambdaFunction lambdaFunction_17 =
       new LambdaFunction("lambda$buildCalc$5054700f$1_0");
   private final MsgBuilder1 msgBuilder1_4 = new MsgBuilder1();
@@ -113,7 +113,7 @@ public class PositionReconciliator implements EventHandler, BatchHandler, Lifecy
     termsQuantiy.setResetImmediate(true);
     termsQuantiy.filterSubject = corePosition;
     termsQuantiy.f = delta_13;
-    msgBuilder1_4.source_ReusableEventHandler_0 = handlerPosition;
+    msgBuilder1_4.source_IntFilterEventHandler_0 = handlerPosition;
     msgBuilder1_4.logLevel = (int) 3;
     msgBuilder1_4.initCapacity = (int) 256;
     msgBuilder3_21.source_Filter_getTradeType_By_apply0_2 = clientTrades;
