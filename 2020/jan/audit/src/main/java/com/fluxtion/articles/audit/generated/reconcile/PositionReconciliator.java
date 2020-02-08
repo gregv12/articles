@@ -30,6 +30,7 @@ import com.fluxtion.ext.streaming.api.stream.NodeWrapper;
 import com.fluxtion.ext.streaming.api.stream.SerialisedFunctionHelper.LambdaFunction;
 import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Delta;
 
+@SuppressWarnings({"deprecation", "unchecked"})
 public class PositionReconciliator implements EventHandler, BatchHandler, Lifecycle {
 
   //Node declarations

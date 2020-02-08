@@ -10,7 +10,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>12</maven.compiler.source>
         <maven.compiler.target>12</maven.compiler.target>
-        <fluxtion.ver>1.8.1</fluxtion.ver>
+        <fluxtion.ver>1.8.2-SNAPSHOT</fluxtion.ver>
     </properties>
     
     <description>Auditing support in Fluxtion</description>
@@ -20,8 +20,23 @@
             <email>greg.higgins@v12technology.com</email>
         </developer>
     </developers>
-      
-    
+ 
+    <build>     
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-verbose</arg>
+                        <arg>-Xlint:all,-options,-path</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>     
+    </build>
+
     <profiles>
         <profile>
             <id>fluxtion</id>

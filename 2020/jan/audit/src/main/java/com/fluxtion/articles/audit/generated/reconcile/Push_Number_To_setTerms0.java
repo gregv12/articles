@@ -41,6 +41,6 @@ public class Push_Number_To_setTerms0 implements Wrapper<Push_Number_To_setTerms
 
   @Override
   public Class<Push_Number_To_setTerms0> eventClass() {
-    return (Class<Push_Number_To_setTerms0>) getClass();
+    return Push_Number_To_setTerms0.class;
   }
 }

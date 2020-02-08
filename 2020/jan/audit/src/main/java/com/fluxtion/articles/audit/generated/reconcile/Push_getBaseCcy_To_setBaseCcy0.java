@@ -42,6 +42,6 @@ public class Push_getBaseCcy_To_setBaseCcy0 implements Wrapper<Push_getBaseCcy_T
 
   @Override
   public Class<Push_getBaseCcy_To_setBaseCcy0> eventClass() {
-    return (Class<Push_getBaseCcy_To_setBaseCcy0>) getClass();
+    return Push_getBaseCcy_To_setBaseCcy0.class;
   }
 }

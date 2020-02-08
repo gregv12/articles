@@ -42,6 +42,6 @@ public class Push_getTermsCcy_To_setTermsCcy0 implements Wrapper<Push_getTermsCc
 
   @Override
   public Class<Push_getTermsCcy_To_setTermsCcy0> eventClass() {
-    return (Class<Push_getTermsCcy_To_setTermsCcy0>) getClass();
+    return Push_getTermsCcy_To_setTermsCcy0.class;
   }
 }

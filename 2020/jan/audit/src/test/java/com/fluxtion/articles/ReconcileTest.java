@@ -43,7 +43,7 @@ public class ReconcileTest {
      @Test
      public void testPartition() {
          
-         Partitioner<PositionReconciliator> partitioner = new Partitioner(PositionReconciliator::new);
+         Partitioner<PositionReconciliator> partitioner = new Partitioner<>(PositionReconciliator::new);
          partitioner.partition(Position::getCcyPair);
 //         reconciller.handleEvent(new EventLogControlEvent(EventLogControlEvent.LogLevel.TRACE));
          

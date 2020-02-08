@@ -42,6 +42,6 @@ public class Push_Trade_To_publishHouseTrade0 implements Wrapper<Push_Trade_To_p
 
   @Override
   public Class<Push_Trade_To_publishHouseTrade0> eventClass() {
-    return (Class<Push_Trade_To_publishHouseTrade0>) getClass();
+    return Push_Trade_To_publishHouseTrade0.class;
   }
 }

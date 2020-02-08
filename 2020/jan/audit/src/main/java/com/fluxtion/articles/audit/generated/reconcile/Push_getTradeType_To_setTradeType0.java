@@ -43,6 +43,6 @@ public class Push_getTradeType_To_setTradeType0
 
   @Override
   public Class<Push_getTradeType_To_setTradeType0> eventClass() {
-    return (Class<Push_getTradeType_To_setTradeType0>) getClass();
+    return Push_getTradeType_To_setTradeType0.class;
   }
 }

@@ -41,6 +41,6 @@ public class Push_Number_To_setBase0 implements Wrapper<Push_Number_To_setBase0>
 
   @Override
   public Class<Push_Number_To_setBase0> eventClass() {
-    return (Class<Push_Number_To_setBase0>) getClass();
+    return Push_Number_To_setBase0.class;
   }
 }
