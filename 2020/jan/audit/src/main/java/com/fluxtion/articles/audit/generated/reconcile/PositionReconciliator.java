@@ -30,68 +30,67 @@ import com.fluxtion.ext.streaming.api.stream.NodeWrapper;
 import com.fluxtion.ext.streaming.api.stream.SerialisedFunctionHelper.LambdaFunction;
 import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Delta;
 
+/*
+ * <pre>
+ * generation time   : 2020-02-08T15:15:15.111219400
+ * generator version : 1.8.3-SNAPSHOT
+ * api version       : 1.8.3-SNAPSHOT
+ * </pre>
+ * @author Greg Higgins
+ */
 @SuppressWarnings({"deprecation", "unchecked"})
 public class PositionReconciliator implements EventHandler, BatchHandler, Lifecycle {
 
   //Node declarations
-  private final Delta delta_10 = new Delta();
-  private final Delta delta_13 = new Delta();
+  private final Delta delta_8 = new Delta();
+  private final Delta delta_11 = new Delta();
   private final IntFilterEventHandler handlerPosition =
       new IntFilterEventHandler(2147483647, Position.class);
-  private final LambdaFunction lambdaFunction_17 =
+  private final LambdaFunction lambdaFunction_15 =
       new LambdaFunction("lambda$buildCalc$5054700f$1_0");
-  private final MsgBuilder1 msgBuilder1_4 = new MsgBuilder1();
+  private final MsgBuilder1 msgBuilder1_2 = new MsgBuilder1();
   private final String string_0 =
       new String(new byte[] {(byte) 99, (byte) 111, (byte) 114, (byte) 101}, (byte) 0);
   public final Filter_getSource_By_equals0 corePosition = new Filter_getSource_By_equals0();
   public final Map_getBase_With_value0 baseQuantiy = new Map_getBase_With_value0();
-  private final Push_Number_To_setBase0 push_Number_To_setBase0_12 = new Push_Number_To_setBase0();
-  private final Push_getBaseCcy_To_setBaseCcy0 push_getBaseCcy_To_setBaseCcy0_7 =
+  private final Push_Number_To_setBase0 push_Number_To_setBase0_10 = new Push_Number_To_setBase0();
+  private final Push_getBaseCcy_To_setBaseCcy0 push_getBaseCcy_To_setBaseCcy0_5 =
       new Push_getBaseCcy_To_setBaseCcy0();
-  private final Push_getTermsCcy_To_setTermsCcy0 push_getTermsCcy_To_setTermsCcy0_8 =
+  private final Push_getTermsCcy_To_setTermsCcy0 push_getTermsCcy_To_setTermsCcy0_6 =
       new Push_getTermsCcy_To_setTermsCcy0();
-  private final Push_getTradeType_To_setTradeType0 push_getTradeType_To_setTradeType0_9 =
+  private final Push_getTradeType_To_setTradeType0 push_getTradeType_To_setTradeType0_7 =
       new Push_getTradeType_To_setTradeType0();
-  private final String string_2 =
-      new String(new byte[] {(byte) 99, (byte) 111, (byte) 108, (byte) 111}, (byte) 0);
-  public final Filter_getSource_By_equals0 coloPosition = new Filter_getSource_By_equals0();
   public final Map_getTerms_With_value0 termsQuantiy = new Map_getTerms_With_value0();
-  private final Push_Number_To_setTerms0 push_Number_To_setTerms0_15 =
+  private final Push_Number_To_setTerms0 push_Number_To_setTerms0_13 =
       new Push_Number_To_setTerms0();
-  private final Trade trade_6 = new Trade();
-  private final NodeWrapper nodeWrapper_16 = new NodeWrapper(trade_6);
+  private final Trade trade_4 = new Trade();
+  private final NodeWrapper nodeWrapper_14 = new NodeWrapper(trade_4);
   public final Filter_getTradeType_By_apply0 clientTrades = new Filter_getTradeType_By_apply0();
-  private final MsgBuilder3 msgBuilder3_21 = new MsgBuilder3();
-  private final AsciiConsoleLogger asciiConsoleLogger_5 = new AsciiConsoleLogger();
-  private final Push_Trade_To_publishHouseTrade0 push_Trade_To_publishHouseTrade0_20 =
+  private final MsgBuilder3 msgBuilder3_19 = new MsgBuilder3();
+  private final AsciiConsoleLogger asciiConsoleLogger_3 = new AsciiConsoleLogger();
+  private final Push_Trade_To_publishHouseTrade0 push_Trade_To_publishHouseTrade0_18 =
       new Push_Trade_To_publishHouseTrade0();
-  private final HouseTradePublisher houseTradePublisher_19 = new HouseTradePublisher();
+  private final HouseTradePublisher houseTradePublisher_17 = new HouseTradePublisher();
   //Dirty flags
   private boolean isDirty_baseQuantiy = false;
   private boolean isDirty_clientTrades = false;
   private boolean isDirty_corePosition = false;
   private boolean isDirty_handlerPosition = false;
-  private boolean isDirty_msgBuilder1_4 = false;
-  private boolean isDirty_msgBuilder3_21 = false;
-  private boolean isDirty_nodeWrapper_16 = false;
-  private boolean isDirty_push_Number_To_setBase0_12 = false;
-  private boolean isDirty_push_Number_To_setTerms0_15 = false;
-  private boolean isDirty_push_Trade_To_publishHouseTrade0_20 = false;
-  private boolean isDirty_push_getBaseCcy_To_setBaseCcy0_7 = false;
-  private boolean isDirty_push_getTermsCcy_To_setTermsCcy0_8 = false;
-  private boolean isDirty_push_getTradeType_To_setTradeType0_9 = false;
+  private boolean isDirty_msgBuilder1_2 = false;
+  private boolean isDirty_msgBuilder3_19 = false;
+  private boolean isDirty_nodeWrapper_14 = false;
+  private boolean isDirty_push_Number_To_setBase0_10 = false;
+  private boolean isDirty_push_Number_To_setTerms0_13 = false;
+  private boolean isDirty_push_Trade_To_publishHouseTrade0_18 = false;
+  private boolean isDirty_push_getBaseCcy_To_setBaseCcy0_5 = false;
+  private boolean isDirty_push_getTermsCcy_To_setTermsCcy0_6 = false;
+  private boolean isDirty_push_getTradeType_To_setTradeType0_7 = false;
   private boolean isDirty_termsQuantiy = false;
   //Filter constants
 
   public PositionReconciliator() {
-    trade_6.setBase(0.0);
-    trade_6.setTerms(0.0);
-    coloPosition.setAlwaysReset(false);
-    coloPosition.setNotifyOnChangeOnly(false);
-    coloPosition.setResetImmediate(true);
-    coloPosition.filterSubject = handlerPosition;
-    coloPosition.source_0 = handlerPosition;
-    coloPosition.f = string_2;
+    trade_4.setBase(0.0);
+    trade_4.setTerms(0.0);
     corePosition.setAlwaysReset(false);
     corePosition.setNotifyOnChangeOnly(false);
     corePosition.setResetImmediate(true);
@@ -101,43 +100,43 @@ public class PositionReconciliator implements EventHandler, BatchHandler, Lifecy
     clientTrades.setAlwaysReset(false);
     clientTrades.setNotifyOnChangeOnly(false);
     clientTrades.setResetImmediate(true);
-    clientTrades.filterSubject = nodeWrapper_16;
-    clientTrades.source_0 = nodeWrapper_16;
-    clientTrades.f = lambdaFunction_17;
+    clientTrades.filterSubject = nodeWrapper_14;
+    clientTrades.source_0 = nodeWrapper_14;
+    clientTrades.f = lambdaFunction_15;
     baseQuantiy.setAlwaysReset(false);
     baseQuantiy.setNotifyOnChangeOnly(false);
     baseQuantiy.setResetImmediate(true);
     baseQuantiy.filterSubject = corePosition;
-    baseQuantiy.f = delta_10;
+    baseQuantiy.f = delta_8;
     termsQuantiy.setAlwaysReset(false);
     termsQuantiy.setNotifyOnChangeOnly(false);
     termsQuantiy.setResetImmediate(true);
     termsQuantiy.filterSubject = corePosition;
-    termsQuantiy.f = delta_13;
-    msgBuilder1_4.source_IntFilterEventHandler_0 = handlerPosition;
-    msgBuilder1_4.logLevel = (int) 3;
-    msgBuilder1_4.initCapacity = (int) 256;
-    msgBuilder3_21.source_Filter_getTradeType_By_apply0_2 = clientTrades;
-    msgBuilder3_21.logLevel = (int) 3;
-    msgBuilder3_21.initCapacity = (int) 256;
-    push_Number_To_setBase0_12.filterSubject = baseQuantiy;
-    push_Number_To_setBase0_12.f = trade_6;
-    push_Number_To_setTerms0_15.filterSubject = termsQuantiy;
-    push_Number_To_setTerms0_15.f = trade_6;
-    push_Trade_To_publishHouseTrade0_20.filterSubject = clientTrades;
-    push_Trade_To_publishHouseTrade0_20.f = houseTradePublisher_19;
-    push_getBaseCcy_To_setBaseCcy0_7.filterSubject = corePosition;
-    push_getBaseCcy_To_setBaseCcy0_7.f = trade_6;
-    push_getTermsCcy_To_setTermsCcy0_8.filterSubject = corePosition;
-    push_getTermsCcy_To_setTermsCcy0_8.f = trade_6;
-    push_getTradeType_To_setTradeType0_9.filterSubject = corePosition;
-    push_getTradeType_To_setTradeType0_9.f = trade_6;
-    asciiConsoleLogger_5.initCapacity = (int) 512;
-    asciiConsoleLogger_5.msgBuilders = new MsgBuilder[2];
-    asciiConsoleLogger_5.msgBuilders[0] = msgBuilder1_4;
-    asciiConsoleLogger_5.msgBuilders[1] = msgBuilder3_21;
-    delta_10.previous = (double) 0.0;
-    delta_13.previous = (double) 0.0;
+    termsQuantiy.f = delta_11;
+    msgBuilder1_2.source_IntFilterEventHandler_0 = handlerPosition;
+    msgBuilder1_2.logLevel = (int) 3;
+    msgBuilder1_2.initCapacity = (int) 256;
+    msgBuilder3_19.source_Filter_getTradeType_By_apply0_2 = clientTrades;
+    msgBuilder3_19.logLevel = (int) 3;
+    msgBuilder3_19.initCapacity = (int) 256;
+    push_Number_To_setBase0_10.filterSubject = baseQuantiy;
+    push_Number_To_setBase0_10.f = trade_4;
+    push_Number_To_setTerms0_13.filterSubject = termsQuantiy;
+    push_Number_To_setTerms0_13.f = trade_4;
+    push_Trade_To_publishHouseTrade0_18.filterSubject = clientTrades;
+    push_Trade_To_publishHouseTrade0_18.f = houseTradePublisher_17;
+    push_getBaseCcy_To_setBaseCcy0_5.filterSubject = corePosition;
+    push_getBaseCcy_To_setBaseCcy0_5.f = trade_4;
+    push_getTermsCcy_To_setTermsCcy0_6.filterSubject = corePosition;
+    push_getTermsCcy_To_setTermsCcy0_6.f = trade_4;
+    push_getTradeType_To_setTradeType0_7.filterSubject = corePosition;
+    push_getTradeType_To_setTradeType0_7.f = trade_4;
+    asciiConsoleLogger_3.initCapacity = (int) 512;
+    asciiConsoleLogger_3.msgBuilders = new MsgBuilder[2];
+    asciiConsoleLogger_3.msgBuilders[0] = msgBuilder1_2;
+    asciiConsoleLogger_3.msgBuilders[1] = msgBuilder3_19;
+    delta_8.previous = (double) 0.0;
+    delta_11.previous = (double) 0.0;
   }
 
   @Override
@@ -165,9 +164,9 @@ public class PositionReconciliator implements EventHandler, BatchHandler, Lifecy
     isDirty_handlerPosition = true;
     handlerPosition.onEvent(typedEvent);
     if (isDirty_handlerPosition) {
-      isDirty_msgBuilder1_4 = msgBuilder1_4.buildMessage();
-      if (isDirty_msgBuilder1_4) {
-        asciiConsoleLogger_5.publishMessage(msgBuilder1_4);
+      isDirty_msgBuilder1_2 = msgBuilder1_2.buildMessage();
+      if (isDirty_msgBuilder1_2) {
+        asciiConsoleLogger_3.publishMessage(msgBuilder1_2);
       }
     }
     if (isDirty_handlerPosition) {
@@ -177,44 +176,41 @@ public class PositionReconciliator implements EventHandler, BatchHandler, Lifecy
       isDirty_baseQuantiy = baseQuantiy.onEvent();
     }
     if (isDirty_baseQuantiy) {
-      isDirty_push_Number_To_setBase0_12 = push_Number_To_setBase0_12.onEvent();
+      isDirty_push_Number_To_setBase0_10 = push_Number_To_setBase0_10.onEvent();
     }
     if (isDirty_corePosition) {
-      isDirty_push_getBaseCcy_To_setBaseCcy0_7 = push_getBaseCcy_To_setBaseCcy0_7.onEvent();
+      isDirty_push_getBaseCcy_To_setBaseCcy0_5 = push_getBaseCcy_To_setBaseCcy0_5.onEvent();
     }
     if (isDirty_corePosition) {
-      isDirty_push_getTermsCcy_To_setTermsCcy0_8 = push_getTermsCcy_To_setTermsCcy0_8.onEvent();
+      isDirty_push_getTermsCcy_To_setTermsCcy0_6 = push_getTermsCcy_To_setTermsCcy0_6.onEvent();
     }
     if (isDirty_corePosition) {
-      isDirty_push_getTradeType_To_setTradeType0_9 = push_getTradeType_To_setTradeType0_9.onEvent();
-    }
-    if (isDirty_handlerPosition) {
-      coloPosition.onEvent();
+      isDirty_push_getTradeType_To_setTradeType0_7 = push_getTradeType_To_setTradeType0_7.onEvent();
     }
     if (isDirty_corePosition) {
       isDirty_termsQuantiy = termsQuantiy.onEvent();
     }
     if (isDirty_termsQuantiy) {
-      isDirty_push_Number_To_setTerms0_15 = push_Number_To_setTerms0_15.onEvent();
+      isDirty_push_Number_To_setTerms0_13 = push_Number_To_setTerms0_13.onEvent();
     }
-    if (isDirty_push_Number_To_setBase0_12
-        | isDirty_push_Number_To_setTerms0_15
-        | isDirty_push_getBaseCcy_To_setBaseCcy0_7
-        | isDirty_push_getTermsCcy_To_setTermsCcy0_8
-        | isDirty_push_getTradeType_To_setTradeType0_9) {
-      isDirty_nodeWrapper_16 = nodeWrapper_16.onEvent();
+    if (isDirty_push_Number_To_setBase0_10
+        | isDirty_push_Number_To_setTerms0_13
+        | isDirty_push_getBaseCcy_To_setBaseCcy0_5
+        | isDirty_push_getTermsCcy_To_setTermsCcy0_6
+        | isDirty_push_getTradeType_To_setTradeType0_7) {
+      isDirty_nodeWrapper_14 = nodeWrapper_14.onEvent();
     }
-    if (isDirty_nodeWrapper_16) {
+    if (isDirty_nodeWrapper_14) {
       isDirty_clientTrades = clientTrades.onEvent();
     }
     if (isDirty_clientTrades) {
-      isDirty_msgBuilder3_21 = msgBuilder3_21.buildMessage();
-      if (isDirty_msgBuilder3_21) {
-        asciiConsoleLogger_5.publishMessage(msgBuilder3_21);
+      isDirty_msgBuilder3_19 = msgBuilder3_19.buildMessage();
+      if (isDirty_msgBuilder3_19) {
+        asciiConsoleLogger_3.publishMessage(msgBuilder3_19);
       }
     }
     if (isDirty_clientTrades) {
-      isDirty_push_Trade_To_publishHouseTrade0_20 = push_Trade_To_publishHouseTrade0_20.onEvent();
+      isDirty_push_Trade_To_publishHouseTrade0_18 = push_Trade_To_publishHouseTrade0_18.onEvent();
     }
     //event stack unwind callbacks
     afterEvent();
@@ -224,29 +220,29 @@ public class PositionReconciliator implements EventHandler, BatchHandler, Lifecy
     switch (typedEvent.filterString()) {
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[CHANGE_FILTER]
       case ("CHANGE_FILTER"):
-        isDirty_msgBuilder1_4 = msgBuilder1_4.controlLogIdFilter(typedEvent);
-        isDirty_msgBuilder3_21 = msgBuilder3_21.controlLogIdFilter(typedEvent);
+        isDirty_msgBuilder1_2 = msgBuilder1_2.controlLogIdFilter(typedEvent);
+        isDirty_msgBuilder3_19 = msgBuilder3_19.controlLogIdFilter(typedEvent);
         afterEvent();
         return;
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[CHANGE_LEVEL]
       case ("CHANGE_LEVEL"):
-        isDirty_msgBuilder1_4 = msgBuilder1_4.controlLogLevelFilter(typedEvent);
-        isDirty_msgBuilder3_21 = msgBuilder3_21.controlLogLevelFilter(typedEvent);
+        isDirty_msgBuilder1_2 = msgBuilder1_2.controlLogLevelFilter(typedEvent);
+        isDirty_msgBuilder3_19 = msgBuilder3_19.controlLogLevelFilter(typedEvent);
         afterEvent();
         return;
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[RECORD_LEVEL]
       case ("RECORD_LEVEL"):
-        asciiConsoleLogger_5.controlLevelLogging(typedEvent);
+        asciiConsoleLogger_3.controlLevelLogging(typedEvent);
         afterEvent();
         return;
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[RECORD_NAME]
       case ("RECORD_NAME"):
-        asciiConsoleLogger_5.controlIdLogging(typedEvent);
+        asciiConsoleLogger_3.controlIdLogging(typedEvent);
         afterEvent();
         return;
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[RECORD_TIME]
       case ("RECORD_TIME"):
-        asciiConsoleLogger_5.controlTimeLogging(typedEvent);
+        asciiConsoleLogger_3.controlTimeLogging(typedEvent);
         afterEvent();
         return;
     }
@@ -255,40 +251,38 @@ public class PositionReconciliator implements EventHandler, BatchHandler, Lifecy
 
   @Override
   public void afterEvent() {
-    msgBuilder3_21.afterEvent();
+    msgBuilder3_19.afterEvent();
     clientTrades.resetAfterEvent();
     termsQuantiy.resetAfterEvent();
-    coloPosition.resetAfterEvent();
     baseQuantiy.resetAfterEvent();
     corePosition.resetAfterEvent();
-    msgBuilder1_4.afterEvent();
+    msgBuilder1_2.afterEvent();
     isDirty_baseQuantiy = false;
     isDirty_clientTrades = false;
     isDirty_corePosition = false;
     isDirty_handlerPosition = false;
-    isDirty_msgBuilder1_4 = false;
-    isDirty_msgBuilder3_21 = false;
-    isDirty_nodeWrapper_16 = false;
-    isDirty_push_Number_To_setBase0_12 = false;
-    isDirty_push_Number_To_setTerms0_15 = false;
-    isDirty_push_Trade_To_publishHouseTrade0_20 = false;
-    isDirty_push_getBaseCcy_To_setBaseCcy0_7 = false;
-    isDirty_push_getTermsCcy_To_setTermsCcy0_8 = false;
-    isDirty_push_getTradeType_To_setTradeType0_9 = false;
+    isDirty_msgBuilder1_2 = false;
+    isDirty_msgBuilder3_19 = false;
+    isDirty_nodeWrapper_14 = false;
+    isDirty_push_Number_To_setBase0_10 = false;
+    isDirty_push_Number_To_setTerms0_13 = false;
+    isDirty_push_Trade_To_publishHouseTrade0_18 = false;
+    isDirty_push_getBaseCcy_To_setBaseCcy0_5 = false;
+    isDirty_push_getTermsCcy_To_setTermsCcy0_6 = false;
+    isDirty_push_getTradeType_To_setTradeType0_7 = false;
     isDirty_termsQuantiy = false;
   }
 
   @Override
   public void init() {
-    lambdaFunction_17.init();
-    msgBuilder1_4.init();
+    lambdaFunction_15.init();
+    msgBuilder1_2.init();
     corePosition.init();
     baseQuantiy.init();
-    coloPosition.init();
     termsQuantiy.init();
     clientTrades.init();
-    msgBuilder3_21.init();
-    asciiConsoleLogger_5.init();
+    msgBuilder3_19.init();
+    asciiConsoleLogger_3.init();
   }
 
   @Override

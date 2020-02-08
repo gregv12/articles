@@ -36,7 +36,7 @@ public class PositionReconciliatorBuilder {
     )
     public void buildCalc(SEPConfig cfg) {
         Wrapper<Position> corePos = filter(Position::getSource, "core"::equals).id("corePosition");
-        Wrapper<Position> coloPos = filter(Position::getSource, "colo"::equals).id("coloPosition"); 
+//        Wrapper<Position> coloPos = filter(Position::getSource, "colo"::equals).id("coloPosition"); 
         Log("-> received [{}]", Position.class);
         Trade outTrade = new Trade();
         corePos.push(Position::getBaseCcy, outTrade::setBaseCcy);

@@ -37,6 +37,7 @@ public class Filter_getSource_By_equals0 extends AbstractFilterWrapper<Position>
   }
 
   @OnEvent
+  @SuppressWarnings("unchecked")
   public boolean onEvent() {
     boolean oldValue = result;
     result = (boolean) f.equals((Object) ((Position) source_0.event()).getSource());

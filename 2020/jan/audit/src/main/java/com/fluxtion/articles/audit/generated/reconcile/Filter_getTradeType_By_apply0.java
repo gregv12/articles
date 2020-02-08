@@ -38,6 +38,7 @@ public class Filter_getTradeType_By_apply0 extends AbstractFilterWrapper<Trade> 
   }
 
   @OnEvent
+  @SuppressWarnings("unchecked")
   public boolean onEvent() {
     boolean oldValue = result;
     result = (boolean) f.apply((Object) ((Trade) source_0.event()).getTradeType());
