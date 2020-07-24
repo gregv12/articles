@@ -14,12 +14,12 @@
  * along with this program.  If not, see 
  * <http://www.mongodb.com/licensing/server-side-public-license>.
  */
-package com.fluxtion.articles.fxportfolio.processor;
+package com.fluxtion.articles.fxportfolio.nodes;
 
 /**
  *
  * @author V12 Technology Ltd.
  */
-public class PairPosition {
+public class MarketDataCache {
     
 }

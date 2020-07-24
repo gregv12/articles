@@ -16,10 +16,41 @@
  */
 package com.fluxtion.articles.fxportfolio.event;
 
+import com.fluxtion.articles.fxportfolio.shared.Ccy;
+import com.fluxtion.articles.fxportfolio.shared.CcyPair;
+import lombok.Data;
+
 /**
  *
  * @author V12 Technology Ltd.
  */
+@Data
 public class Trade {
+    
+    private final CcyPair ccyPair;
+    private double termsAmout;
+    private double baseAmout;
+    
+    public Trade(String ccyPair, double terms, double base){
+        this.ccyPair = CcyPair.from(ccyPair);
+        this.termsAmout = terms;
+        this.baseAmout = base;
+    }
+    
+    public Trade(CcyPair ccyPair, double terms, double base){
+        this.ccyPair = ccyPair;
+        this.termsAmout = terms;
+        this.baseAmout = base;
+    }
+    
+    public double amountForCcy(Ccy ccy){
+        double amount = 0;
+        if(ccyPair.terms == ccy){
+            amount = termsAmout;
+        }else if(ccyPair.base == ccy){
+            amount = baseAmout;
+        }
+        return amount;
+    }
     
 }

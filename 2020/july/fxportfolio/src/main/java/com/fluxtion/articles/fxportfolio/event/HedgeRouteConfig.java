@@ -16,10 +16,24 @@
  */
 package com.fluxtion.articles.fxportfolio.event;
 
+import com.fluxtion.api.event.Event;
+import com.fluxtion.articles.fxportfolio.shared.Ccy;
+
 /**
  *
  * @author V12 Technology Ltd.
  */
-public class HedgeRouteConfig {
+public class HedgeRouteConfig implements Event{
+    
+    private final Ccy ccy;
+
+    public HedgeRouteConfig(Ccy ccy) {
+        this.ccy = ccy;
+    }
+
+    @Override
+    public String filterString() {
+        return ccy.name();
+    }
     
 }

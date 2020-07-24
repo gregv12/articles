@@ -14,31 +14,14 @@
  * along with this program.  If not, see 
  * <http://www.mongodb.com/licensing/server-side-public-license>.
  */
-package com.fluxtion.articles.fxportfolio.processor;
+package com.fluxtion.articles.fxportfolio.nodes;
 
-import com.fluxtion.api.annotations.OnEvent;
-import com.fluxtion.api.annotations.PushReference;
-import com.fluxtion.articles.fxportfolio.event.Trade;
+import com.fluxtion.articles.fxportfolio.shared.CcyPair;
 
 /**
  *
  * @author V12 Technology Ltd.
  */
-public class ManagedAsset {
-    
-    @PushReference
-    public PairHedge hedger;
-    
-    public PairPosition p;
-    
-    @OnEvent
-    public boolean trade(Trade trade){
-        return false;
-    }
-    
-    @OnEvent
-    public boolean onEvent(){
-        return false;
-    }
-    
+public interface PairPosition {
+    CcyPair ccyPair();
 }

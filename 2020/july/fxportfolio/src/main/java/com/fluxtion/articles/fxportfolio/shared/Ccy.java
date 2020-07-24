@@ -16,10 +16,13 @@
  */
 package com.fluxtion.articles.fxportfolio.shared;
 
+import lombok.Data;
+
 /**
  *
  * @author V12 Technology Ltd.
  */
-public class Ccy {
+public enum Ccy {
     
+    EUR,CHF,USD,GBP;
 }
