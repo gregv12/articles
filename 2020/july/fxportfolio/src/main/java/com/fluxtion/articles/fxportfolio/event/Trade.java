@@ -16,6 +16,7 @@
  */
 package com.fluxtion.articles.fxportfolio.event;
 
+import com.fluxtion.api.event.Event;
 import com.fluxtion.articles.fxportfolio.shared.Ccy;
 import com.fluxtion.articles.fxportfolio.shared.CcyPair;
 import lombok.Data;
@@ -25,16 +26,24 @@ import lombok.Data;
  * @author V12 Technology Ltd.
  */
 @Data
-public class Trade {
+public class Trade implements Event{
     
     private final CcyPair ccyPair;
     private double termsAmout;
     private double baseAmout;
+    private String orderId;
     
     public Trade(String ccyPair, double terms, double base){
         this.ccyPair = CcyPair.from(ccyPair);
         this.termsAmout = terms;
         this.baseAmout = base;
+    }
+    
+    public Trade(String ccyPair, double terms, double base, String orderId){
+        this.ccyPair = CcyPair.from(ccyPair);
+        this.termsAmout = terms;
+        this.baseAmout = base;
+        this.orderId = orderId;
     }
     
     public Trade(CcyPair ccyPair, double terms, double base){
@@ -51,6 +60,16 @@ public class Trade {
             amount = baseAmout;
         }
         return amount;
+    }
+
+    @Override
+    public String filterString() {
+        return ccyPair.name;
+    }
+    
+    @Override
+    public String toString() {
+        return "Trade: {" + "ccyPair: " + ccyPair.name + ", termsAmout: " + termsAmout + ", baseAmout: " + baseAmout + '}';
     }
     
 }

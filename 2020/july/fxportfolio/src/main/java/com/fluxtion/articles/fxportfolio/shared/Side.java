@@ -21,8 +21,6 @@ package com.fluxtion.articles.fxportfolio.shared;
  *
  * @author Greg Higgins greg.higgins@v12technology.com
  */
-public class SignalKeys {
-    public static final String PUBLISH_POSITIONS = "PUBLISH_POSITIONS";
-    public static final String CLOSE_POSITIONS = "CLOSE_POSITIONS";
-    public static final String ORDER_ID = "ORDER_ID";
+public enum Side {
+    BUY, SELL;
 }

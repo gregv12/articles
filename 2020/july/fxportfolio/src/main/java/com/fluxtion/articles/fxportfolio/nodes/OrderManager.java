@@ -15,14 +15,18 @@
  * along with this program.  If not, see 
  * <http://www.mongodb.com/licensing/server-side-public-license>.
  */
-package com.fluxtion.articles.fxportfolio.shared;
+package com.fluxtion.articles.fxportfolio.nodes;
+
+import com.fluxtion.api.annotations.EventHandler;
+import com.fluxtion.articles.fxportfolio.event.Trade;
 
 /**
  *
  * @author Greg Higgins greg.higgins@v12technology.com
  */
-public class SignalKeys {
-    public static final String PUBLISH_POSITIONS = "PUBLISH_POSITIONS";
-    public static final String CLOSE_POSITIONS = "CLOSE_POSITIONS";
-    public static final String ORDER_ID = "ORDER_ID";
+public class OrderManager {
+    @EventHandler(propagate = false)
+    public void trade(Trade trade) {
+        
+    }
 }

@@ -18,6 +18,7 @@ package com.fluxtion.articles.fxportfolio.nodes;
 
 import com.fluxtion.articles.fxportfolio.event.LimitConfig;
 import com.fluxtion.api.annotations.EventHandler;
+import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
 import com.fluxtion.api.annotations.PushReference;
 import com.fluxtion.api.audit.EventLogNode;
@@ -56,20 +57,27 @@ public class ManagedAsset extends EventLogNode {
     }
 
     @EventHandler
-    public boolean trade(Trade trade) {
+//    public void trade(Trade trade) {
+    public boolean handleTrade(Trade trade) {
         boolean matches = trade.getCcyPair().containsCcy(currency);
         position += trade.amountForCcy(currency);
         log.debug("tradeCcyPair", trade.getCcyPair().name);
         log.debug("matchPosCcy", matches);
         if (matches) {
+            log.info("tradeUpdate", true);
             log.info("position", position);
+            if(hedger1!=null){
+                hedger1.hedge(currency, position);
+            }
         }
+        //calculate open positions
         return matches;
     }
 
-    @OnParentUpdate("openPositions")
+//    @OnParentUpdate("openPositions")
     public void openPositionChange(PairPosition position) {
-        log.info("newOpenPosition:", 0);
+        log.info("newOpenPosition" + currency, 0);
+        log.info("hedger", position.ccyPair());
     }
     
     @EventHandler(filterVariable = "currency")
@@ -87,9 +95,11 @@ public class ManagedAsset extends EventLogNode {
         return false;
     }
 
-//    @OnEvent
-    public boolean updateHedge() {
-        return false;
+    @OnEvent
+    public boolean recalculateHedges() {
+        log.info("positionRecalc", true);
+        log.info("position", position);
+        return true;
     }
 
 }

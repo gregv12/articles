@@ -47,6 +47,11 @@ public class CcyPair {
     }
 
     @Override
+    public String toString() {
+        return "CcyPair{" + "name=" + name + '}';
+    }
+
+    @Override
     public int hashCode() {
         int hash = 5;
         hash = 47 * hash + Objects.hashCode(this.base);

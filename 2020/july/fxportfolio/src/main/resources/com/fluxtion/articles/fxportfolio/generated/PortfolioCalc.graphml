@@ -11,20 +11,20 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="hedgeUSDCHF">
-            <data key="vertex_label">
-                <jGraph:ShapeNode>
-                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;hedgeUSDCHF:&#10;PairHedge"/>
-                    <jGraph:Style properties="EVENTHANDLER"/>
-                </jGraph:ShapeNode>
-            </data>
-        </node>
         <node id="hedgeEURCHF">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
                     <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;hedgeEURCHF:&#10;PairHedge"/>
+                    <jGraph:Style properties="EVENTHANDLER"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="hedgeUSDCHF">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;hedgeUSDCHF:&#10;PairHedge"/>
                     <jGraph:Style properties="EVENTHANDLER"/>
                 </jGraph:ShapeNode>
             </data>
@@ -92,6 +92,24 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
+        <node id="idGenerator">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;idGenerator:&#10;IdGenerator"/>
+                    <jGraph:Style properties="EVENTHANDLER"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="orderManager">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;orderManager:&#10;OrderManager"/>
+                    <jGraph:Style properties="EVENTHANDLER"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
         <node id="eventLogger">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
@@ -110,11 +128,11 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="HedgeRouteConfig">
+        <node id="Signal">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;HedgeRouteConfig"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;Signal"/>
                     <jGraph:Style properties="EVENT"/>
                 </jGraph:ShapeNode>
             </data>
@@ -137,20 +155,20 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
+        <node id="HedgeRouteConfig">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;HedgeRouteConfig"/>
+                    <jGraph:Style properties="EVENT"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
         <node id="Rate">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
                     <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;Rate"/>
-                    <jGraph:Style properties="EVENT"/>
-                </jGraph:ShapeNode>
-            </data>
-        </node>
-        <node id="Signal">
-            <data key="vertex_label">
-                <jGraph:ShapeNode>
-                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;Signal"/>
                     <jGraph:Style properties="EVENT"/>
                 </jGraph:ShapeNode>
             </data>
@@ -173,12 +191,12 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <edge id="1" source="positionCHF" target="hedgeUSDCHF">
+        <edge id="1" source="positionCHF" target="hedgeEURCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="2" source="positionCHF" target="hedgeEURCHF">
+        <edge id="2" source="positionCHF" target="hedgeUSDCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -198,12 +216,12 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="6" source="positionEUR" target="hedgeEURGBP">
+        <edge id="6" source="positionEUR" target="hedgeEURUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="7" source="positionEUR" target="hedgeEURUSD">
+        <edge id="7" source="positionEUR" target="hedgeEURGBP">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -243,132 +261,187 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="15" source="clock" target="eventLogger">
+        <edge id="15" source="idGenerator" target="hedgeUSDCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="16" source="HedgeRouteConfig" target="positionCHF">
+        <edge id="16" source="orderManager" target="hedgeUSDCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="17" source="Trade" target="positionCHF">
+        <edge id="17" source="idGenerator" target="hedgeEURCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="18" source="LimitConfig" target="positionCHF">
+        <edge id="18" source="orderManager" target="hedgeEURCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="19" source="Trade" target="hedgeUSDCHF">
+        <edge id="19" source="idGenerator" target="hedgeEURUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="20" source="Rate" target="hedgeUSDCHF">
+        <edge id="20" source="orderManager" target="hedgeEURUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="21" source="Trade" target="hedgeEURCHF">
+        <edge id="21" source="idGenerator" target="hedgeUSDGBP">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="22" source="Rate" target="hedgeEURCHF">
+        <edge id="22" source="orderManager" target="hedgeUSDGBP">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="23" source="HedgeRouteConfig" target="positionUSD">
+        <edge id="23" source="idGenerator" target="hedgeEURGBP">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="24" source="Trade" target="positionUSD">
+        <edge id="24" source="orderManager" target="hedgeEURGBP">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="25" source="LimitConfig" target="positionUSD">
+        <edge id="25" source="clock" target="eventLogger">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="26" source="Trade" target="hedgeUSDGBP">
+        <edge id="26" source="Signal" target="positionCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="27" source="Rate" target="hedgeUSDGBP">
+        <edge id="27" source="Trade" target="positionCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="28" source="Trade" target="hedgeEURUSD">
+        <edge id="28" source="LimitConfig" target="positionCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="29" source="Rate" target="hedgeEURUSD">
+        <edge id="29" source="HedgeRouteConfig" target="positionCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="30" source="HedgeRouteConfig" target="positionEUR">
+        <edge id="30" source="Rate" target="hedgeEURCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="31" source="Trade" target="positionEUR">
+        <edge id="31" source="Rate" target="hedgeUSDCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="32" source="LimitConfig" target="positionEUR">
+        <edge id="32" source="Signal" target="positionUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="33" source="Trade" target="hedgeEURGBP">
+        <edge id="33" source="Trade" target="positionUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="34" source="Rate" target="hedgeEURGBP">
+        <edge id="34" source="LimitConfig" target="positionUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="35" source="HedgeRouteConfig" target="positionGBP">
+        <edge id="35" source="HedgeRouteConfig" target="positionUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="36" source="Trade" target="positionGBP">
+        <edge id="36" source="Rate" target="hedgeUSDGBP">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="37" source="LimitConfig" target="positionGBP">
+        <edge id="37" source="Rate" target="hedgeEURUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="38" source="Signal" target="portfolioPosition">
+        <edge id="38" source="Signal" target="positionEUR">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="39" source="EventLogControlEvent" target="eventLogger">
+        <edge id="39" source="Trade" target="positionEUR">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="40" source="ClockStrategyEvent" target="clock">
+        <edge id="40" source="LimitConfig" target="positionEUR">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="41" source="HedgeRouteConfig" target="positionEUR">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="42" source="Rate" target="hedgeEURGBP">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="43" source="Signal" target="positionGBP">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="44" source="Trade" target="positionGBP">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="45" source="LimitConfig" target="positionGBP">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="46" source="HedgeRouteConfig" target="positionGBP">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="47" source="Signal" target="portfolioPosition">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="48" source="Signal" target="idGenerator">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="49" source="Trade" target="orderManager">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="50" source="EventLogControlEvent" target="eventLogger">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="51" source="ClockStrategyEvent" target="clock">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>

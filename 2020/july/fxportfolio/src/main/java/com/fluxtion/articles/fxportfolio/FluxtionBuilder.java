@@ -45,6 +45,7 @@ public class FluxtionBuilder {
         addManagedAsset("GBP");
         buildPositionDependencies();
         cfg.addAuditor(new EventLogManager(), "eventLogger");
+//        cfg.addAuditor(new EventLogManager().tracingOn(EventLogControlEvent.LogLevel.INFO), "eventLogger");
     }
 
     private void addManagedAsset(String ccy, String... hedges) {
