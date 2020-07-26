@@ -11,6 +11,7 @@ import com.fluxtion.articles.fxportfolio.event.Trade;
 import com.fluxtion.articles.fxportfolio.shared.SignalKeys;
 import static com.fluxtion.generator.compiler.InprocessSepCompiler.build;
 import java.util.List;
+import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import org.junit.Test;
 
@@ -24,7 +25,7 @@ public class FluxtionBuilderTest {
     public void testSomeMethod() throws Exception {
 //        StaticEventProcessor processor = reuseOrBuild("PortfolioCalc", "com.fluxtion.articles.fxportfolio.generated",new FluxtionBuilder()::buildPortfolioCalc);
         StaticEventProcessor processor = build("PortfolioCalc", "com.fluxtion.articles.fxportfolio.generated",new FluxtionBuilder()::buildPortfolioCalc);
-        processor.onEvent(new Signal<>(SignalKeys.ORDER_ID, new ConcurrentLinkedQueue<>(List.of("1","2","3","4", "5", "6"))));
+        processor.onEvent(new Signal<Queue<String>>(SignalKeys.ORDER_ID, new ConcurrentLinkedQueue<>(List.of("1","2","3","4", "5", "6"))));
 //        processor.onEvent(new EventLogControlEvent(LogLevel.TRACE));
         processor.onEvent(new Trade("USDCHF", 100, -90));
         //execute a hedge

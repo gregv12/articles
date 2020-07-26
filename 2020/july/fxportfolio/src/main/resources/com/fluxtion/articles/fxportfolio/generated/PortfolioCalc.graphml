@@ -128,11 +128,11 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="Signal">
+        <node id="HedgeRouteConfig">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;Signal"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;HedgeRouteConfig"/>
                     <jGraph:Style properties="EVENT"/>
                 </jGraph:ShapeNode>
             </data>
@@ -146,20 +146,20 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
+        <node id="Signal">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;Signal"/>
+                    <jGraph:Style properties="EVENT"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
         <node id="LimitConfig">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
                     <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;LimitConfig"/>
-                    <jGraph:Style properties="EVENT"/>
-                </jGraph:ShapeNode>
-            </data>
-        </node>
-        <node id="HedgeRouteConfig">
-            <data key="vertex_label">
-                <jGraph:ShapeNode>
-                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;HedgeRouteConfig"/>
                     <jGraph:Style properties="EVENT"/>
                 </jGraph:ShapeNode>
             </data>
@@ -316,7 +316,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="26" source="Signal" target="positionCHF">
+        <edge id="26" source="HedgeRouteConfig" target="positionCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -326,12 +326,12 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="28" source="LimitConfig" target="positionCHF">
+        <edge id="28" source="Signal" target="positionCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="29" source="HedgeRouteConfig" target="positionCHF">
+        <edge id="29" source="LimitConfig" target="positionCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -346,7 +346,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="32" source="Signal" target="positionUSD">
+        <edge id="32" source="HedgeRouteConfig" target="positionUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -356,12 +356,12 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="34" source="LimitConfig" target="positionUSD">
+        <edge id="34" source="Signal" target="positionUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="35" source="HedgeRouteConfig" target="positionUSD">
+        <edge id="35" source="LimitConfig" target="positionUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -376,7 +376,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="38" source="Signal" target="positionEUR">
+        <edge id="38" source="HedgeRouteConfig" target="positionEUR">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -386,12 +386,12 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="40" source="LimitConfig" target="positionEUR">
+        <edge id="40" source="Signal" target="positionEUR">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="41" source="HedgeRouteConfig" target="positionEUR">
+        <edge id="41" source="LimitConfig" target="positionEUR">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -401,7 +401,7 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="43" source="Signal" target="positionGBP">
+        <edge id="43" source="HedgeRouteConfig" target="positionGBP">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -411,12 +411,12 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="45" source="LimitConfig" target="positionGBP">
+        <edge id="45" source="Signal" target="positionGBP">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="46" source="HedgeRouteConfig" target="positionGBP">
+        <edge id="46" source="LimitConfig" target="positionGBP">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
