@@ -17,13 +17,10 @@
 package com.fluxtion.articles.fxportfolio.nodes;
 
 import com.fluxtion.api.annotations.EventHandler;
-import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.Inject;
 import com.fluxtion.api.annotations.NoEventReference;
-import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.audit.EventLogNode;
 import com.fluxtion.articles.fxportfolio.event.Rate;
-import com.fluxtion.articles.fxportfolio.event.Trade;
 import com.fluxtion.articles.fxportfolio.shared.Ccy;
 import com.fluxtion.articles.fxportfolio.shared.CcyPair;
 import com.fluxtion.articles.fxportfolio.shared.Order;
@@ -32,24 +29,19 @@ import com.fluxtion.articles.fxportfolio.shared.Order;
  *
  * @author V12 Technology Ltd.
  */
-public class PairHedge extends EventLogNode implements PairPosition{
-    
+public class PairHedge extends EventLogNode implements PairPosition {
+
     private final String ccyPairStr;
     private final transient CcyPair ccyPair;
-    @Inject(singleton = true, singletonName = "idGenerator")
-    @NoEventReference
-    public IdGenerator idGenerator;
     @Inject(singleton = true, singletonName = "orderManager")
     @NoEventReference
     public OrderManager orderManager;
     private Order order;
-    private boolean newOrderPlaced;
-    private double rate = 1.5; 
+    private double rate = 1.5;
 
     public PairHedge(String ccyPair) {
         this.ccyPairStr = ccyPair;
         this.ccyPair = new CcyPair(ccyPair);
-        idGenerator = null;
     }
 
     @Override
@@ -57,41 +49,44 @@ public class PairHedge extends EventLogNode implements PairPosition{
         return ccyPair;
     }
 
-//    @EventHandler
-//    @EventHandler(filterVariable = "ccyPairStr")
-    public boolean trade(Trade trade) {
-        boolean matches = trade.getCcyPair().equals(ccyPair);
-        
-        log.debug("tradeCcyPair", trade.getCcyPair().name);
-        log.debug("matchCcyPair", matches);
-        log.debug("myCcyPair", ccyPair.name);
-        return matches;
+    public double getPosForCcy(Ccy ccy) {
+        if (order == null || order.isComplete()) {
+            return 0;
+        }
+        return order.getOpenPosForCcy(ccy, rate);
     }
-    
-    public void hedge(Ccy ccy, double amount){
+
+    /**
+     * Place a new hedge if the current hedge does not match the
+     *
+     * @param ccy
+     * @param amount
+     * @return status indicating a new hedge
+     */
+    public boolean hedge(Ccy ccy, double amount) {
         log.info("hedgeCcy", ccy.name());
-        log.info("hedgeAmount", amount);
-        order = Order.buildOrder(ccyPair, ccy, -1*amount, rate, idGenerator);
-        newOrderPlaced = true;
-        log.info("hedgeOrder", order);
+        log.info("hedgeAmount", -1 *amount);
+        if (amount == 0) {
+            orderManager.cancelOrder(order);
+        } else if (order == null) {
+            order = orderManager.placeorder(ccyPair, ccy, -1 * amount, rate);
+            log.info("hedgeOrderId", order.getOrderId());
+        } else {
+            double openPosForCcy = order.getOpenPosForCcy(ccy, rate);
+            if (openPosForCcy != amount) {
+                orderManager.cancelOrder(order);
+            }
+            order = orderManager.placeorder(ccyPair, ccy, -1 * amount, rate);
+            log.info("hedgeOrderId", order.getOrderId());
+        }
+        return true;
     }
-    
-    @EventHandler
-    public boolean rate(Rate trade) {
+
+    @EventHandler(filterVariable = "ccyPairStr")
+    public boolean rate(Rate rate) {
+        log.info("rateUpdate", rate);
+        this.rate = rate.value;
         return false;
     }
-    
-    @OnEvent
-    public boolean recalculateOpenPositions(){
-        boolean update = newOrderPlaced;
-        newOrderPlaced = false;
-        log.info("updated", update);
-        return update;
-    }
-    
 
-    @Initialise
-    public void init(){
-        newOrderPlaced = false;
-    }
 }

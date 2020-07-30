@@ -16,10 +16,23 @@
  */
 package com.fluxtion.articles.fxportfolio.event;
 
+import com.fluxtion.api.event.Event;
+import com.fluxtion.articles.fxportfolio.shared.CcyPair;
+import lombok.Data;
+
 /**
  *
  * @author V12 Technology Ltd.
  */
-public class Rate {
+@Data
+public class Rate implements Event{
+    public final CcyPair ccypair;
+    public final double value;
+
+    @Override
+    public String filterString() {
+        return ccypair==null?"":ccypair.name;
+    }
+    
     
 }

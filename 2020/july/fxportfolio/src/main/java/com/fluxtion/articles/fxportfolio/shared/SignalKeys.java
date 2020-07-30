@@ -23,6 +23,8 @@ package com.fluxtion.articles.fxportfolio.shared;
  */
 public class SignalKeys {
     public static final String PUBLISH_POSITIONS = "PUBLISH_POSITIONS";
+    public static final String PUBLISH_POSITIONS_STOP = "PUBLISH_POSITIONS_STOP";
+    public static final String REGISTER_ORDER_PUBLISHER = "REGISTER_ORDER_PUBLISHER";
     public static final String CLOSE_POSITIONS = "CLOSE_POSITIONS";
     public static final String ORDER_ID = "ORDER_ID";
 }

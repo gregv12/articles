@@ -19,6 +19,7 @@ package com.fluxtion.articles.fxportfolio.event;
 import com.fluxtion.api.event.Event;
 import com.fluxtion.articles.fxportfolio.shared.Ccy;
 import com.fluxtion.articles.fxportfolio.shared.CcyPair;
+import com.fluxtion.articles.fxportfolio.shared.Order;
 import lombok.Data;
 
 /**
@@ -26,37 +27,53 @@ import lombok.Data;
  * @author V12 Technology Ltd.
  */
 @Data
-public class Trade implements Event{
-    
+public class Trade implements Event {
+
     private final CcyPair ccyPair;
     private double termsAmout;
     private double baseAmout;
     private String orderId;
-    
-    public Trade(String ccyPair, double terms, double base){
+
+    public Trade(String ccyPair, double terms, double base) {
         this.ccyPair = CcyPair.from(ccyPair);
         this.termsAmout = terms;
         this.baseAmout = base;
     }
-    
-    public Trade(String ccyPair, double terms, double base, String orderId){
+
+    public Trade(String ccyPair, double terms, double base, String orderId) {
         this.ccyPair = CcyPair.from(ccyPair);
         this.termsAmout = terms;
         this.baseAmout = base;
         this.orderId = orderId;
     }
-    
-    public Trade(CcyPair ccyPair, double terms, double base){
+
+    public Trade(CcyPair ccyPair, double terms, double base) {
         this.ccyPair = ccyPair;
         this.termsAmout = terms;
         this.baseAmout = base;
     }
-    
-    public double amountForCcy(Ccy ccy){
+
+    public Trade(CcyPair ccyPair, double terms, double base, String orderId) {
+        this.ccyPair = ccyPair;
+        this.termsAmout = terms;
+        this.baseAmout = base;
+        this.orderId = orderId;
+    }
+
+    public Trade(Order order, double rate) {
+        this(
+                order.getCcyPair(),
+                order.getOpenPosForCcy(order.getCcyPair().terms, rate),
+                order.getOpenPosForCcy(order.getCcyPair().base, rate),
+                order.getOrderId()
+        );
+    }
+
+    public double amountForCcy(Ccy ccy) {
         double amount = 0;
-        if(ccyPair.terms == ccy){
+        if (ccyPair.terms == ccy) {
             amount = termsAmout;
-        }else if(ccyPair.base == ccy){
+        } else if (ccyPair.base == ccy) {
             amount = baseAmout;
         }
         return amount;
@@ -66,10 +83,15 @@ public class Trade implements Event{
     public String filterString() {
         return ccyPair.name;
     }
-    
+
     @Override
     public String toString() {
-        return "Trade: {" + "ccyPair: " + ccyPair.name + ", termsAmout: " + termsAmout + ", baseAmout: " + baseAmout + '}';
+        return "Trade: {"
+                + "ccyPair: " + ccyPair.name
+                + ", orderId: " + orderId
+                + ", termsAmout: " + termsAmout
+                + ", baseAmout: " + baseAmout
+                + '}';
     }
-    
+
 }

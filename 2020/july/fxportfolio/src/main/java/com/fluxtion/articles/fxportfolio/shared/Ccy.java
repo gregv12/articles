@@ -24,5 +24,5 @@ import lombok.Data;
  */
 public enum Ccy {
     
-    EUR,CHF,USD,GBP;
+    EUR,CHF,JPY,USD,GBP;
 }
