@@ -155,15 +155,6 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="Trade">
-            <data key="vertex_label">
-                <jGraph:ShapeNode>
-                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;Trade"/>
-                    <jGraph:Style properties="EVENT"/>
-                </jGraph:ShapeNode>
-            </data>
-        </node>
         <node id="LimitConfig">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
@@ -178,6 +169,15 @@
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
                     <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;Signal"/>
+                    <jGraph:Style properties="EVENT"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="Trade">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;Trade"/>
                     <jGraph:Style properties="EVENT"/>
                 </jGraph:ShapeNode>
             </data>
@@ -383,17 +383,17 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="34" source="Trade" target="positionCHF">
+        <edge id="34" source="LimitConfig" target="positionCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="35" source="LimitConfig" target="positionCHF">
+        <edge id="35" source="Signal" target="positionCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="36" source="Signal" target="positionCHF">
+        <edge id="36" source="Trade" target="positionCHF">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -413,17 +413,17 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="40" source="Trade" target="positionUSD">
+        <edge id="40" source="LimitConfig" target="positionUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="41" source="LimitConfig" target="positionUSD">
+        <edge id="41" source="Signal" target="positionUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="42" source="Signal" target="positionUSD">
+        <edge id="42" source="Trade" target="positionUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -448,17 +448,17 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="47" source="Trade" target="positionEUR">
+        <edge id="47" source="LimitConfig" target="positionEUR">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="48" source="LimitConfig" target="positionEUR">
+        <edge id="48" source="Signal" target="positionEUR">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="49" source="Signal" target="positionEUR">
+        <edge id="49" source="Trade" target="positionEUR">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -478,17 +478,17 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="53" source="Trade" target="positionJPY">
+        <edge id="53" source="LimitConfig" target="positionJPY">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="54" source="LimitConfig" target="positionJPY">
+        <edge id="54" source="Signal" target="positionJPY">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="55" source="Signal" target="positionJPY">
+        <edge id="55" source="Trade" target="positionJPY">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -498,17 +498,17 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="57" source="Trade" target="positionGBP">
+        <edge id="57" source="LimitConfig" target="positionGBP">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="58" source="LimitConfig" target="positionGBP">
+        <edge id="58" source="Signal" target="positionGBP">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="59" source="Signal" target="positionGBP">
+        <edge id="59" source="Trade" target="positionGBP">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>

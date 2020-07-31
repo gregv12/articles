@@ -27,14 +27,35 @@ import com.fluxtion.articles.fxportfolio.shared.Ccy;
 public class LimitConfig implements Event{
     
     private final Ccy ccy;
+    private final int limit;
+    private final int target;
 
-    public LimitConfig(Ccy ccy) {
+    public LimitConfig(Ccy ccy, int limit, int target) {
         this.ccy = ccy;
+        this.limit = limit;
+        this.target = target;
     }
 
     @Override
     public String filterString() {
         return ccy.name();
+    }
+
+    public Ccy getCcy() {
+        return ccy;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public int getTarget() {
+        return target;
+    }
+
+    @Override
+    public String toString() {
+        return "LimitConfig: {" + "ccy:" + ccy + ", limit:" + limit + ", target:" + target + '}';
     }
     
 }

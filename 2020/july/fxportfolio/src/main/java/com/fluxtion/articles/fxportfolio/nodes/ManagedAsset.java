@@ -44,10 +44,13 @@ public class ManagedAsset extends EventLogNode {
     public List<PairPosition> openPositions = new ArrayList<>();
     public final Ccy currency;
     private double position;
+    //above this value start hedging
+    private int hedgingThreshold = 400;
+    //threshold
+    private int hedgingTarget = 50;
     @Inject(singleton = true, singletonName = "orderManager")
     @NoEventReference
     public OrderManager orderManager;
-    
 
     public ManagedAsset(Ccy currency) {
         this.currency = currency;
@@ -65,31 +68,48 @@ public class ManagedAsset extends EventLogNode {
         position = round(position, 2);
         log.debug("tradeCcyPair", trade.getCcyPair().name);
         log.debug("matchPosCcy", matches);
-//        if (matches) {
+        log.info("tradeUpdate", matches);
+        hedgeCalc();
+        return matches;
+    }
+
+    private boolean hedgeCalc() {
+        boolean placedHedge = false;
         double openPos = round(openPositions.stream().mapToDouble(p -> p.getPosForCcy(currency)).sum(), 2);
         double hedgeOpenPos = round(hedgeList.stream().mapToDouble(p -> p.getPosForCcy(currency)).sum(), 2);
         double totalOpen = round(openPos + hedgeOpenPos, 2);
-
+        boolean hedge = Math.abs((int) (totalOpen + position)) > hedgingThreshold;
         double hedgeAmount = round(openPos + position, 2);
-        boolean hedge = ((int) (totalOpen + position)) != 0;
-        log.info("tradeUpdate", matches);
+        if (Math.abs(hedgeAmount) < hedgingTarget) {
+            hedgeAmount = 0;
+        }else{
+            hedgeAmount += hedgeAmount < 1 ? hedgingTarget : -hedgingTarget;
+        }
         log.info("position", position);
         log.info("openPosition", openPos);
         log.info("hedgeOpenPos", hedgeOpenPos);
         log.info("totalOpen", totalOpen);
+        log.info("hedgingThreshold", hedgingThreshold);
+        log.info("hedgingTarget", hedgingTarget);
         log.info("hedgeAmount", hedgeAmount);
         log.info("newHedge", hedge);
         log.info("hedgerAvailable", currentHedger != null);
         if (currentHedger != null && hedge) {
             currentHedger.hedge(currency, hedgeAmount);
+            placedHedge = true;
         }
-        //calculate open positions
-        return matches;
+        return placedHedge;
     }
 
     @EventHandler
 //    @EventHandler(filterVariable = "currency")
     public boolean updateHedgeLimits(LimitConfig cfg) {
+        if(cfg.getCcy() == currency){
+            log.info("limitUpdate", cfg.getLimit());
+            hedgingThreshold = cfg.getLimit();
+            hedgingTarget = cfg.getTarget();
+            return hedgeCalc();
+        }
         return false;
     }
 
@@ -103,12 +123,6 @@ public class ManagedAsset extends EventLogNode {
         return false;
     }
 
-//    @OnEvent
-    public boolean recalculateHedges() {
-        log.info("positionRecalc", true);
-        log.info("position", position);
-        return true;
-    }
 
     @Initialise
     public void init() {

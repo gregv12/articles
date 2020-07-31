@@ -7,8 +7,10 @@ package com.fluxtion.articles.fxportfolio;
 
 import com.fluxtion.api.StaticEventProcessor;
 import com.fluxtion.api.event.Signal;
+import com.fluxtion.articles.fxportfolio.event.LimitConfig;
 import com.fluxtion.articles.fxportfolio.event.Rate;
 import com.fluxtion.articles.fxportfolio.event.Trade;
+import com.fluxtion.articles.fxportfolio.shared.Ccy;
 import com.fluxtion.articles.fxportfolio.shared.CcyPair;
 import com.fluxtion.articles.fxportfolio.shared.EventSink;
 import com.fluxtion.articles.fxportfolio.shared.Order;
@@ -65,6 +67,8 @@ public class FluxtionBuilderTest {
     @Test
     public void testSomeMethod() throws Exception {
 //        processor.onEvent(new EventLogControlEvent(LogLevel.TRACE));
+        processor.onEvent(new LimitConfig(Ccy.JPY, 30000, 5000));
+        processor.onEvent(new LimitConfig(Ccy.USD, 80, 10));
         processor.onEvent(new Trade("USDCHF", 100, -70));
         processor.onEvent(new Trade("EURCHF", 350, -390));
         processor.onEvent(new Trade("USDJPY", 350, -36000));
@@ -94,7 +98,9 @@ public class FluxtionBuilderTest {
         }
 
         private void printActiveOrders() {
+            System.out.println("---- start active orders ----");
             liveOrders.values().stream().forEach(System.out::println);
+            System.out.println("---- end active orders   ----");
         }
 
         public void publishRates() {
