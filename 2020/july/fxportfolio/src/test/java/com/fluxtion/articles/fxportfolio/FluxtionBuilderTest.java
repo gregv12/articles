@@ -18,7 +18,6 @@ import com.fluxtion.articles.fxportfolio.shared.SignalKeys;
 import static com.fluxtion.generator.compiler.InprocessSepCompiler.reuseOrBuild;
 import static com.fluxtion.generator.compiler.InprocessSepCompiler.build;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -81,7 +80,7 @@ public class FluxtionBuilderTest {
 //        processor.onEvent(new Trade("USDCHF", 300, -270));
 //        processor.onEvent(new Trade("GBPUSD", 200, -225));
     }
-
+    
     private static class ExecutionVenue implements EventSink {
 
         private final StaticEventProcessor processor;

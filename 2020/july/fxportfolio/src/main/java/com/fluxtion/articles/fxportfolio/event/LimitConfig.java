@@ -19,16 +19,21 @@ package com.fluxtion.articles.fxportfolio.event;
 
 import com.fluxtion.api.event.Event;
 import com.fluxtion.articles.fxportfolio.shared.Ccy;
+import com.fluxtion.ext.text.api.annotation.CsvMarshaller;
 
 /**
  *
  * @author Greg Higgins greg.higgins@v12technology.com
  */
+@CsvMarshaller(packageName = "com.fluxtion.articles.fxportfolio.csvmarshaller")
 public class LimitConfig implements Event{
     
-    private final Ccy ccy;
-    private final int limit;
-    private final int target;
+    private Ccy ccy;
+    private int limit;
+    private int target;
+
+    public LimitConfig() {
+    }
 
     public LimitConfig(Ccy ccy, int limit, int target) {
         this.ccy = ccy;
@@ -53,6 +58,18 @@ public class LimitConfig implements Event{
         return target;
     }
 
+    public void setCcy(Ccy ccy) {
+        this.ccy = ccy;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
+    public void setTarget(int target) {
+        this.target = target;
+    }
+    
     @Override
     public String toString() {
         return "LimitConfig: {" + "ccy:" + ccy + ", limit:" + limit + ", target:" + target + '}';

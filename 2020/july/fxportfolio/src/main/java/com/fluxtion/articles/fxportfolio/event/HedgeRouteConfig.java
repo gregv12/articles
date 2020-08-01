@@ -18,19 +18,26 @@ package com.fluxtion.articles.fxportfolio.event;
 
 import com.fluxtion.api.event.Event;
 import com.fluxtion.articles.fxportfolio.shared.Ccy;
+import com.fluxtion.ext.text.api.annotation.CsvMarshaller;
+import lombok.Data;
 
 /**
  *
  * @author V12 Technology Ltd.
  */
+@Data
+@CsvMarshaller(packageName = "com.fluxtion.articles.fxportfolio.csvmarshaller")
 public class HedgeRouteConfig implements Event{
     
-    private final Ccy ccy;
+    private Ccy ccy;
 
     public HedgeRouteConfig(Ccy ccy) {
         this.ccy = ccy;
     }
 
+    public HedgeRouteConfig() {
+    }
+    
     @Override
     public String filterString() {
         return ccy.name();

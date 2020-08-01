@@ -18,6 +18,8 @@ package com.fluxtion.articles.fxportfolio.event;
 
 import com.fluxtion.api.event.Event;
 import com.fluxtion.articles.fxportfolio.shared.CcyPair;
+import com.fluxtion.ext.text.api.annotation.ConvertField;
+import com.fluxtion.ext.text.api.annotation.CsvMarshaller;
 import lombok.Data;
 
 /**
@@ -25,14 +27,24 @@ import lombok.Data;
  * @author V12 Technology Ltd.
  */
 @Data
-public class Rate implements Event{
-    public final CcyPair ccypair;
-    public final double value;
+@CsvMarshaller(packageName = "com.fluxtion.articles.fxportfolio.csvmarshaller")
+public class Rate implements Event {
+
+    @ConvertField("com.fluxtion.articles.fxportfolio.shared.CcyPair#from")
+    public CcyPair ccypair;
+    public double value;
+
+    public Rate(CcyPair ccypair, double value) {
+        this.ccypair = ccypair;
+        this.value = value;
+    }
+
+    public Rate() {
+    }
 
     @Override
     public String filterString() {
-        return ccypair==null?"":ccypair.name;
+        return ccypair == null ? "" : ccypair.name;
     }
-    
-    
+
 }

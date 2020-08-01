@@ -33,6 +33,9 @@
     <profiles>
         <profile>
             <id>fluxtion</id>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
             <activation>
                 <activeByDefault>false</activeByDefault>
                 <!--<activeByDefault>true</activeByDefault>-->

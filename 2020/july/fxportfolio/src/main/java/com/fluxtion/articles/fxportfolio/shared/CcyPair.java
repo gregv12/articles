@@ -37,9 +37,13 @@ public class CcyPair {
         this.base = base;
         this.name = terms.toString() + base.toString();
     }
-    
-    public static CcyPair from(String ccyPair){
-        return new CcyPair(ccyPair);
+//    
+//    public static CcyPair from(String ccyPair){
+//        return new CcyPair(ccyPair);
+//    }
+//    
+    public static CcyPair from(CharSequence ccyPair){
+        return new CcyPair(ccyPair.toString());
     }
 
     public boolean containsCcy(Ccy ccy) {
