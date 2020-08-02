@@ -16,6 +16,7 @@
  */
 package com.fluxtion.articles.fxportfolio.shared;
 
+import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -37,15 +38,15 @@ public class CcyPair {
         this.base = base;
         this.name = terms.toString() + base.toString();
     }
-//    
-//    public static CcyPair from(String ccyPair){
-//        return new CcyPair(ccyPair);
-//    }
-//    
-    public static CcyPair from(CharSequence ccyPair){
+  
+    public static CcyPair ccyPairFromCharSeq(CharSequence ccyPair){
         return new CcyPair(ccyPair.toString());
     }
-
+  
+    public static void ccyPairToCharSequence(CcyPair ccyPair, Appendable msg) throws IOException{
+        msg.append(ccyPair.name);
+    }
+    
     public boolean containsCcy(Ccy ccy) {
         return base == ccy || terms == ccy;
     }

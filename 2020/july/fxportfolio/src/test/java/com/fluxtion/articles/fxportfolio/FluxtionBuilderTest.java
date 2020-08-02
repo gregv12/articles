@@ -72,13 +72,10 @@ public class FluxtionBuilderTest {
         processor.onEvent(new Trade("EURCHF", 350, -390));
         processor.onEvent(new Trade("USDJPY", 350, -36000));
 
-        orderExecutor.printActiveOrders();
-        orderExecutor.executeAllOrders();
+//        orderExecutor.printActiveOrders();
+//        orderExecutor.executeAllOrders();
 
-//        processor.onEvent(new Trade("USDCHF", 100, -90));
-//        processor.onEvent(new Trade("USDCHF", -250, 225));
-//        processor.onEvent(new Trade("USDCHF", 300, -270));
-//        processor.onEvent(new Trade("GBPUSD", 200, -225));
+
     }
     
     private static class ExecutionVenue implements EventSink {
@@ -92,7 +89,7 @@ public class FluxtionBuilderTest {
         }
 
         public void addRate(String ccyPair, double rate) {
-            CcyPair ccyPairParsed = CcyPair.from(ccyPair);
+            CcyPair ccyPairParsed = CcyPair.ccyPairFromCharSeq(ccyPair);
             ccyPair2Rate.put(ccyPairParsed, new Rate(ccyPairParsed, rate));
         }
 

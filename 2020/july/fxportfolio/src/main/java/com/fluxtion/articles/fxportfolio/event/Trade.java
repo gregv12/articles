@@ -21,6 +21,7 @@ import com.fluxtion.articles.fxportfolio.shared.Ccy;
 import com.fluxtion.articles.fxportfolio.shared.CcyPair;
 import com.fluxtion.articles.fxportfolio.shared.Order;
 import com.fluxtion.ext.text.api.annotation.ConvertField;
+import com.fluxtion.ext.text.api.annotation.ConvertToCharSeq;
 import com.fluxtion.ext.text.api.annotation.CsvMarshaller;
 import lombok.Data;
 
@@ -32,7 +33,8 @@ import lombok.Data;
 @CsvMarshaller(packageName = "com.fluxtion.articles.fxportfolio.csvmarshaller")
 public class Trade implements Event {
 
-    @ConvertField("com.fluxtion.articles.fxportfolio.shared.CcyPair#from")
+    @ConvertField("com.fluxtion.articles.fxportfolio.shared.CcyPair#ccyPairFromCharSeq")
+    @ConvertToCharSeq("com.fluxtion.articles.fxportfolio.shared.CcyPair#ccyPairToCharSequence")
     private CcyPair ccyPair;
     private double termsAmout;
     private double baseAmout;
@@ -42,13 +44,13 @@ public class Trade implements Event {
     }
 
     public Trade(String ccyPair, double terms, double base) {
-        this.ccyPair = CcyPair.from(ccyPair);
+        this.ccyPair = CcyPair.ccyPairFromCharSeq(ccyPair);
         this.termsAmout = terms;
         this.baseAmout = base;
     }
 
     public Trade(String ccyPair, double terms, double base, String orderId) {
-        this.ccyPair = CcyPair.from(ccyPair);
+        this.ccyPair = CcyPair.ccyPairFromCharSeq(ccyPair);
         this.termsAmout = terms;
         this.baseAmout = base;
         this.orderId = orderId;

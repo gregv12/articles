@@ -30,7 +30,7 @@ import lombok.Data;
 @CsvMarshaller(packageName = "com.fluxtion.articles.fxportfolio.csvmarshaller")
 public class Rate implements Event {
 
-    @ConvertField("com.fluxtion.articles.fxportfolio.shared.CcyPair#from")
+    @ConvertField("com.fluxtion.articles.fxportfolio.shared.CcyPair#ccyPairFromCharSeq")
     public CcyPair ccypair;
     public double value;
 

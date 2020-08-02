@@ -17,11 +17,15 @@
  */
 package com.fluxtion.articles.fxportfolio;
 
+import com.fluxtion.articles.fxportfolio.csvmarshaller.LimitConfigCsvDecoder0;
 import com.fluxtion.articles.fxportfolio.event.HedgeRouteConfig;
 import com.fluxtion.articles.fxportfolio.event.LimitConfig;
 import com.fluxtion.articles.fxportfolio.event.Rate;
 import com.fluxtion.articles.fxportfolio.event.Trade;
+import com.fluxtion.articles.fxportfolio.shared.Ccy;
+import com.fluxtion.ext.text.api.csv.RowProcessor;
 import static com.fluxtion.ext.text.builder.csv.CsvToBeanBuilder.buildRowProcessor;
+import java.io.IOException;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -32,12 +36,22 @@ import org.junit.Test;
 public class CsvTest {
 
     @Test
-//    @Ignore
+    @Ignore
     public void genTest() {
         buildRowProcessor(LimitConfig.class);
         buildRowProcessor(Rate.class);
         buildRowProcessor(Trade.class);
         buildRowProcessor(HedgeRouteConfig.class);
+    }
+
+    @Test
+    public void serCsv() throws IOException {
+        final String csvOut = LimitConfigCsvDecoder0.csvHeader() 
+                + "\n"
+                + new LimitConfigCsvDecoder0().toCsv(new LimitConfig(Ccy.CHF, 22, 4555), new StringBuilder()).toString();
+        System.out.println(csvOut);
+        LimitConfigCsvDecoder0.stream(System.out::println, csvOut);
+        
     }
 
 }

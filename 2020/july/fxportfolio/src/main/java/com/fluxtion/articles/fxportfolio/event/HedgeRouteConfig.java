@@ -27,8 +27,8 @@ import lombok.Data;
  */
 @Data
 @CsvMarshaller(packageName = "com.fluxtion.articles.fxportfolio.csvmarshaller")
-public class HedgeRouteConfig implements Event{
-    
+public class HedgeRouteConfig implements Event {
+
     private Ccy ccy;
 
     public HedgeRouteConfig(Ccy ccy) {
@@ -37,10 +37,10 @@ public class HedgeRouteConfig implements Event{
 
     public HedgeRouteConfig() {
     }
-    
+
     @Override
     public String filterString() {
         return ccy.name();
     }
-    
+
 }

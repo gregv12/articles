@@ -111,6 +111,10 @@ public class Order {
         cancelled = true;
     }
     
+    public CharSequence toYaml(){
+        return "{" + toString() + "}";
+    }
+    
     @Override
     public String toString() {
         return "Order: {" 

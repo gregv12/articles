@@ -20,11 +20,13 @@ package com.fluxtion.articles.fxportfolio.event;
 import com.fluxtion.api.event.Event;
 import com.fluxtion.articles.fxportfolio.shared.Ccy;
 import com.fluxtion.ext.text.api.annotation.CsvMarshaller;
+import lombok.Data;
 
 /**
  *
  * @author Greg Higgins greg.higgins@v12technology.com
  */
+@Data
 @CsvMarshaller(packageName = "com.fluxtion.articles.fxportfolio.csvmarshaller")
 public class LimitConfig implements Event{
     
@@ -32,8 +34,7 @@ public class LimitConfig implements Event{
     private int limit;
     private int target;
 
-    public LimitConfig() {
-    }
+    public LimitConfig() {}
 
     public LimitConfig(Ccy ccy, int limit, int target) {
         this.ccy = ccy;
@@ -45,34 +46,10 @@ public class LimitConfig implements Event{
     public String filterString() {
         return ccy.name();
     }
-
-    public Ccy getCcy() {
-        return ccy;
-    }
-
-    public int getLimit() {
-        return limit;
-    }
-
-    public int getTarget() {
-        return target;
-    }
-
-    public void setCcy(Ccy ccy) {
-        this.ccy = ccy;
-    }
-
-    public void setLimit(int limit) {
-        this.limit = limit;
-    }
-
-    public void setTarget(int target) {
-        this.target = target;
-    }
-    
+   
     @Override
     public String toString() {
         return "LimitConfig: {" + "ccy:" + ccy + ", limit:" + limit + ", target:" + target + '}';
     }
-    
+         
 }
