@@ -70,7 +70,7 @@ public class OrderManager extends EventLogNode {
     public Order placeorder(CcyPair ccyPair, Ccy dealtCcy, double amount, double rate) {
         final Order newOrder = Order.buildOrder(ccyPair, dealtCcy, amount, rate, idGenerator);
         log.info("newOrder", true);
-        log.info("order", newOrder);
+        log.info("order", newOrder.toYaml());
         openOrders.put(newOrder.getOrderId(), newOrder);
         orderSink.handleEvent(newOrder);
         return newOrder;

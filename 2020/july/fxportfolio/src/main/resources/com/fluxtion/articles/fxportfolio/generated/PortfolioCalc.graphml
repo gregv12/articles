@@ -233,12 +233,12 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="4" source="hedgeUSDCHF" target="positionUSD">
+        <edge id="4" source="hedgeUSDJPY" target="positionUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="5" source="hedgeUSDJPY" target="positionUSD">
+        <edge id="5" source="hedgeUSDCHF" target="positionUSD">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -248,12 +248,12 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="7" source="hedgeEURJPY" target="positionEUR">
+        <edge id="7" source="hedgeEURCHF" target="positionEUR">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="8" source="hedgeEURCHF" target="positionEUR">
+        <edge id="8" source="hedgeEURJPY" target="positionEUR">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
@@ -298,17 +298,17 @@
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="17" source="positionEUR" target="portfolioPosition">
+        <edge id="17" source="positionJPY" target="portfolioPosition">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="18" source="positionGBP" target="portfolioPosition">
+        <edge id="18" source="positionEUR" target="portfolioPosition">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="19" source="positionJPY" target="portfolioPosition">
+        <edge id="19" source="positionGBP" target="portfolioPosition">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>

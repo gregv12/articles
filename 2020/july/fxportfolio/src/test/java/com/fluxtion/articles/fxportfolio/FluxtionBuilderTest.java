@@ -18,7 +18,6 @@ import com.fluxtion.articles.fxportfolio.shared.SignalKeys;
 import static com.fluxtion.generator.compiler.InprocessSepCompiler.reuseOrBuild;
 import static com.fluxtion.generator.compiler.InprocessSepCompiler.build;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -73,15 +72,12 @@ public class FluxtionBuilderTest {
         processor.onEvent(new Trade("EURCHF", 350, -390));
         processor.onEvent(new Trade("USDJPY", 350, -36000));
 
-        orderExecutor.printActiveOrders();
-        orderExecutor.executeAllOrders();
+//        orderExecutor.printActiveOrders();
+//        orderExecutor.executeAllOrders();
 
-//        processor.onEvent(new Trade("USDCHF", 100, -90));
-//        processor.onEvent(new Trade("USDCHF", -250, 225));
-//        processor.onEvent(new Trade("USDCHF", 300, -270));
-//        processor.onEvent(new Trade("GBPUSD", 200, -225));
+
     }
-
+    
     private static class ExecutionVenue implements EventSink {
 
         private final StaticEventProcessor processor;
@@ -93,7 +89,7 @@ public class FluxtionBuilderTest {
         }
 
         public void addRate(String ccyPair, double rate) {
-            CcyPair ccyPairParsed = CcyPair.from(ccyPair);
+            CcyPair ccyPairParsed = CcyPair.ccyPairFromCharSeq(ccyPair);
             ccyPair2Rate.put(ccyPairParsed, new Rate(ccyPairParsed, rate));
         }
 
