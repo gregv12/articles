@@ -36,7 +36,7 @@ import org.junit.Test;
 public class CsvTest {
 
     @Test
-//    @Ignore
+    @Ignore
     public void genTest() {
         buildRowProcessor(LimitConfig.class);
         buildRowProcessor(Rate.class);
@@ -46,11 +46,11 @@ public class CsvTest {
 
     @Test
     public void serCsv() throws IOException {
-//        final String csvOut = LimitConfigCsvDecoder0.csvHeader() 
-//                + "\n"
-//                + new LimitConfigCsvDecoder0().toCsv(new LimitConfig(Ccy.CHF, 22, 4555), new StringBuilder()).toString();
-//        System.out.println(csvOut);
-//        LimitConfigCsvDecoder0.stream(System.out::println, csvOut);
+        final String csvOut = LimitConfigCsvDecoder0.csvHeader() 
+                + "\n"
+                + new LimitConfigCsvDecoder0().toCsv(new LimitConfig(Ccy.CHF, 22, 4555), new StringBuilder()).toString();
+        System.out.println(csvOut);
+        LimitConfigCsvDecoder0.stream(System.out::println, csvOut);
         
     }
 
