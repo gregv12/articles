@@ -18,16 +18,21 @@ package com.fluxtion.articles.fxportfolio.shared;
 
 import java.io.IOException;
 import java.util.Objects;
+import lombok.Data;
 
 /**
  *
  * @author V12 Technology Ltd.
  */
+@Data
 public class CcyPair {
 
-    public final Ccy base;
-    public final Ccy terms;
-    public final String name;
+    public Ccy base;
+    public Ccy terms;
+    public String name;
+
+    public CcyPair() {
+    }
     
     public CcyPair(String pair) {
         this(Ccy.valueOf(pair.substring(0, 3)), Ccy.valueOf(pair.substring(3)));

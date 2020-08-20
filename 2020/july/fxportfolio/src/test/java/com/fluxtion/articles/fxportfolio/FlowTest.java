@@ -17,7 +17,6 @@
  */
 package com.fluxtion.articles.fxportfolio;
 
-
 import com.fluxtion.api.audit.EventLogControlEvent;
 import com.fluxtion.api.event.Signal;
 import com.fluxtion.articles.fxportfolio.event.LimitConfig;
@@ -35,51 +34,136 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import com.fluxtion.articles.fxportfolio.event.HedgeRouteConfig;
+import com.fluxtion.articles.fxportfolio.event.Rate;
+import com.fluxtion.articles.fxportfolio.shared.CcyPair;
 import com.fluxtion.ext.text.builder.csv.CsvToBeanBuilder;
 import com.fluxtion.integration.eventflow.EventFlow;
 import com.fluxtion.integration.eventflow.filters.ConsoleFilter;
 import com.fluxtion.integration.eventflow.sources.ManualEventSource;
+import com.fluxtion.integration.log4j2.JournalRecord;
 import com.fluxtion.integration.log4j2.Log4j2CsvJournaller;
 import com.fluxtion.integration.log4j2.Log4j2SnakeYamlJournaller;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.introspector.BeanAccess;
+import org.yaml.snakeyaml.nodes.Tag;
 
 /**
  *
  * @author V12 Technology Ltd.
  */
 public class FlowTest {
-    
+
     @Test
     @Ignore
-    public void genCsv(){
+    public void genCsv() {
         CsvToBeanBuilder.buildRowProcessor(HedgeRouteConfig.class);
     }
-    
+
     @Test
-    public void auditTest(){
+    public void auditTest() {
         ManualEventSource eventInjector = new ManualEventSource("manulaEventSrc");
         EventFlow.flow(eventInjector)
                 .pipeline(new Log4j2CsvJournaller())
                 .next(new Log4j2SnakeYamlJournaller())
                 .next(new ConsoleFilter())
                 .start();
-        
+
 //        eventInjector.publishToFlow("hello world");
 //        eventInjector.publishToFlow(new HedgeRouteConfig(Ccy.CHF));
 //        eventInjector.publishToFlow(new HedgeRouteConfig(Ccy.EUR));
-//        eventInjector.publishToFlow(new Rate(CcyPair.from("EURUSD"),1.15));
-//        eventInjector.publishToFlow(new Rate(CcyPair.from("EURGBP"),0.97));
+        eventInjector.publishToFlow(new Rate(CcyPair.ccyPairFromCharSeq("EURUSD"), 1.15));
+        eventInjector.publishToFlow(new Rate(CcyPair.ccyPairFromCharSeq("EURGBP"), 0.97));
+    }
+
+    @Test
+    public void readYamlLog() {
+        String s = "event: !!com.fluxtion.articles.fxportfolio.event.Rate\n"
+                + "  ccypair: {base: USD, name: EURUSD, terms: EUR}\n"
+                + "  value: 1.15\n";
+//                + "---";
+
+        Yaml yaml = new Yaml();
+        JournalRecord record = yaml.loadAs(s, JournalRecord.class);
+        System.out.println("out:" + record.toString());
+    }
+
+    @Test
+    public void readYamlList() {
+        String s = "---\n"
+                + "!!com.fluxtion.integration.log4j2.JournalRecord\n"
+                + "event: !!com.fluxtion.articles.fxportfolio.event.Rate\n"
+                + "  ccypair: {base: USD, name: EURUSD, terms: EUR}\n"
+                + "  value: 1.15\n"
+                + "---\n"
+                + "!!com.fluxtion.integration.log4j2.JournalRecord\n"
+                + "event: !!com.fluxtion.articles.fxportfolio.event.Rate\n"
+                + "  ccypair: {base: GBP, name: EURGBP, terms: EUR}\n"
+                + "  value: 0.97\n"
+                + "---\n";
+
+        Yaml yaml = new Yaml();
+        Iterable records = yaml.loadAll(s);
+        
+        records.forEach(System.out::println);
+        
+//        System.out.println("out:" + record.toString());
+    }
+    @Test
+    public void readYamlListNoTopTag() {
+        String s = "---\n"
+                + "event: !!com.fluxtion.articles.fxportfolio.event.Rate\n"
+                + "  ccypair: {base: USD, name: EURUSD, terms: EUR}\n"
+                + "  value: 2.15\n"
+                + "---\n"
+                + "event: !!com.fluxtion.articles.fxportfolio.event.Rate\n"
+                + "  ccypair: {base: GBP, name: EURGBP, terms: EUR}\n"
+                + "  value: 1.97\n";
+//                + "---\n";
+
+        Yaml yaml = new Yaml(new Constructor(JournalRecord.class));
+        Iterable records = yaml.loadAll(s);
+        
+        records.forEach(System.out::println);
+        
+//        System.out.println("out:" + record.toString());
     }
     
+    @Test
+    public void yamlNullValue(){
+        Signal<Object> signal = new Signal<>(SignalKeys.PUBLISH_POSITIONS);
+        JournalRecord record = new JournalRecord();
+        record.setEvent(signal);
+        Yaml yaml = new Yaml();
+//        String yamlDump = yaml.dump(record);
+//        final String yamlDump = yaml.dumpAs(record, Tag.MAP, null);
+        final String yamlDump = yaml.dumpAsMap(record);
+        System.out.println("yamlDump:" + yamlDump);
+    }
+    
+    @Test
+    public void yamlImmutable(){
+        EventLogControlEvent loegControlEvent = new EventLogControlEvent(new Log4j2AuditLogger());
+        
+        DumperOptions dop = new DumperOptions();
+        dop.setAllowReadOnlyProperties(true);
+        Yaml yaml = new Yaml(dop);
+//        final String yamlDump = yaml.dumpAs(loegControlEvent, Tag.MAP, null);
+        final String yamlDump = yaml.dump(loegControlEvent);
+        System.out.println( yamlDump);
+    }
 
     @Test
     public void flowTest() {
         ManualEventSource eventInjector = new ManualEventSource("manualSource1");
         EventFlow.flow(eventInjector)
                 .pipeline(new Log4j2Filter())
-                .next(new Log4j2CsvJournaller())
-//                .next(new TestingCsvJournaller())
+//                .next(new Log4j2CsvJournaller())
+                .next(new Log4j2SnakeYamlJournaller())
+                //                .next(new TestingCsvJournaller())
                 .next(SepEventPublisher.of(new PortfolioCalc()))
                 .start();
         //deterministic ids for orders

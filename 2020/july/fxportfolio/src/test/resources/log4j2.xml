@@ -14,8 +14,9 @@
                 <Pattern>%m</Pattern>
             </PatternLayout>
         </File>
-    
-    
+        <File name="yamlJournaller" fileName="target/generated-test-sources/logs/fluxtionEventJournal.yaml" immediateFlush="true" append="false">
+            <PatternLayout pattern="%msg"/>
+        </File>
     </Appenders>
     <Loggers>
         <Root level="INFO">
@@ -24,6 +25,9 @@
         <Logger name="fluxtion.journaller.csv" level="trace" additivity="false">
          <AppenderRef ref="csvjournaller"/>
        </Logger>
+        <logger name="fluxtion.journaller.yaml" level="info" additivity="false">
+            <AppenderRef ref="yamlJournaller"/>
+        </logger>
         <Logger name="fluxtion.eventLog" level="trace" additivity="false">
          <AppenderRef ref="sepaudit"/>
        </Logger>
