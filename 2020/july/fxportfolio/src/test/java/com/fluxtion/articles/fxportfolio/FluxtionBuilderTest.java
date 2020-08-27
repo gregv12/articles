@@ -36,8 +36,8 @@ public class FluxtionBuilderTest {
 
     private ExecutionVenue orderExecutor;
     private StaticEventProcessor processor;
-    private boolean reuse = false;
-    private String cfgString = "CHF: [USDCHF, EURCHF]\n"
+    private final boolean reuse = false;
+    private final String cfgString = "CHF: [USDCHF, EURCHF]\n"
             + "USD: [GBPUSD]\n"
             + "EUR: [EURGBP, EURUSD]\n"
             + "JPY: [USDJPY, EURJPY]\n"

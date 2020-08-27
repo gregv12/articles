@@ -26,7 +26,6 @@ import com.fluxtion.articles.fxportfolio.shared.Ccy;
 import com.fluxtion.articles.fxportfolio.shared.EventSink;
 import com.fluxtion.articles.fxportfolio.shared.SignalKeys;
 import com.fluxtion.integration.eventflow.filters.Log4j2Filter;
-import com.fluxtion.integration.eventflow.filters.SepEventPublisher;
 import com.fluxtion.integration.log4j2.Log4j2AuditLogger;
 import java.util.List;
 import java.util.Queue;
@@ -39,23 +38,38 @@ import com.fluxtion.articles.fxportfolio.shared.CcyPair;
 import com.fluxtion.ext.text.builder.csv.CsvToBeanBuilder;
 import com.fluxtion.integration.eventflow.EventFlow;
 import com.fluxtion.integration.eventflow.filters.ConsoleFilter;
+import com.fluxtion.integration.eventflow.sources.AsynchEventSource;
+import com.fluxtion.integration.eventflow.sources.DelimitedPullSource;
+import com.fluxtion.integration.eventflow.sources.DelimitedSource;
 import com.fluxtion.integration.eventflow.sources.ManualEventSource;
+import static com.fluxtion.integration.eventflow.sources.TransformSource.transform;
+import static com.fluxtion.integration.eventflow.sources.TransformPullSource.transform;
 import com.fluxtion.integration.log4j2.JournalRecord;
 import com.fluxtion.integration.log4j2.Log4j2CsvJournaller;
 import com.fluxtion.integration.log4j2.Log4j2SnakeYamlJournaller;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.StringReader;
+import java.nio.charset.Charset;
+import java.util.concurrent.Executors;
+import org.apache.commons.io.FileUtils;
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
-import org.yaml.snakeyaml.introspector.BeanAccess;
-import org.yaml.snakeyaml.nodes.Tag;
 
 /**
  *
  * @author V12 Technology Ltd.
  */
 public class FlowTest {
+
+    @Rule
+    public TemporaryFolder folder = new TemporaryFolder();
 
     @Test
     @Ignore
@@ -65,9 +79,11 @@ public class FlowTest {
 
     @Test
     public void auditTest() {
-        ManualEventSource eventInjector = new ManualEventSource("manulaEventSrc");
-        EventFlow.flow(eventInjector)
-                .pipeline(new Log4j2CsvJournaller())
+        ManualEventSource eventInjector1 = new ManualEventSource("manualEventSrc_1");
+        ManualEventSource eventInjector2 = new ManualEventSource("manuaiEventSrc_2");
+        EventFlow.flow(eventInjector1)
+                .source(eventInjector2)
+                .first(new Log4j2CsvJournaller())
                 .next(new Log4j2SnakeYamlJournaller())
                 .next(new ConsoleFilter())
                 .start();
@@ -75,8 +91,8 @@ public class FlowTest {
 //        eventInjector.publishToFlow("hello world");
 //        eventInjector.publishToFlow(new HedgeRouteConfig(Ccy.CHF));
 //        eventInjector.publishToFlow(new HedgeRouteConfig(Ccy.EUR));
-        eventInjector.publishToFlow(new Rate(CcyPair.ccyPairFromCharSeq("EURUSD"), 1.15));
-        eventInjector.publishToFlow(new Rate(CcyPair.ccyPairFromCharSeq("EURGBP"), 0.97));
+        eventInjector1.publishToFlow(new Rate(CcyPair.ccyPairFromCharSeq("EURUSD"), 1.15));
+        eventInjector2.publishToFlow(new Rate(CcyPair.ccyPairFromCharSeq("EURGBP"), 0.97));
     }
 
     @Test
@@ -107,11 +123,12 @@ public class FlowTest {
 
         Yaml yaml = new Yaml();
         Iterable records = yaml.loadAll(s);
-        
+
         records.forEach(System.out::println);
-        
+
 //        System.out.println("out:" + record.toString());
     }
+
     @Test
     public void readYamlListNoTopTag() {
         String s = "---\n"
@@ -126,14 +143,14 @@ public class FlowTest {
 
         Yaml yaml = new Yaml(new Constructor(JournalRecord.class));
         Iterable records = yaml.loadAll(s);
-        
+
         records.forEach(System.out::println);
-        
+
 //        System.out.println("out:" + record.toString());
     }
-    
+
     @Test
-    public void yamlNullValue(){
+    public void yamlNullValue() {
         Signal<Object> signal = new Signal<>(SignalKeys.PUBLISH_POSITIONS);
         JournalRecord record = new JournalRecord();
         record.setEvent(signal);
@@ -143,28 +160,29 @@ public class FlowTest {
         final String yamlDump = yaml.dumpAsMap(record);
         System.out.println("yamlDump:" + yamlDump);
     }
-    
+
     @Test
-    public void yamlImmutable(){
+    @Ignore
+    public void yamlImmutable() {
         EventLogControlEvent loegControlEvent = new EventLogControlEvent(new Log4j2AuditLogger());
-        
+
         DumperOptions dop = new DumperOptions();
         dop.setAllowReadOnlyProperties(true);
         Yaml yaml = new Yaml(dop);
 //        final String yamlDump = yaml.dumpAs(loegControlEvent, Tag.MAP, null);
         final String yamlDump = yaml.dump(loegControlEvent);
-        System.out.println( yamlDump);
+        System.out.println(yamlDump);
     }
 
     @Test
     public void flowTest() {
         ManualEventSource eventInjector = new ManualEventSource("manualSource1");
         EventFlow.flow(eventInjector)
-                .pipeline(new Log4j2Filter())
-//                .next(new Log4j2CsvJournaller())
+                .first(new Log4j2Filter())
+                //                .next(new Log4j2CsvJournaller())
                 .next(new Log4j2SnakeYamlJournaller())
                 //                .next(new TestingCsvJournaller())
-                .next(SepEventPublisher.of(new PortfolioCalc()))
+                .next(new PortfolioCalc())
                 .start();
         //deterministic ids for orders
         List<String> idList = IntStream.rangeClosed(1, 1000).boxed().map(i -> "" + i).collect(Collectors.toList());
@@ -183,4 +201,129 @@ public class FlowTest {
         eventInjector.publishToFlow(new Trade("USDJPY", 350, -36000));
         //exeute some orders on the exchange
     }
+
+    @Test
+    public void fromCsv() {
+        StringReader reader = new StringReader("ccy,limit,target\n"
+                + "CHF,22,4555\n"
+                + "JPY,30000,5000\n"
+                + "USD,80,10"
+        );
+        ManualEventSource eventInjector = new ManualEventSource("manualSource1");
+        DelimitedSource limitCfgCsv = new DelimitedSource(new LimitConfigCsvDecoder(), reader, "limitFromCsv");
+        //cache manual events before start
+        eventInjector.publishToFlow(new EventLogControlEvent(new Log4j2AuditLogger()));
+        //start - manual events, then read from csv
+        EventFlow.flow(eventInjector)
+                .source(limitCfgCsv)
+                .first(new Log4j2Filter())
+                .next(new Log4j2SnakeYamlJournaller())
+                .next(new PortfolioCalc())
+                .start();
+    }
+
+    @Test
+    public void fromCsvWithTransformer() {
+        StringReader reader = new StringReader("ccy,limit,target\n"
+                + "CHF,22,4555\n"
+                + "JPY,30000,5000\n"
+                + "USD,80,10"
+        );
+        //cache manual events before start
+        ManualEventSource eventInjector = new ManualEventSource("manualSource1");
+        eventInjector.publishToFlow(new EventLogControlEvent(new Log4j2AuditLogger()));
+        //start - manual events, then read from csv
+        EventFlow.flow(eventInjector)
+                .source(transform("t1", new DelimitedSource(new LimitConfigCsvDecoder(), reader, "limitFromCsv"), this::printLimit))
+                .first(new Log4j2Filter())
+                .next(new Log4j2SnakeYamlJournaller())
+                .next(new PortfolioCalc())
+                .start();
+    }
+
+    private LimitConfig printLimit(LimitConfig limitCfg) {
+        System.out.println("transform LimitConfig ccy:" + limitCfg.getCcy());
+        return limitCfg;
+    }
+
+    @Test
+    public void fromPolledFile() throws IOException, InterruptedException {
+        final File csvFile = folder.newFile("limits.csv");
+        var limitCsvReader = new FileReader(csvFile);
+        ManualEventSource eventInjector = new ManualEventSource("manualSource1");
+        DelimitedPullSource limitCfgCsv = new DelimitedPullSource(new LimitConfigCsvDecoder(), limitCsvReader, "limitFromCsv");
+        //cache manual events before start
+//        eventInjector.publishToFlow(new EventLogControlEvent(new Log4j2AuditLogger()));
+        //start - manual events, then read from csv
+        EventFlow flow = EventFlow.flow(eventInjector)
+                .source(limitCfgCsv)
+                .first(new Log4j2Filter())
+                .next(new Log4j2SnakeYamlJournaller())
+                .next(new PortfolioCalc())
+                .start();
+
+        String data = "ccy,limit,target\n"
+                + "CHF,22,4555\n"
+                + "JPY,30000,5000\n"
+                + "USD,80,10";
+        FileUtils.writeStringToFile(csvFile, data, Charset.defaultCharset());
+        Thread.sleep(100);
+        flow.stop();
+    }
+    
+    @Test
+    public void fromPolledFileTransformed() throws IOException, InterruptedException {
+        final File csvFile = folder.newFile("limits.csv");
+        var limitCsvReader = new FileReader(csvFile);
+        ManualEventSource eventInjector = new ManualEventSource("manualSource1");
+        DelimitedPullSource limitCfgCsv = new DelimitedPullSource(new LimitConfigCsvDecoder(), limitCsvReader, "limitFromCsv");
+        //cache manual events before start
+//        eventInjector.publishToFlow(new EventLogControlEvent(new Log4j2AuditLogger()));
+        //start - manual events, then read from csv
+        EventFlow flow = EventFlow.flow(eventInjector)
+                .source(transform("t1", limitCfgCsv, this::printLimit))
+                .first(new Log4j2Filter())
+                .next(new Log4j2SnakeYamlJournaller())
+                .next(new PortfolioCalc())
+                .start();
+
+        String data = "ccy,limit,target\n"
+                + "CHF,22,4555\n"
+                + "JPY,30000,5000\n"
+                + "USD,80,10";
+        FileUtils.writeStringToFile(csvFile, data, Charset.defaultCharset());
+        Thread.sleep(100);
+        flow.stop();
+    }
+
+    @Test
+    public void pushfromFile() throws IOException, InterruptedException {
+        final File csvFile = folder.newFile("limits.csv");
+        var limitCsvReader = new FileReader(csvFile);
+        ManualEventSource eventInjector = new ManualEventSource("manualSource1");
+//        DelimitedPullSource limitCfgCsv = new DelimitedPullSource(new LimitConfigCsvDecoder(), limitCsvReader, "limitFromCsv");
+//        DelimitedSource limitCfgCsv = new DelimitedSource(new LimitConfigCsvDecoder(), limitCsvReader, "limitFromCsv").pollForever();
+
+        //cache manual events before start
+//        eventInjector.publishToFlow(new EventLogControlEvent(new Log4j2AuditLogger()));
+        //start - manual events, then read from csv
+        EventFlow flow = EventFlow.flow(eventInjector)
+                .sourceAsync(transform("t1", new DelimitedSource(new LimitConfigCsvDecoder(), limitCsvReader, "limitFromCsv").pollForever(), this::printLimit))
+                .first(new Log4j2Filter())
+                .next(new Log4j2SnakeYamlJournaller())
+                .next(new PortfolioCalc())
+                .start();
+//        Executors.newSingleThreadExecutor().submit(() -> flow.start());
+
+        String data = "ccy,limit,target\n"
+                + "CHF,22,4555\n"
+                + "JPY,30000,5000\n"
+                + "USD,80,10\n";
+        FileUtils.writeStringToFile(csvFile, data, Charset.defaultCharset());
+        FileUtils.writeStringToFile(csvFile, "JPY,56555,25000\n", Charset.defaultCharset(), true);
+        Thread.sleep(100);
+        flow.stop();
+//        Thread.sleep(1000);
+    }
+
 }
