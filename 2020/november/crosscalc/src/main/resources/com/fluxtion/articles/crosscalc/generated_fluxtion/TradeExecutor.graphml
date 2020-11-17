@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?><graphml xmlns="http://graphml.graphdrawing.org/xmlns" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd" xmlns:jGraph="http://www.jgraph.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <key id="vertex_label" for="node" attr.name="nodeData" attr.type="string"/>
+    <key id="edge_label" for="edge" attr.name="edgeData" attr.type="string"/>
+    <graph edgedefault="directed">
+        <node id="filter_getInstrument_By_equalsIgnoreCase0_1">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="filter_getInstrument_By_equalsIgnoreCase0_1:&#10;Filter_getInstrument_By_equalsIgnoreCase0"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="handlerMarketTick_">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;handlerMarketTick_:&#10;IntFilterEventHandler"/>
+                    <jGraph:Style properties="EVENTHANDLER"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="string_0">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="string_0:&#10;String"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="midEURUSD">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="midEURUSD:&#10;GetField_MarketTick_double0"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="filter_getInstrument_By_equalsIgnoreCase0_4">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="filter_getInstrument_By_equalsIgnoreCase0_4:&#10;Filter_getInstrument_By_equalsIgnoreCase0"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="string_3">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="string_3:&#10;String"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="midEURCHF">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="midEURCHF:&#10;GetField_MarketTick_double0"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="filter_getInstrument_By_equalsIgnoreCase0_7">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="filter_getInstrument_By_equalsIgnoreCase0_7:&#10;Filter_getInstrument_By_equalsIgnoreCase0"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="string_6">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="string_6:&#10;String"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="midUSDCHF">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="midUSDCHF:&#10;GetField_MarketTick_double0"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="crossEURUSD">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="crossEURUSD:&#10;Map_doubleValue_With_multiply0"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="crossDeltaEURUSD">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="crossDeltaEURUSD:&#10;Map_doubleValue_With_subtract0"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="getField_Number_double0_11">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="getField_Number_double0_11:&#10;GetField_Number_double0"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="crossBreaachEURUSD">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="crossBreaachEURUSD:&#10;Filter_Number_By_greaterThan0"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="numericPredicates_12">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="numericPredicates_12:&#10;NumericPredicates"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="MarketTick">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;MarketTick"/>
+                    <jGraph:Style properties="EVENT"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <edge id="1" source="handlerMarketTick_" target="filter_getInstrument_By_equalsIgnoreCase0_1">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="2" source="string_0" target="filter_getInstrument_By_equalsIgnoreCase0_1">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="3" source="filter_getInstrument_By_equalsIgnoreCase0_1" target="midEURUSD">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="4" source="handlerMarketTick_" target="filter_getInstrument_By_equalsIgnoreCase0_4">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="5" source="string_3" target="filter_getInstrument_By_equalsIgnoreCase0_4">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="6" source="filter_getInstrument_By_equalsIgnoreCase0_4" target="midEURCHF">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="7" source="handlerMarketTick_" target="filter_getInstrument_By_equalsIgnoreCase0_7">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="8" source="string_6" target="filter_getInstrument_By_equalsIgnoreCase0_7">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="9" source="filter_getInstrument_By_equalsIgnoreCase0_7" target="midUSDCHF">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="10" source="midEURCHF" target="crossEURUSD">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="11" source="midUSDCHF" target="crossEURUSD">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="12" source="midEURUSD" target="crossDeltaEURUSD">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="13" source="crossEURUSD" target="crossDeltaEURUSD">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="14" source="crossDeltaEURUSD" target="getField_Number_double0_11">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="15" source="numericPredicates_12" target="crossBreaachEURUSD">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="16" source="getField_Number_double0_11" target="crossBreaachEURUSD">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="17" source="MarketTick" target="handlerMarketTick_">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+    </graph>
+</graphml>
