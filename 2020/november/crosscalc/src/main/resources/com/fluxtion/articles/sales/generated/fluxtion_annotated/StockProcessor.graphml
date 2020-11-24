@@ -20,6 +20,33 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
+        <node id="resetSignal">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="resetSignal:&#10;Filter_String_By_equalsIgnoreCase0"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="handlerString_">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;handlerString_:&#10;IntFilterEventHandler"/>
+                    <jGraph:Style properties="EVENTHANDLER"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="string_24">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="string_24:&#10;String"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
         <node id="sum_0">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
@@ -155,11 +182,20 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="getField_ItemCost_int0_14">
+        <node id="logMsgBuilder1_14">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="getField_ItemCost_int0_14:&#10;GetField_ItemCost_int0"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;logMsgBuilder1_14:&#10;LogMsgBuilder1"/>
+                    <jGraph:Style properties="EVENTHANDLER"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="getField_ItemCost_int0_15">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="getField_ItemCost_int0_15:&#10;GetField_ItemCost_int0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
@@ -173,101 +209,110 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="defaultIntWrapper_15">
+        <node id="defaultIntWrapper_16">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="defaultIntWrapper_15:&#10;DefaultIntWrapper"/>
+                    <jGraph:label text="defaultIntWrapper_16:&#10;DefaultIntWrapper"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="map_getAmountDelivered_With_multiply0_16">
+        <node id="map_getAmountDelivered_With_multiply0_17">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="map_getAmountDelivered_With_multiply0_16:&#10;Map_getAmountDelivered_With_multiply0"/>
+                    <jGraph:label text="map_getAmountDelivered_With_multiply0_17:&#10;Map_getAmountDelivered_With_multiply0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="booleanFilter_17">
+        <node id="booleanFilter_18">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="booleanFilter_17:&#10;BooleanFilter"/>
+                    <jGraph:label text="booleanFilter_18:&#10;BooleanFilter"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="map_doubleValue_With_addValue0_19">
+        <node id="map_doubleValue_With_addValue0_20">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="map_doubleValue_With_addValue0_19:&#10;Map_doubleValue_With_addValue0"/>
+                    <jGraph:label text="map_doubleValue_With_addValue0_20:&#10;Map_doubleValue_With_addValue0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="sum_18">
+        <node id="sum_19">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="sum_18:&#10;Sum"/>
+                    <jGraph:label text="sum_19:&#10;Sum"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="defaultIntWrapper_20">
+        <node id="defaultIntWrapper_21">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="defaultIntWrapper_20:&#10;DefaultIntWrapper"/>
+                    <jGraph:label text="defaultIntWrapper_21:&#10;DefaultIntWrapper"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="map_doubleValue_With_subtract1_21">
+        <node id="logMsgBuilder3_22">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="map_doubleValue_With_subtract1_21:&#10;Map_doubleValue_With_subtract1"/>
-                    <jGraph:Style properties="NODE"/>
-                </jGraph:ShapeNode>
-            </data>
-        </node>
-        <node id="logMsgBuilder6_22">
-            <data key="vertex_label">
-                <jGraph:ShapeNode>
-                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;logMsgBuilder6_22:&#10;LogMsgBuilder6"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;logMsgBuilder3_22:&#10;LogMsgBuilder3"/>
                     <jGraph:Style properties="EVENTHANDLER"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="filter_Number_By_lessThan0_24">
+        <node id="map_doubleValue_With_subtract1_23">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="filter_Number_By_lessThan0_24:&#10;Filter_Number_By_lessThan0"/>
+                    <jGraph:label text="map_doubleValue_With_subtract1_23:&#10;Map_doubleValue_With_subtract1"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="numericPredicates_23">
+        <node id="logMsgBuilder10_26">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="numericPredicates_23:&#10;NumericPredicates"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;logMsgBuilder10_26:&#10;LogMsgBuilder10"/>
+                    <jGraph:Style properties="EVENTHANDLER"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="filter_Number_By_lessThan0_28">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="filter_Number_By_lessThan0_28:&#10;Filter_Number_By_lessThan0"/>
                     <jGraph:Style properties="NODE"/>
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="logMsgBuilder8_25">
+        <node id="numericPredicates_27">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;logMsgBuilder8_25:&#10;LogMsgBuilder8"/>
+                    <jGraph:label text="numericPredicates_27:&#10;NumericPredicates"/>
+                    <jGraph:Style properties="NODE"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="logMsgBuilder12_29">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;EventHandle&gt;&gt;&#10;logMsgBuilder12_29:&#10;LogMsgBuilder12"/>
                     <jGraph:Style properties="EVENTHANDLER"/>
                 </jGraph:ShapeNode>
             </data>
@@ -277,6 +322,15 @@
                 <jGraph:ShapeNode>
                     <jGraph:Geometry height="70" width="160" x="20" y="20"/>
                     <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;Sale"/>
+                    <jGraph:Style properties="EVENT"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
+        <node id="String">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;String"/>
                     <jGraph:Style properties="EVENT"/>
                 </jGraph:ShapeNode>
             </data>
@@ -299,15 +353,6 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
-        <node id="ItemCost">
-            <data key="vertex_label">
-                <jGraph:ShapeNode>
-                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
-                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;ItemCost"/>
-                    <jGraph:Style properties="EVENT"/>
-                </jGraph:ShapeNode>
-            </data>
-        </node>
         <node id="LogControlEvent">
             <data key="vertex_label">
                 <jGraph:ShapeNode>
@@ -317,222 +362,286 @@
                 </jGraph:ShapeNode>
             </data>
         </node>
+        <node id="ItemCost">
+            <data key="vertex_label">
+                <jGraph:ShapeNode>
+                    <jGraph:Geometry height="70" width="160" x="20" y="20"/>
+                    <jGraph:label text="&lt;&lt;Event&gt;&gt;&#10;ItemCost"/>
+                    <jGraph:Style properties="EVENT"/>
+                </jGraph:ShapeNode>
+            </data>
+        </node>
         <edge id="1" source="handlerSale_" target="map_getAmountSold_With_addValue0_1">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="2" source="sum_0" target="map_getAmountSold_With_addValue0_1">
+        <edge id="2" source="resetSignal" target="map_getAmountSold_With_addValue0_1">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="3" source="map_getAmountSold_With_addValue0_1" target="defaultIntWrapper_2">
+        <edge id="3" source="handlerString_" target="resetSignal">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="4" source="handlerDelivery_" target="map_getAmountDelivered_With_addValue0_4">
+        <edge id="4" source="string_24" target="resetSignal">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="5" source="sum_3" target="map_getAmountDelivered_With_addValue0_4">
+        <edge id="5" source="sum_0" target="map_getAmountSold_With_addValue0_1">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="6" source="map_getAmountDelivered_With_addValue0_4" target="defaultIntWrapper_5">
+        <edge id="6" source="resetSignal" target="defaultIntWrapper_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="7" source="defaultIntWrapper_2" target="map_doubleValue_With_subtract0_6">
+        <edge id="7" source="map_getAmountSold_With_addValue0_1" target="defaultIntWrapper_2">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="8" source="defaultIntWrapper_5" target="map_doubleValue_With_subtract0_6">
+        <edge id="8" source="handlerDelivery_" target="map_getAmountDelivered_With_addValue0_4">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="9" source="handlerPrice_" target="getField_Price_int0_7">
+        <edge id="9" source="sum_3" target="map_getAmountDelivered_With_addValue0_4">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="10" source="getField_Price_int0_7" target="defaultIntWrapper_8">
+        <edge id="10" source="resetSignal" target="map_getAmountDelivered_With_addValue0_4">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="11" source="defaultIntWrapper_8" target="map_getAmountSold_With_multiply0_9">
+        <edge id="11" source="resetSignal" target="defaultIntWrapper_5">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="12" source="handlerSale_" target="map_getAmountSold_With_multiply0_9">
+        <edge id="12" source="map_getAmountDelivered_With_addValue0_4" target="defaultIntWrapper_5">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="13" source="defaultIntWrapper_2" target="booleanFilter_10">
+        <edge id="13" source="defaultIntWrapper_2" target="map_doubleValue_With_subtract0_6">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="14" source="map_getAmountSold_With_multiply0_9" target="booleanFilter_10">
+        <edge id="14" source="defaultIntWrapper_5" target="map_doubleValue_With_subtract0_6">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="15" source="booleanFilter_10" target="map_doubleValue_With_addValue0_12">
+        <edge id="15" source="handlerPrice_" target="getField_Price_int0_7">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="16" source="sum_11" target="map_doubleValue_With_addValue0_12">
+        <edge id="16" source="getField_Price_int0_7" target="defaultIntWrapper_8">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="17" source="map_doubleValue_With_addValue0_12" target="defaultIntWrapper_13">
+        <edge id="17" source="defaultIntWrapper_8" target="map_getAmountSold_With_multiply0_9">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="18" source="handlerItemCost_" target="getField_ItemCost_int0_14">
+        <edge id="18" source="handlerSale_" target="map_getAmountSold_With_multiply0_9">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="19" source="getField_ItemCost_int0_14" target="defaultIntWrapper_15">
+        <edge id="19" source="defaultIntWrapper_2" target="booleanFilter_10">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="20" source="handlerDelivery_" target="map_getAmountDelivered_With_multiply0_16">
+        <edge id="20" source="map_getAmountSold_With_multiply0_9" target="booleanFilter_10">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="21" source="defaultIntWrapper_15" target="map_getAmountDelivered_With_multiply0_16">
+        <edge id="21" source="booleanFilter_10" target="map_doubleValue_With_addValue0_12">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="22" source="defaultIntWrapper_5" target="booleanFilter_17">
+        <edge id="22" source="sum_11" target="map_doubleValue_With_addValue0_12">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="23" source="map_getAmountDelivered_With_multiply0_16" target="booleanFilter_17">
+        <edge id="23" source="map_doubleValue_With_addValue0_12" target="defaultIntWrapper_13">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="24" source="booleanFilter_17" target="map_doubleValue_With_addValue0_19">
+        <edge id="24" source="defaultIntWrapper_13" target="logMsgBuilder1_14">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="25" source="sum_18" target="map_doubleValue_With_addValue0_19">
+        <edge id="25" source="handlerItemCost_" target="getField_ItemCost_int0_15">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="26" source="map_doubleValue_With_addValue0_19" target="defaultIntWrapper_20">
+        <edge id="26" source="getField_ItemCost_int0_15" target="defaultIntWrapper_16">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="27" source="defaultIntWrapper_13" target="map_doubleValue_With_subtract1_21">
+        <edge id="27" source="handlerDelivery_" target="map_getAmountDelivered_With_multiply0_17">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="28" source="defaultIntWrapper_20" target="map_doubleValue_With_subtract1_21">
+        <edge id="28" source="defaultIntWrapper_16" target="map_getAmountDelivered_With_multiply0_17">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="29" source="map_doubleValue_With_subtract0_6" target="logMsgBuilder6_22">
+        <edge id="29" source="defaultIntWrapper_5" target="booleanFilter_18">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="30" source="defaultIntWrapper_5" target="logMsgBuilder6_22">
+        <edge id="30" source="map_getAmountDelivered_With_multiply0_17" target="booleanFilter_18">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="31" source="defaultIntWrapper_2" target="logMsgBuilder6_22">
+        <edge id="31" source="booleanFilter_18" target="map_doubleValue_With_addValue0_20">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="32" source="defaultIntWrapper_13" target="logMsgBuilder6_22">
+        <edge id="32" source="sum_19" target="map_doubleValue_With_addValue0_20">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="33" source="defaultIntWrapper_20" target="logMsgBuilder6_22">
+        <edge id="33" source="map_doubleValue_With_addValue0_20" target="defaultIntWrapper_21">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="34" source="map_doubleValue_With_subtract1_21" target="logMsgBuilder6_22">
+        <edge id="34" source="defaultIntWrapper_21" target="logMsgBuilder3_22">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="35" source="numericPredicates_23" target="filter_Number_By_lessThan0_24">
+        <edge id="35" source="defaultIntWrapper_13" target="map_doubleValue_With_subtract1_23">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="36" source="map_doubleValue_With_subtract0_6" target="filter_Number_By_lessThan0_24">
+        <edge id="36" source="defaultIntWrapper_21" target="map_doubleValue_With_subtract1_23">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="37" source="filter_Number_By_lessThan0_24" target="logMsgBuilder8_25">
+        <edge id="37" source="defaultIntWrapper_5" target="logMsgBuilder10_26">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="38" source="map_doubleValue_With_subtract0_6" target="logMsgBuilder8_25">
+        <edge id="38" source="defaultIntWrapper_2" target="logMsgBuilder10_26">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="39" source="Sale" target="handlerSale_">
+        <edge id="39" source="map_doubleValue_With_subtract0_6" target="logMsgBuilder10_26">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="40" source="Delivery" target="handlerDelivery_">
+        <edge id="40" source="defaultIntWrapper_21" target="logMsgBuilder10_26">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="41" source="Price" target="handlerPrice_">
+        <edge id="41" source="map_doubleValue_With_subtract1_23" target="logMsgBuilder10_26">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="42" source="ItemCost" target="handlerItemCost_">
+        <edge id="42" source="defaultIntWrapper_13" target="logMsgBuilder10_26">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="43" source="LogControlEvent" target="logMsgBuilder6_22">
+        <edge id="43" source="numericPredicates_27" target="filter_Number_By_lessThan0_28">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>
         </edge>
-        <edge id="44" source="LogControlEvent" target="logMsgBuilder8_25">
+        <edge id="44" source="map_doubleValue_With_subtract0_6" target="filter_Number_By_lessThan0_28">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="45" source="map_doubleValue_With_subtract0_6" target="logMsgBuilder12_29">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="46" source="filter_Number_By_lessThan0_28" target="logMsgBuilder12_29">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="47" source="Sale" target="handlerSale_">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="48" source="String" target="handlerString_">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="49" source="Delivery" target="handlerDelivery_">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="50" source="Price" target="handlerPrice_">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="51" source="LogControlEvent" target="logMsgBuilder1_14">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="52" source="ItemCost" target="handlerItemCost_">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="53" source="LogControlEvent" target="logMsgBuilder3_22">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="54" source="LogControlEvent" target="logMsgBuilder10_26">
+            <data key="edge_label">
+                <jGraph:ShapeEdge/>
+            </data>
+        </edge>
+        <edge id="55" source="LogControlEvent" target="logMsgBuilder12_29">
             <data key="edge_label">
                 <jGraph:ShapeEdge/>
             </data>

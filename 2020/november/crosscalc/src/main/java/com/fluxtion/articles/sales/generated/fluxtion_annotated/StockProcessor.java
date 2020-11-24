@@ -32,9 +32,9 @@ import com.fluxtion.ext.streaming.api.test.BooleanFilter;
 
 /*
  * <pre>
- * generation time   : 2020-11-16T20:41:04.403252300
- * generator version : 2.7.9-SNAPSHOT
- * api version       : 2.7.9-SNAPSHOT
+ * generation time   : 2020-11-23T10:01:00.892120700
+ * generator version : 2.8.2-SNAPSHOT
+ * api version       : 2.8.2-SNAPSHOT
  * </pre>
  * @author Greg Higgins
  */
@@ -46,9 +46,9 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
       new IntFilterEventHandler(2147483647, Delivery.class);
   private final IntFilterEventHandler handlerItemCost_ =
       new IntFilterEventHandler(2147483647, ItemCost.class);
-  private final GetField_ItemCost_int0 getField_ItemCost_int0_14 = new GetField_ItemCost_int0();
-  private final DefaultIntWrapper defaultIntWrapper_15 =
-      new DefaultIntWrapper(getField_ItemCost_int0_14, 15);
+  private final GetField_ItemCost_int0 getField_ItemCost_int0_15 = new GetField_ItemCost_int0();
+  private final DefaultIntWrapper defaultIntWrapper_16 =
+      new DefaultIntWrapper(getField_ItemCost_int0_15, 15);
   private final IntFilterEventHandler handlerPrice_ =
       new IntFilterEventHandler(2147483647, Price.class);
   private final GetField_Price_int0 getField_Price_int0_7 = new GetField_Price_int0();
@@ -56,11 +56,16 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
       new DefaultIntWrapper(getField_Price_int0_7, 25);
   private final IntFilterEventHandler handlerSale_ =
       new IntFilterEventHandler(2147483647, Sale.class);
-  private final Map_getAmountDelivered_With_multiply0 map_getAmountDelivered_With_multiply0_16 =
+  private final IntFilterEventHandler handlerString_ =
+      new IntFilterEventHandler(2147483647, String.class);
+  private final Map_getAmountDelivered_With_multiply0 map_getAmountDelivered_With_multiply0_17 =
       new Map_getAmountDelivered_With_multiply0();
   private final Map_getAmountSold_With_multiply0 map_getAmountSold_With_multiply0_9 =
       new Map_getAmountSold_With_multiply0();
-  private final NumericPredicates numericPredicates_23 = new NumericPredicates();
+  private final NumericPredicates numericPredicates_27 = new NumericPredicates();
+  private final String string_24 = "reset";
+  public final Filter_String_By_equalsIgnoreCase0 resetSignal =
+      new Filter_String_By_equalsIgnoreCase0();
   private final Sum sum_0 = new Sum();
   private final Map_getAmountSold_With_addValue0 map_getAmountSold_With_addValue0_1 =
       new Map_getAmountSold_With_addValue0();
@@ -73,132 +78,145 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
       new Map_getAmountDelivered_With_addValue0();
   private final DefaultIntWrapper defaultIntWrapper_5 =
       new DefaultIntWrapper(map_getAmountDelivered_With_addValue0_4, 0);
-  private final BooleanFilter booleanFilter_17 =
-      new BooleanFilter(map_getAmountDelivered_With_multiply0_16, defaultIntWrapper_5);
+  private final BooleanFilter booleanFilter_18 =
+      new BooleanFilter(map_getAmountDelivered_With_multiply0_17, defaultIntWrapper_5);
   private final Map_doubleValue_With_subtract0 map_doubleValue_With_subtract0_6 =
       new Map_doubleValue_With_subtract0();
-  private final Filter_Number_By_lessThan0 filter_Number_By_lessThan0_24 =
+  private final Filter_Number_By_lessThan0 filter_Number_By_lessThan0_28 =
       new Filter_Number_By_lessThan0();
-  private final LogMsgBuilder8 logMsgBuilder8_25 = new LogMsgBuilder8();
+  private final LogMsgBuilder12 logMsgBuilder12_29 = new LogMsgBuilder12();
   private final Sum sum_11 = new Sum();
   private final Map_doubleValue_With_addValue0 map_doubleValue_With_addValue0_12 =
       new Map_doubleValue_With_addValue0();
   private final DefaultIntWrapper defaultIntWrapper_13 =
       new DefaultIntWrapper(map_doubleValue_With_addValue0_12, 0);
-  private final Sum sum_18 = new Sum();
-  private final Map_doubleValue_With_addValue0 map_doubleValue_With_addValue0_19 =
+  private final LogMsgBuilder1 logMsgBuilder1_14 = new LogMsgBuilder1();
+  private final Sum sum_19 = new Sum();
+  private final Map_doubleValue_With_addValue0 map_doubleValue_With_addValue0_20 =
       new Map_doubleValue_With_addValue0();
-  private final DefaultIntWrapper defaultIntWrapper_20 =
-      new DefaultIntWrapper(map_doubleValue_With_addValue0_19, 0);
-  private final Map_doubleValue_With_subtract1 map_doubleValue_With_subtract1_21 =
+  private final DefaultIntWrapper defaultIntWrapper_21 =
+      new DefaultIntWrapper(map_doubleValue_With_addValue0_20, 0);
+  private final LogMsgBuilder3 logMsgBuilder3_22 = new LogMsgBuilder3();
+  private final Map_doubleValue_With_subtract1 map_doubleValue_With_subtract1_23 =
       new Map_doubleValue_With_subtract1();
-  private final LogMsgBuilder6 logMsgBuilder6_22 = new LogMsgBuilder6();
+  private final LogMsgBuilder10 logMsgBuilder10_26 = new LogMsgBuilder10();
   //Dirty flags
   private boolean isDirty_booleanFilter_10 = false;
-  private boolean isDirty_booleanFilter_17 = false;
+  private boolean isDirty_booleanFilter_18 = false;
   private boolean isDirty_defaultIntWrapper_2 = false;
   private boolean isDirty_defaultIntWrapper_5 = false;
   private boolean isDirty_defaultIntWrapper_8 = false;
   private boolean isDirty_defaultIntWrapper_13 = false;
-  private boolean isDirty_defaultIntWrapper_15 = false;
-  private boolean isDirty_defaultIntWrapper_20 = false;
-  private boolean isDirty_filter_Number_By_lessThan0_24 = false;
-  private boolean isDirty_getField_ItemCost_int0_14 = false;
+  private boolean isDirty_defaultIntWrapper_16 = false;
+  private boolean isDirty_defaultIntWrapper_21 = false;
+  private boolean isDirty_filter_Number_By_lessThan0_28 = false;
+  private boolean isDirty_getField_ItemCost_int0_15 = false;
   private boolean isDirty_getField_Price_int0_7 = false;
   private boolean isDirty_handlerDelivery_ = false;
   private boolean isDirty_handlerItemCost_ = false;
   private boolean isDirty_handlerPrice_ = false;
   private boolean isDirty_handlerSale_ = false;
+  private boolean isDirty_handlerString_ = false;
   private boolean isDirty_map_doubleValue_With_addValue0_12 = false;
-  private boolean isDirty_map_doubleValue_With_addValue0_19 = false;
-  private boolean isDirty_map_doubleValue_With_subtract1_21 = false;
+  private boolean isDirty_map_doubleValue_With_addValue0_20 = false;
+  private boolean isDirty_map_doubleValue_With_subtract1_23 = false;
   private boolean isDirty_map_doubleValue_With_subtract0_6 = false;
   private boolean isDirty_map_getAmountDelivered_With_addValue0_4 = false;
   private boolean isDirty_map_getAmountSold_With_addValue0_1 = false;
+  private boolean isDirty_resetSignal = false;
   //Filter constants
 
   public StockProcessor() {
-    filter_Number_By_lessThan0_24.setAlwaysReset(false);
-    filter_Number_By_lessThan0_24.setNotifyOnChangeOnly(false);
-    filter_Number_By_lessThan0_24.setResetImmediate(true);
-    filter_Number_By_lessThan0_24.setValidOnStart(false);
-    filter_Number_By_lessThan0_24.filterSubject = map_doubleValue_With_subtract0_6;
-    filter_Number_By_lessThan0_24.source_0 = map_doubleValue_With_subtract0_6;
-    filter_Number_By_lessThan0_24.f = numericPredicates_23;
-    getField_ItemCost_int0_14.setAlwaysReset(false);
-    getField_ItemCost_int0_14.setNotifyOnChangeOnly(false);
-    getField_ItemCost_int0_14.setResetImmediate(true);
-    getField_ItemCost_int0_14.setValidOnStart(false);
-    getField_ItemCost_int0_14.filterSubject = handlerItemCost_;
-    getField_Price_int0_7.setAlwaysReset(false);
+    filter_Number_By_lessThan0_28.setNotifyOnChangeOnly(false);
+    filter_Number_By_lessThan0_28.setValidOnStart(false);
+    filter_Number_By_lessThan0_28.filterSubject = map_doubleValue_With_subtract0_6;
+    filter_Number_By_lessThan0_28.source_0 = map_doubleValue_With_subtract0_6;
+    filter_Number_By_lessThan0_28.f = numericPredicates_27;
+    resetSignal.setNotifyOnChangeOnly(false);
+    resetSignal.setValidOnStart(false);
+    resetSignal.filterSubject = handlerString_;
+    resetSignal.source_0 = handlerString_;
+    resetSignal.f = string_24;
+    getField_ItemCost_int0_15.setNotifyOnChangeOnly(false);
+    getField_ItemCost_int0_15.setValidOnStart(false);
+    getField_ItemCost_int0_15.filterSubject = handlerItemCost_;
     getField_Price_int0_7.setNotifyOnChangeOnly(false);
-    getField_Price_int0_7.setResetImmediate(true);
     getField_Price_int0_7.setValidOnStart(false);
     getField_Price_int0_7.filterSubject = handlerPrice_;
-    logMsgBuilder6_22.setLogPrefix(false);
-    logMsgBuilder6_22.source_DefaultIntWrapper_3 = defaultIntWrapper_13;
-    logMsgBuilder6_22.source_DefaultIntWrapper_0 = defaultIntWrapper_2;
-    logMsgBuilder6_22.source_Map_doubleValue_With_subtract1_5 = map_doubleValue_With_subtract1_21;
-    logMsgBuilder6_22.source_DefaultIntWrapper_4 = defaultIntWrapper_20;
-    logMsgBuilder6_22.source_Map_doubleValue_With_subtract0_2 = map_doubleValue_With_subtract0_6;
-    logMsgBuilder6_22.source_DefaultIntWrapper_1 = defaultIntWrapper_5;
-    logMsgBuilder6_22.logLevel = (int) 3;
-    logMsgBuilder6_22.initCapacity = (int) 256;
-    logMsgBuilder8_25.setLogPrefix(false);
-    logMsgBuilder8_25.source_Map_doubleValue_With_subtract0_7 = map_doubleValue_With_subtract0_6;
-    logMsgBuilder8_25.logNotifier = filter_Number_By_lessThan0_24;
-    logMsgBuilder8_25.logLevel = (int) 3;
-    logMsgBuilder8_25.initCapacity = (int) 256;
-    map_doubleValue_With_addValue0_12.setAlwaysReset(false);
+    logMsgBuilder1_14.setLogPrefix(false);
+    logMsgBuilder1_14.source_DefaultIntWrapper_0 = defaultIntWrapper_13;
+    logMsgBuilder1_14.logNotifier = defaultIntWrapper_13;
+    logMsgBuilder1_14.logLevel = (int) 3;
+    logMsgBuilder1_14.initCapacity = (int) 256;
+    logMsgBuilder3_22.setLogPrefix(false);
+    logMsgBuilder3_22.source_DefaultIntWrapper_2 = defaultIntWrapper_21;
+    logMsgBuilder3_22.logNotifier = defaultIntWrapper_21;
+    logMsgBuilder3_22.logLevel = (int) 3;
+    logMsgBuilder3_22.initCapacity = (int) 256;
+    logMsgBuilder10_26.setLogPrefix(false);
+    logMsgBuilder10_26.source_Map_doubleValue_With_subtract0_6 = map_doubleValue_With_subtract0_6;
+    logMsgBuilder10_26.source_DefaultIntWrapper_4 = defaultIntWrapper_2;
+    logMsgBuilder10_26.source_DefaultIntWrapper_8 = defaultIntWrapper_21;
+    logMsgBuilder10_26.source_Map_doubleValue_With_subtract1_9 = map_doubleValue_With_subtract1_23;
+    logMsgBuilder10_26.source_DefaultIntWrapper_5 = defaultIntWrapper_5;
+    logMsgBuilder10_26.source_DefaultIntWrapper_7 = defaultIntWrapper_13;
+    logMsgBuilder10_26.logLevel = (int) 3;
+    logMsgBuilder10_26.initCapacity = (int) 256;
+    logMsgBuilder12_29.setLogPrefix(false);
+    logMsgBuilder12_29.source_Map_doubleValue_With_subtract0_11 = map_doubleValue_With_subtract0_6;
+    logMsgBuilder12_29.logNotifier = filter_Number_By_lessThan0_28;
+    logMsgBuilder12_29.logLevel = (int) 3;
+    logMsgBuilder12_29.initCapacity = (int) 256;
     map_doubleValue_With_addValue0_12.setNotifyOnChangeOnly(false);
-    map_doubleValue_With_addValue0_12.setResetImmediate(true);
     map_doubleValue_With_addValue0_12.setValidOnStart(false);
     map_doubleValue_With_addValue0_12.filterSubject = booleanFilter_10;
     map_doubleValue_With_addValue0_12.f = sum_11;
-    map_doubleValue_With_addValue0_19.setAlwaysReset(false);
-    map_doubleValue_With_addValue0_19.setNotifyOnChangeOnly(false);
-    map_doubleValue_With_addValue0_19.setResetImmediate(true);
-    map_doubleValue_With_addValue0_19.setValidOnStart(false);
-    map_doubleValue_With_addValue0_19.filterSubject = booleanFilter_17;
-    map_doubleValue_With_addValue0_19.f = sum_18;
-    map_doubleValue_With_subtract1_21.setAlwaysReset(false);
-    map_doubleValue_With_subtract1_21.setNotifyOnChangeOnly(false);
-    map_doubleValue_With_subtract1_21.setResetImmediate(true);
-    map_doubleValue_With_subtract1_21.setValidOnStart(false);
-    map_doubleValue_With_subtract1_21.filterSubject = defaultIntWrapper_13;
-    map_doubleValue_With_subtract1_21.source_0 = defaultIntWrapper_20;
-    map_doubleValue_With_subtract0_6.setAlwaysReset(false);
+    map_doubleValue_With_addValue0_20.setNotifyOnChangeOnly(false);
+    map_doubleValue_With_addValue0_20.setValidOnStart(false);
+    map_doubleValue_With_addValue0_20.filterSubject = booleanFilter_18;
+    map_doubleValue_With_addValue0_20.f = sum_19;
+    map_doubleValue_With_subtract1_23.setNotifyOnChangeOnly(false);
+    map_doubleValue_With_subtract1_23.setValidOnStart(false);
+    map_doubleValue_With_subtract1_23.filterSubject = defaultIntWrapper_13;
+    map_doubleValue_With_subtract1_23.source_0 = defaultIntWrapper_21;
     map_doubleValue_With_subtract0_6.setNotifyOnChangeOnly(false);
-    map_doubleValue_With_subtract0_6.setResetImmediate(true);
     map_doubleValue_With_subtract0_6.setValidOnStart(false);
     map_doubleValue_With_subtract0_6.filterSubject = defaultIntWrapper_5;
     map_doubleValue_With_subtract0_6.source_0 = defaultIntWrapper_2;
-    map_getAmountDelivered_With_addValue0_4.setAlwaysReset(false);
     map_getAmountDelivered_With_addValue0_4.setNotifyOnChangeOnly(false);
-    map_getAmountDelivered_With_addValue0_4.setResetImmediate(true);
     map_getAmountDelivered_With_addValue0_4.setValidOnStart(false);
     map_getAmountDelivered_With_addValue0_4.filterSubject = handlerDelivery_;
     map_getAmountDelivered_With_addValue0_4.f = sum_3;
-    map_getAmountDelivered_With_multiply0_16.setAlwaysReset(false);
-    map_getAmountDelivered_With_multiply0_16.setNotifyOnChangeOnly(false);
-    map_getAmountDelivered_With_multiply0_16.setResetImmediate(true);
-    map_getAmountDelivered_With_multiply0_16.setValidOnStart(false);
-    map_getAmountDelivered_With_multiply0_16.filterSubject = handlerDelivery_;
-    map_getAmountDelivered_With_multiply0_16.source_0 = defaultIntWrapper_15;
-    map_getAmountSold_With_addValue0_1.setAlwaysReset(false);
+    map_getAmountDelivered_With_addValue0_4.resetNoPublishNotifier = resetSignal;
+    map_getAmountDelivered_With_multiply0_17.setNotifyOnChangeOnly(false);
+    map_getAmountDelivered_With_multiply0_17.setValidOnStart(false);
+    map_getAmountDelivered_With_multiply0_17.filterSubject = handlerDelivery_;
+    map_getAmountDelivered_With_multiply0_17.source_0 = defaultIntWrapper_16;
     map_getAmountSold_With_addValue0_1.setNotifyOnChangeOnly(false);
-    map_getAmountSold_With_addValue0_1.setResetImmediate(true);
     map_getAmountSold_With_addValue0_1.setValidOnStart(false);
     map_getAmountSold_With_addValue0_1.filterSubject = handlerSale_;
     map_getAmountSold_With_addValue0_1.f = sum_0;
-    map_getAmountSold_With_multiply0_9.setAlwaysReset(false);
+    map_getAmountSold_With_addValue0_1.resetNoPublishNotifier = resetSignal;
     map_getAmountSold_With_multiply0_9.setNotifyOnChangeOnly(false);
-    map_getAmountSold_With_multiply0_9.setResetImmediate(true);
     map_getAmountSold_With_multiply0_9.setValidOnStart(false);
     map_getAmountSold_With_multiply0_9.filterSubject = handlerSale_;
     map_getAmountSold_With_multiply0_9.source_0 = defaultIntWrapper_8;
-    numericPredicates_23.doubleLimit_0 = (double) 10.0;
-    numericPredicates_23.doubleLimit_1 = (double) Double.NaN;
+    defaultIntWrapper_2.setNotifyOnChangeOnly(false);
+    defaultIntWrapper_2.setValidOnStart(true);
+    defaultIntWrapper_2.resetNoPublishNotifier = resetSignal;
+    defaultIntWrapper_5.setNotifyOnChangeOnly(false);
+    defaultIntWrapper_5.setValidOnStart(true);
+    defaultIntWrapper_5.resetNoPublishNotifier = resetSignal;
+    defaultIntWrapper_8.setNotifyOnChangeOnly(false);
+    defaultIntWrapper_8.setValidOnStart(true);
+    defaultIntWrapper_13.setNotifyOnChangeOnly(false);
+    defaultIntWrapper_13.setValidOnStart(true);
+    defaultIntWrapper_16.setNotifyOnChangeOnly(false);
+    defaultIntWrapper_16.setValidOnStart(true);
+    defaultIntWrapper_21.setNotifyOnChangeOnly(false);
+    defaultIntWrapper_21.setValidOnStart(true);
+    numericPredicates_27.doubleLimit_0 = (double) 10.0;
+    numericPredicates_27.doubleLimit_1 = (double) Double.NaN;
   }
 
   @Override
@@ -234,6 +252,12 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
           handleEvent(typedEvent);
           break;
         }
+      case ("java.lang.String"):
+        {
+          String typedEvent = (String) event;
+          handleEvent(typedEvent);
+          break;
+        }
     }
   }
 
@@ -242,10 +266,10 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
     isDirty_handlerDelivery_ = true;
     handlerDelivery_.onEvent(typedEvent);
     if (isDirty_handlerDelivery_) {
-      map_getAmountDelivered_With_multiply0_16.updated_filterSubject(handlerDelivery_);
+      map_getAmountDelivered_With_multiply0_17.updated_filterSubject(handlerDelivery_);
     }
-    if (isDirty_defaultIntWrapper_15 | isDirty_handlerDelivery_) {
-      map_getAmountDelivered_With_multiply0_16.onEvent();
+    if (isDirty_defaultIntWrapper_16 | isDirty_handlerDelivery_) {
+      map_getAmountDelivered_With_multiply0_17.onEvent();
     }
     if (isDirty_handlerDelivery_) {
       isDirty_map_getAmountDelivered_With_addValue0_4 =
@@ -258,39 +282,43 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
       }
     }
     if (isDirty_defaultIntWrapper_5) {
-      isDirty_booleanFilter_17 = booleanFilter_17.updated();
+      isDirty_booleanFilter_18 = booleanFilter_18.updated();
     }
     if (isDirty_defaultIntWrapper_2 | isDirty_defaultIntWrapper_5) {
       isDirty_map_doubleValue_With_subtract0_6 = map_doubleValue_With_subtract0_6.onEvent();
     }
     if (isDirty_map_doubleValue_With_subtract0_6) {
-      isDirty_filter_Number_By_lessThan0_24 = filter_Number_By_lessThan0_24.onEvent();
-      if (isDirty_filter_Number_By_lessThan0_24) {
-        logMsgBuilder8_25.postLog(filter_Number_By_lessThan0_24);
+      isDirty_filter_Number_By_lessThan0_28 = filter_Number_By_lessThan0_28.onEvent();
+      if (isDirty_filter_Number_By_lessThan0_28) {
+        logMsgBuilder12_29.postLog(filter_Number_By_lessThan0_28);
       }
     }
-    if (isDirty_filter_Number_By_lessThan0_24) {
-      logMsgBuilder8_25.logMessage();
+    if (isDirty_filter_Number_By_lessThan0_28) {
+      logMsgBuilder12_29.logMessage();
     }
-    if (isDirty_booleanFilter_17) {
-      isDirty_map_doubleValue_With_addValue0_19 = map_doubleValue_With_addValue0_19.onEvent();
+    if (isDirty_booleanFilter_18) {
+      isDirty_map_doubleValue_With_addValue0_20 = map_doubleValue_With_addValue0_20.onEvent();
     }
-    if (isDirty_map_doubleValue_With_addValue0_19) {
-      isDirty_defaultIntWrapper_20 = defaultIntWrapper_20.onEvent();
-      if (isDirty_defaultIntWrapper_20) {
-        map_doubleValue_With_subtract1_21.updated_source_0(defaultIntWrapper_20);
+    if (isDirty_map_doubleValue_With_addValue0_20) {
+      isDirty_defaultIntWrapper_21 = defaultIntWrapper_21.onEvent();
+      if (isDirty_defaultIntWrapper_21) {
+        logMsgBuilder3_22.postLog(defaultIntWrapper_21);
+        map_doubleValue_With_subtract1_23.updated_source_0(defaultIntWrapper_21);
       }
     }
-    if (isDirty_defaultIntWrapper_13 | isDirty_defaultIntWrapper_20) {
-      isDirty_map_doubleValue_With_subtract1_21 = map_doubleValue_With_subtract1_21.onEvent();
+    if (isDirty_defaultIntWrapper_21) {
+      logMsgBuilder3_22.logMessage();
+    }
+    if (isDirty_defaultIntWrapper_13 | isDirty_defaultIntWrapper_21) {
+      isDirty_map_doubleValue_With_subtract1_23 = map_doubleValue_With_subtract1_23.onEvent();
     }
     if (isDirty_defaultIntWrapper_2
         | isDirty_defaultIntWrapper_5
         | isDirty_defaultIntWrapper_13
-        | isDirty_defaultIntWrapper_20
-        | isDirty_map_doubleValue_With_subtract1_21
+        | isDirty_defaultIntWrapper_21
+        | isDirty_map_doubleValue_With_subtract1_23
         | isDirty_map_doubleValue_With_subtract0_6) {
-      logMsgBuilder6_22.logMessage();
+      logMsgBuilder10_26.logMessage();
     }
     //event stack unwind callbacks
     afterEvent();
@@ -301,16 +329,16 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
     isDirty_handlerItemCost_ = true;
     handlerItemCost_.onEvent(typedEvent);
     if (isDirty_handlerItemCost_) {
-      isDirty_getField_ItemCost_int0_14 = getField_ItemCost_int0_14.onEvent();
+      isDirty_getField_ItemCost_int0_15 = getField_ItemCost_int0_15.onEvent();
     }
-    if (isDirty_getField_ItemCost_int0_14) {
-      isDirty_defaultIntWrapper_15 = defaultIntWrapper_15.onEvent();
-      if (isDirty_defaultIntWrapper_15) {
-        map_getAmountDelivered_With_multiply0_16.updated_source_0(defaultIntWrapper_15);
+    if (isDirty_getField_ItemCost_int0_15) {
+      isDirty_defaultIntWrapper_16 = defaultIntWrapper_16.onEvent();
+      if (isDirty_defaultIntWrapper_16) {
+        map_getAmountDelivered_With_multiply0_17.updated_source_0(defaultIntWrapper_16);
       }
     }
-    if (isDirty_defaultIntWrapper_15 | isDirty_handlerDelivery_) {
-      map_getAmountDelivered_With_multiply0_16.onEvent();
+    if (isDirty_defaultIntWrapper_16 | isDirty_handlerDelivery_) {
+      map_getAmountDelivered_With_multiply0_17.onEvent();
     }
     //event stack unwind callbacks
     afterEvent();
@@ -362,13 +390,13 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
       isDirty_map_doubleValue_With_subtract0_6 = map_doubleValue_With_subtract0_6.onEvent();
     }
     if (isDirty_map_doubleValue_With_subtract0_6) {
-      isDirty_filter_Number_By_lessThan0_24 = filter_Number_By_lessThan0_24.onEvent();
-      if (isDirty_filter_Number_By_lessThan0_24) {
-        logMsgBuilder8_25.postLog(filter_Number_By_lessThan0_24);
+      isDirty_filter_Number_By_lessThan0_28 = filter_Number_By_lessThan0_28.onEvent();
+      if (isDirty_filter_Number_By_lessThan0_28) {
+        logMsgBuilder12_29.postLog(filter_Number_By_lessThan0_28);
       }
     }
-    if (isDirty_filter_Number_By_lessThan0_24) {
-      logMsgBuilder8_25.logMessage();
+    if (isDirty_filter_Number_By_lessThan0_28) {
+      logMsgBuilder12_29.logMessage();
     }
     if (isDirty_booleanFilter_10) {
       isDirty_map_doubleValue_With_addValue0_12 = map_doubleValue_With_addValue0_12.onEvent();
@@ -376,19 +404,23 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
     if (isDirty_map_doubleValue_With_addValue0_12) {
       isDirty_defaultIntWrapper_13 = defaultIntWrapper_13.onEvent();
       if (isDirty_defaultIntWrapper_13) {
-        map_doubleValue_With_subtract1_21.updated_filterSubject(defaultIntWrapper_13);
+        logMsgBuilder1_14.postLog(defaultIntWrapper_13);
+        map_doubleValue_With_subtract1_23.updated_filterSubject(defaultIntWrapper_13);
       }
     }
-    if (isDirty_defaultIntWrapper_13 | isDirty_defaultIntWrapper_20) {
-      isDirty_map_doubleValue_With_subtract1_21 = map_doubleValue_With_subtract1_21.onEvent();
+    if (isDirty_defaultIntWrapper_13) {
+      logMsgBuilder1_14.logMessage();
+    }
+    if (isDirty_defaultIntWrapper_13 | isDirty_defaultIntWrapper_21) {
+      isDirty_map_doubleValue_With_subtract1_23 = map_doubleValue_With_subtract1_23.onEvent();
     }
     if (isDirty_defaultIntWrapper_2
         | isDirty_defaultIntWrapper_5
         | isDirty_defaultIntWrapper_13
-        | isDirty_defaultIntWrapper_20
-        | isDirty_map_doubleValue_With_subtract1_21
+        | isDirty_defaultIntWrapper_21
+        | isDirty_map_doubleValue_With_subtract1_23
         | isDirty_map_doubleValue_With_subtract0_6) {
-      logMsgBuilder6_22.logMessage();
+      logMsgBuilder10_26.logMessage();
     }
     //event stack unwind callbacks
     afterEvent();
@@ -398,80 +430,122 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
     switch (typedEvent.filterString()) {
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[CHANGE_FILTER]
       case ("CHANGE_FILTER"):
-        logMsgBuilder8_25.controlLogIdFilter(typedEvent);
-        logMsgBuilder6_22.controlLogIdFilter(typedEvent);
+        logMsgBuilder12_29.controlLogIdFilter(typedEvent);
+        logMsgBuilder1_14.controlLogIdFilter(typedEvent);
+        logMsgBuilder3_22.controlLogIdFilter(typedEvent);
+        logMsgBuilder10_26.controlLogIdFilter(typedEvent);
         afterEvent();
         return;
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[CHANGE_LEVEL]
       case ("CHANGE_LEVEL"):
-        logMsgBuilder8_25.controlLogLevelFilter(typedEvent);
-        logMsgBuilder6_22.controlLogLevelFilter(typedEvent);
+        logMsgBuilder12_29.controlLogLevelFilter(typedEvent);
+        logMsgBuilder1_14.controlLogLevelFilter(typedEvent);
+        logMsgBuilder3_22.controlLogLevelFilter(typedEvent);
+        logMsgBuilder10_26.controlLogLevelFilter(typedEvent);
         afterEvent();
         return;
         //Event Class:[com.fluxtion.ext.streaming.api.log.LogControlEvent] filterString:[CHANGE_LOG_PROVIDER]
       case ("CHANGE_LOG_PROVIDER"):
-        logMsgBuilder8_25.controlLogProvider(typedEvent);
-        logMsgBuilder6_22.controlLogProvider(typedEvent);
+        logMsgBuilder12_29.controlLogProvider(typedEvent);
+        logMsgBuilder1_14.controlLogProvider(typedEvent);
+        logMsgBuilder3_22.controlLogProvider(typedEvent);
+        logMsgBuilder10_26.controlLogProvider(typedEvent);
         afterEvent();
         return;
     }
     afterEvent();
   }
 
+  public void handleEvent(String typedEvent) {
+    //Default, no filter methods
+    isDirty_handlerString_ = true;
+    handlerString_.onEvent(typedEvent);
+    if (isDirty_handlerString_) {
+      isDirty_resetSignal = resetSignal.onEvent();
+      if (isDirty_resetSignal) {
+        map_getAmountSold_With_addValue0_1.resetNoPublishNotification(resetSignal);
+        defaultIntWrapper_2.resetNoPublishNotification(resetSignal);
+        map_getAmountDelivered_With_addValue0_4.resetNoPublishNotification(resetSignal);
+        defaultIntWrapper_5.resetNoPublishNotification(resetSignal);
+      }
+    }
+    //event stack unwind callbacks
+    afterEvent();
+  }
+
   private void afterEvent() {
-    map_doubleValue_With_addValue0_19.resetAfterEvent();
+    defaultIntWrapper_21.resetAfterEvent();
+    map_doubleValue_With_addValue0_20.resetAfterEvent();
+    defaultIntWrapper_13.resetAfterEvent();
     map_doubleValue_With_addValue0_12.resetAfterEvent();
-    filter_Number_By_lessThan0_24.resetAfterEvent();
+    filter_Number_By_lessThan0_28.resetAfterEvent();
+    defaultIntWrapper_5.resetAfterEvent();
     map_getAmountDelivered_With_addValue0_4.resetAfterEvent();
+    defaultIntWrapper_2.resetAfterEvent();
     map_getAmountSold_With_addValue0_1.resetAfterEvent();
+    resetSignal.resetAfterEvent();
+    defaultIntWrapper_8.resetAfterEvent();
+    defaultIntWrapper_16.resetAfterEvent();
     isDirty_booleanFilter_10 = false;
-    isDirty_booleanFilter_17 = false;
+    isDirty_booleanFilter_18 = false;
     isDirty_defaultIntWrapper_2 = false;
     isDirty_defaultIntWrapper_5 = false;
     isDirty_defaultIntWrapper_8 = false;
     isDirty_defaultIntWrapper_13 = false;
-    isDirty_defaultIntWrapper_15 = false;
-    isDirty_defaultIntWrapper_20 = false;
-    isDirty_filter_Number_By_lessThan0_24 = false;
-    isDirty_getField_ItemCost_int0_14 = false;
+    isDirty_defaultIntWrapper_16 = false;
+    isDirty_defaultIntWrapper_21 = false;
+    isDirty_filter_Number_By_lessThan0_28 = false;
+    isDirty_getField_ItemCost_int0_15 = false;
     isDirty_getField_Price_int0_7 = false;
     isDirty_handlerDelivery_ = false;
     isDirty_handlerItemCost_ = false;
     isDirty_handlerPrice_ = false;
     isDirty_handlerSale_ = false;
+    isDirty_handlerString_ = false;
     isDirty_map_doubleValue_With_addValue0_12 = false;
-    isDirty_map_doubleValue_With_addValue0_19 = false;
-    isDirty_map_doubleValue_With_subtract1_21 = false;
+    isDirty_map_doubleValue_With_addValue0_20 = false;
+    isDirty_map_doubleValue_With_subtract1_23 = false;
     isDirty_map_doubleValue_With_subtract0_6 = false;
     isDirty_map_getAmountDelivered_With_addValue0_4 = false;
     isDirty_map_getAmountSold_With_addValue0_1 = false;
+    isDirty_resetSignal = false;
   }
 
   @Override
   public void init() {
-    getField_ItemCost_int0_14.init();
-    defaultIntWrapper_15.init();
-    getField_Price_int0_7.init();
-    defaultIntWrapper_8.init();
-    map_getAmountDelivered_With_multiply0_16.init();
-    map_getAmountSold_With_multiply0_9.init();
+    handlerDelivery_.reset();
+    handlerItemCost_.reset();
+    getField_ItemCost_int0_15.reset();
+    defaultIntWrapper_16.reset();
+    handlerPrice_.reset();
+    getField_Price_int0_7.reset();
+    defaultIntWrapper_8.reset();
+    handlerSale_.reset();
+    handlerString_.reset();
+    map_getAmountDelivered_With_multiply0_17.reset();
+    map_getAmountSold_With_multiply0_9.reset();
+    resetSignal.reset();
     sum_0.reset();
-    map_getAmountSold_With_addValue0_1.init();
-    defaultIntWrapper_2.init();
+    map_getAmountSold_With_addValue0_1.reset();
+    defaultIntWrapper_2.reset();
+    booleanFilter_10.reset();
     sum_3.reset();
-    map_getAmountDelivered_With_addValue0_4.init();
-    defaultIntWrapper_5.init();
-    map_doubleValue_With_subtract0_6.init();
-    filter_Number_By_lessThan0_24.init();
-    logMsgBuilder8_25.init();
+    map_getAmountDelivered_With_addValue0_4.reset();
+    defaultIntWrapper_5.reset();
+    booleanFilter_18.reset();
+    map_doubleValue_With_subtract0_6.reset();
+    filter_Number_By_lessThan0_28.reset();
+    logMsgBuilder12_29.init();
     sum_11.reset();
-    map_doubleValue_With_addValue0_12.init();
-    defaultIntWrapper_13.init();
-    sum_18.reset();
-    map_doubleValue_With_addValue0_19.init();
-    defaultIntWrapper_20.init();
-    map_doubleValue_With_subtract1_21.init();
-    logMsgBuilder6_22.init();
+    map_doubleValue_With_addValue0_12.reset();
+    defaultIntWrapper_13.reset();
+    logMsgBuilder1_14.init();
+    sum_19.reset();
+    map_doubleValue_With_addValue0_20.reset();
+    defaultIntWrapper_21.reset();
+    logMsgBuilder3_22.init();
+    map_doubleValue_With_subtract1_23.reset();
+    logMsgBuilder10_26.init();
   }
 
   @Override

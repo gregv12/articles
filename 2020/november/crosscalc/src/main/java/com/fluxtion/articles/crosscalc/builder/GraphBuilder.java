@@ -16,28 +16,16 @@
  */
 package com.fluxtion.articles.crosscalc.builder;
 
-import com.fluxtion.api.SepContext;
-import com.fluxtion.api.partition.LambdaReflection.SerializableFunction;
 import com.fluxtion.articles.crosscalc.CompoundBreachCalc;
 import com.fluxtion.articles.crosscalc.MarketTick;
-import com.fluxtion.articles.sales.Shop.Sale;
 import com.fluxtion.builder.annotation.Disabled;
 import com.fluxtion.builder.annotation.SepBuilder;
 import com.fluxtion.builder.node.SEPConfig;
 import com.fluxtion.ext.streaming.api.Wrapper;
-import com.fluxtion.ext.streaming.api.numeric.MutableNumber;
-import com.fluxtion.ext.streaming.api.stream.Argument;
-import static com.fluxtion.ext.streaming.api.stream.Argument.arg;
 import static com.fluxtion.ext.streaming.api.stream.NumericPredicates.gt;
-import com.fluxtion.ext.streaming.builder.factory.EventSelect;
-import static com.fluxtion.ext.streaming.builder.factory.EventSelect.select;
 import static com.fluxtion.ext.streaming.builder.factory.FilterBuilder.filter;
 import static com.fluxtion.ext.streaming.builder.factory.LibraryFunctionsBuilder.multiply;
 import static com.fluxtion.ext.streaming.builder.factory.LibraryFunctionsBuilder.subtract;
-import static com.fluxtion.ext.streaming.builder.factory.MappingBuilder.map;
-import com.fluxtion.scratch.DefaultNumberWrapper;
-import com.fluxtion.scratch.EventMutableNumber;
-import com.fluxtion.scratch.EventMutableNumber.EventMutableInt;
 import lombok.Value;
 
 /**
@@ -120,64 +108,5 @@ public class GraphBuilder {
             return val;
         }
     }
-//
-//    public static <T> Wrapper<Number> number(int value, SerializableFunction<T, Number> supplier) {
-//        return SepContext.service().addOrReuse(new DefaultNumberWrapper(select(supplier), value));
-//    }
 
-//    public static Wrapper<Number> number(int value, String key) {
-//        EventMutableNumber num = new EventMutableInt();
-//        num.setFilter(key);
-//        num.set(value);
-//        num.setValidOnStart(true);
-//        return SepContext.service().addOrReuse(num);
-//    }
-//
-//    public static Wrapper<Number> number(String key) {
-//        EventMutableNumber num = new EventMutableNumber();
-//        num.setFilter(key);
-//        num.setValidOnStart(false);
-//        return SepContext.service().addOrReuse(num);
-//    }
-//
-//    public static Argument<Number> arg2(int value, String key) {
-//        return (arg(number(value, key)));
-//    }
-//
-//    public static <T> Wrapper<Number> numberX(int value, SerializableFunction<T, Number> supplier1) {
-//        MutableNumber num = new MutableNumber();
-//        num.set(value);
-//        Wrapper<Number> target = EventSelect.select(supplier1).push(num::set);
-//        target = SepContext.service().addOrReuse(target);
-//        target.validOnStart(true);
-//        return target;
-//    }
-//
-//    public static <T, S extends Number> Wrapper<Number> subtractA(SerializableFunction<T, S> supplier1, Wrapper<S> supplier2) {
-//        return map(subtract(), arg(supplier1), arg(supplier2));
-//    }
-//
-//    public static <T, S> Wrapper<Number> subtractA(Wrapper<S> supplier1, SerializableFunction<T, Number> supplier2) {
-//        return map(subtract(), arg(supplier1), arg(supplier2));
-//    }
-
-//    public static <T extends Number, S extends Number> Wrapper<Number> subtract(LambdaReflection.SerializableSupplier<T> supplier1, LambdaReflection.SerializableSupplier<T> supplier2) {
-//        return map(subtract(), arg(supplier1), arg(supplier2));
-//    }
-//
-//    public static <T extends Number, S extends Number> Wrapper<Number> subtract(Argument<T> arg1, Argument<S> arg2) {
-//        return map(subtract(), arg1, arg2);
-//    }
-//
-//    public static <T, S extends Number, R extends Number> Wrapper<Number> subtract(Wrapper<T> wrapper, LambdaReflection.SerializableFunction<T, S> supplier1, LambdaReflection.SerializableFunction<T, R> supplier2) {
-//        return map(subtract(), arg(wrapper, supplier1), arg(wrapper, supplier2));
-//    }
-//
-//    public static <T, U, S extends Number, R extends Number> Wrapper<Number> subtract(Wrapper<T> wrapper1, LambdaReflection.SerializableFunction<T, S> supplier1, Wrapper<U> wrapper2, LambdaReflection.SerializableFunction<U, R> supplier2) {
-//        return map(subtract(), arg(wrapper1, supplier1), arg(wrapper2, supplier2));
-//    }
-//
-//    public static <T extends Number, S extends Number> Wrapper<Number> subtract(Wrapper<T> wrapper1, Wrapper<S> wrapper2) {
-//        return map(subtract(), arg(wrapper1), arg(wrapper2));
-//    } 
 }

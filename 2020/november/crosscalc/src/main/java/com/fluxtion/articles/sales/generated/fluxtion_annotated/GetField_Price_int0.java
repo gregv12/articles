@@ -16,12 +16,15 @@ import com.fluxtion.ext.streaming.api.stream.AbstractFilterWrapper;
 /**
  * Generated get field template.
  *
- * <ul>
- *   <li>output class : {@link Number}
- *   <li>input class : {@link Price}
- *   <li>source function : {@link Price#getCustomerPrice}
- *   <li>primitive number : true
- * </ul>
+ * <pre>
+ *  <ul>
+ *     <li>template file    : template/MapFieldTemplate.vsl
+ *     <li>output class     : {@link Number}
+ *     <li>input class      : {@link Price}
+ *     <li>source function  : {@link Price#getCustomerPrice}
+ *     <li>primitive number : true
+ *  </ul>
+ * </pre>
  *
  * @author Greg Higgins
  */
@@ -46,8 +49,8 @@ public class GetField_Price_int0 extends AbstractFilterWrapper<Number> {
     return Number.class;
   }
 
-  @Initialise
-  public void init() {
+  @Override
+  public void reset() {
     result = new MutableNumber();
   }
 }

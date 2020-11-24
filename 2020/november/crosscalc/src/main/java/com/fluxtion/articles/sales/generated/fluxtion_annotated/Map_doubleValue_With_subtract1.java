@@ -16,13 +16,16 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions;
 /**
  * generated mapper function wrapper for a numeric primitive.
  *
- * <ul>
- *   <li>template file: MapperPrimitiveTemplate.vsl
+ * <pre>
+ *  <ul>
+ *   <li>template file: template/MapperPrimitiveTemplate.vsl
  *   <li>output class : {@link Number}
- *   <li>input class : {@link Number}
+ *   <li>input class  : {@link Number}
+ *   <li>input class  : {@link DefaultIntWrapper}
  *   <li>map function : {@link StreamFunctions#subtract}
- *   <li>multiArg : true
- * </ul>
+ *   <li>multiArg     : true
+ *  </ul>
+ * </pre>
  *
  * @author Greg Higgins
  */
@@ -38,15 +41,20 @@ public class Map_doubleValue_With_subtract1 extends AbstractFilterWrapper<Number
 
   @OnEvent
   public boolean onEvent() {
-    oldValue.set(result);
-    if (allSourcesUpdated()) {
-      result =
-          StreamFunctions.subtract(
-              (double) ((Number) filterSubject.event()).doubleValue(),
-              (double) ((Number) source_0.event()).doubleValue());
+    boolean updated = true;
+    if (recalculate) {
+      oldValue.set(result);
+      if (allSourcesUpdated()) {
+        result =
+            StreamFunctions.subtract(
+                (double) ((Number) filterSubject.event()).doubleValue(),
+                (double) ((Number) source_0.event()).doubleValue());
+      }
+      value.set(result);
+      updated = allSourcesUpdated() & !notifyOnChangeOnly | (!oldValue.equals(value));
     }
-    value.set(result);
-    return allSourcesUpdated() & !notifyOnChangeOnly | (!oldValue.equals(value));
+    recalculate = true;
+    return updated;
   }
 
   private boolean allSourcesUpdated() {
@@ -75,11 +83,15 @@ public class Map_doubleValue_With_subtract1 extends AbstractFilterWrapper<Number
     return Number.class;
   }
 
-  @Initialise
-  public void init() {
+  @Override
+  public void reset() {
     result = 0;
-    value = new MutableNumber();
-    oldValue = new MutableNumber();
+    value = value == null ? new MutableNumber() : value;
+    oldValue = oldValue == null ? new MutableNumber() : oldValue;
+    value.set(result);
+    oldValue.set(result);
     filterSubjectUpdated = false;
+    recalculate = true;
+    reset = false;
   }
 }

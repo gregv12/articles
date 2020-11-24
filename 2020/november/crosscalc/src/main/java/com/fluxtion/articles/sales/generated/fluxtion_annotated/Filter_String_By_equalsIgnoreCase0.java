@@ -5,12 +5,11 @@ import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.articles.sales.generated.fluxtion_annotated.Map_doubleValue_With_subtract0;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
+import com.fluxtion.ext.streaming.api.IntFilterEventHandler;
 import com.fluxtion.ext.streaming.api.Test;
 import com.fluxtion.ext.streaming.api.Wrapper;
 import com.fluxtion.ext.streaming.api.stream.AbstractFilterWrapper;
-import com.fluxtion.ext.streaming.api.stream.NumericPredicates;
 
 /**
  * generated filter function wrapper.
@@ -18,25 +17,25 @@ import com.fluxtion.ext.streaming.api.stream.NumericPredicates;
  * <pre>
  *  <ul>
  *      <li>template file   : template/FilterTemplate.vsl
- *      <li>input class     : {@link Number}
- *      <li>filter function : {@link NumericPredicates#lessThan}
+ *      <li>input class     : {@link String}
+ *      <li>filter function : {@link String#equalsIgnoreCase}
  *  </ul>
  * </pre>
  *
  * @author Greg Higgins
  */
-public class Filter_Number_By_lessThan0 extends AbstractFilterWrapper<Number> {
+public class Filter_String_By_equalsIgnoreCase0 extends AbstractFilterWrapper<String> {
 
   //source operand inputs
-  public Map_doubleValue_With_subtract0 filterSubject;
-  public Map_doubleValue_With_subtract0 source_0;
-  @NoEventReference public NumericPredicates f;
+  public IntFilterEventHandler filterSubject;
+  public IntFilterEventHandler source_0;
+  @NoEventReference public String f;
 
   @OnEvent
   @SuppressWarnings("unchecked")
   public boolean onEvent() {
     boolean oldValue = result;
-    result = (boolean) f.lessThan((double) ((Number) filterSubject.event()).doubleValue());
+    result = (boolean) f.equalsIgnoreCase((String) ((String) filterSubject.event()));
     return (!notifyOnChangeOnly | !oldValue) & result;
     //return (!notifyOnChangeOnly & result) | ((!oldValue) & result);
   }
@@ -50,13 +49,13 @@ public class Filter_Number_By_lessThan0 extends AbstractFilterWrapper<Number> {
   }
 
   @Override
-  public Number event() {
-    return (Number) filterSubject.event();
+  public String event() {
+    return (String) filterSubject.event();
   }
 
   @Override
-  public Class<Number> eventClass() {
-    return Number.class;
+  public Class<String> eventClass() {
+    return String.class;
   }
 
   @Override

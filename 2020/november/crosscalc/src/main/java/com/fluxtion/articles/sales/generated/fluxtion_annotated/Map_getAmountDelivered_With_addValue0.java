@@ -18,13 +18,15 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Sum;
 /**
  * generated mapper function wrapper for a numeric primitive.
  *
- * <ul>
- *   <li>template file: MapperPrimitiveTemplate.vsl
+ * <pre>
+ *  <ul>
+ *   <li>template file: template/MapperPrimitiveTemplate.vsl
  *   <li>output class : {@link Number}
- *   <li>input class : {@link Delivery}
+ *   <li>input class  : {@link Delivery}
  *   <li>map function : {@link Sum#addValue}
- *   <li>multiArg : false
- * </ul>
+ *   <li>multiArg     : false
+ *  </ul>
+ * </pre>
  *
  * @author Greg Higgins
  */
@@ -34,45 +36,29 @@ public class Map_getAmountDelivered_With_addValue0 extends AbstractFilterWrapper
   @NoEventReference public Sum f;
   private double result;
   @NoEventReference public Object resetNotifier;
-  private boolean parentReset = false;
+//  private boolean parentReset = false;
   private MutableNumber value;
   private MutableNumber oldValue;
 
   @OnEvent
   public boolean onEvent() {
-    oldValue.set(result);
-    result = f.addValue((Number) ((Delivery) filterSubject.event()).getAmountDelivered());
-    value.set(result);
-    return !notifyOnChangeOnly | (!oldValue.equals(value));
-  }
-
-  @OnParentUpdate("resetNotifier")
-  public void resetNotification(Object resetNotifier) {
-    parentReset = true;
-    if (isResetImmediate()) {
-      result = 0;
-      f.reset();
-      parentReset = false;
+    boolean updated = true;
+    if (recalculate) {
+      oldValue.set(result);
+      result = f.addValue((Number) ((Delivery) filterSubject.event()).getAmountDelivered());
+      value.set(result);
+      updated = !notifyOnChangeOnly | (!oldValue.equals(value));
     }
+    recalculate = true;
+    return updated;
   }
 
   @AfterEvent
   public void resetAfterEvent() {
-    if (parentReset | alwaysReset) {
-      result = 0;
-      f.reset();
+    if (reset) {
+      reset();
     }
-    parentReset = false;
-  }
-
-  public void reset() {
-    f.reset();
-  }
-
-  @Override
-  public FilterWrapper<Number> resetNotifier(Object resetNotifier) {
-    this.resetNotifier = resetNotifier;
-    return this;
+    reset = false;
   }
 
   @Override
@@ -85,10 +71,15 @@ public class Map_getAmountDelivered_With_addValue0 extends AbstractFilterWrapper
     return Number.class;
   }
 
-  @Initialise
-  public void init() {
+  @Override
+  public void reset() {
     result = 0;
-    value = new MutableNumber();
-    oldValue = new MutableNumber();
+    value = value == null ? new MutableNumber() : value;
+    oldValue = oldValue == null ? new MutableNumber() : oldValue;
+    value.set(result);
+    oldValue.set(result);
+    f.reset();
+    recalculate = true;
+    reset = false;
   }
 }
