@@ -1,4 +1,4 @@
-package com.fluxtion.articles.sales.generated.fluxtion_annotated;
+package com.fluxtion.articles.sales.fluxtion_generated;
 
 import com.fluxtion.api.annotations.AfterEvent;
 import com.fluxtion.api.annotations.Initialise;

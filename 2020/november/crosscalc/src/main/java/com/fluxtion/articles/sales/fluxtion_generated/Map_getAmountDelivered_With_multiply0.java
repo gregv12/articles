@@ -1,11 +1,11 @@
-package com.fluxtion.articles.sales.generated.fluxtion_annotated;
+package com.fluxtion.articles.sales.fluxtion_generated;
 
 import com.fluxtion.api.annotations.AfterEvent;
 import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.articles.sales.Shop.Sale;
+import com.fluxtion.articles.sales.Shop.Delivery;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.IntFilterEventHandler;
 import com.fluxtion.ext.streaming.api.Test;
@@ -22,7 +22,7 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions;
  *  <ul>
  *   <li>template file: template/MapperPrimitiveTemplate.vsl
  *   <li>output class : {@link Number}
- *   <li>input class  : {@link Sale}
+ *   <li>input class  : {@link Delivery}
  *   <li>input class  : {@link DefaultIntWrapper}
  *   <li>map function : {@link StreamFunctions#multiply}
  *   <li>multiArg     : true
@@ -31,7 +31,7 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions;
  *
  * @author Greg Higgins
  */
-public class Map_getAmountSold_With_multiply0 extends AbstractFilterWrapper<Number> {
+public class Map_getAmountDelivered_With_multiply0 extends AbstractFilterWrapper<Number> {
 
   public IntFilterEventHandler filterSubject;
   private boolean filterSubjectUpdated;
@@ -49,7 +49,7 @@ public class Map_getAmountSold_With_multiply0 extends AbstractFilterWrapper<Numb
       if (allSourcesUpdated()) {
         result =
             StreamFunctions.multiply(
-                (double) ((Sale) filterSubject.event()).getAmountSold(),
+                (double) ((Delivery) filterSubject.event()).getAmountDelivered(),
                 (double) ((Number) source_0.event()).doubleValue());
       }
       value.set(result);

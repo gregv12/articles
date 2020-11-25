@@ -18,6 +18,7 @@
 package com.fluxtion.articles.sales.builder;
 
 import com.fluxtion.articles.sales.Shop;
+import com.fluxtion.builder.annotation.Disabled;
 import com.fluxtion.builder.annotation.SepBuilder;
 import com.fluxtion.builder.node.SEPConfig;
 import static com.fluxtion.ext.streaming.api.stream.Argument.argInt;
@@ -35,7 +36,8 @@ import static com.fluxtion.ext.streaming.builder.log.LogBuilder.log;
  */
 public class EventProcessorBuilder {
 
-    @SepBuilder(name = "StockProcessor", packageName = "com.fluxtion.articles.sales.generated.fluxtion_annotated")
+    @SepBuilder(name = "StockProcessor", packageName = "com.fluxtion.articles.sales.fluxtion_generated")
+//    @Disabled
     public static void buildGraphAnnotated(SEPConfig cfg) {
         //stock level calculation set default values for amoutnSold and amountDelivered
         //otherwise we need both a sale and a delivery event before calculating stock level

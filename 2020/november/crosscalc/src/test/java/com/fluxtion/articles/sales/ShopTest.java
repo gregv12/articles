@@ -18,7 +18,7 @@ package com.fluxtion.articles.sales;
 
 import com.fluxtion.api.StaticEventProcessor;
 import com.fluxtion.articles.sales.builder.EventProcessorBuilder;
-import com.fluxtion.articles.sales.generated.fluxtion_annotated.StockProcessor;
+import com.fluxtion.articles.sales.fluxtion_generated.StockProcessor;
 import com.fluxtion.ext.declarative.builder.stream.StreamInprocessTest;
 import org.junit.Ignore;
 import org.junit.Test;

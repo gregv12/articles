@@ -38,6 +38,7 @@ public class GraphBuilder {
     @SepBuilder(name = "TradeExecutor", packageName = "com.fluxtion.articles.crosscalc.generated.fluxtion_functional")
     @Disabled
     public void buildGraphFunctional(SEPConfig cfg) {
+        
         var cross = multiply(mid("EURCHF"), mid("USDCHF")).id("crossEURUSD");
         subtract(mid("EURUSD"), cross).id("crossDeltaEURUSD")
                 .get(Number::doubleValue)
@@ -60,6 +61,7 @@ public class GraphBuilder {
     }
 
     @SepBuilder(name = "TradeExecutor", packageName = "com.fluxtion.articles.crosscalc.generated.fluxtion_annotated")
+    @Disabled
     public void buildGraphAnnotated(SEPConfig cfg) {
 //        cfg.addNode(new TestHandler(new MyDependency(22.12)), "rootHanlder");
 //

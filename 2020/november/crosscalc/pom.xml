@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
-        <fluxtion.ver>2.8.2</fluxtion.ver>
+        <fluxtion.ver>2.8.4-SNAPSHOT</fluxtion.ver>
     </properties>
     
     <profiles>
@@ -41,7 +41,22 @@
             </build>
         </profile>
     </profiles>
-
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <excludes>
+                        <exclude>com/fluxtion/articles/crosscalc/builder/**</exclude>
+                        <exclude>com/fluxtion/articles/sales/builder/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>

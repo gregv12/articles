@@ -1,11 +1,11 @@
-package com.fluxtion.articles.sales.generated.fluxtion_annotated;
+package com.fluxtion.articles.sales.fluxtion_generated;
 
 import com.fluxtion.api.annotations.AfterEvent;
 import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.articles.sales.generated.fluxtion_annotated.Map_doubleValue_With_subtract0;
+import com.fluxtion.articles.sales.fluxtion_generated.Map_doubleValue_With_subtract0;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.Test;
 import com.fluxtion.ext.streaming.api.Wrapper;

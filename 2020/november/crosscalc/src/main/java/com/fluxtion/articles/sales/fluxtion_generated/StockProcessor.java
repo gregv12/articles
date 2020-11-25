@@ -14,7 +14,7 @@
  * along with this program.  If not, see
  * <http://www.mongodb.com/licensing/server-side-public-license>.
  */
-package com.fluxtion.articles.sales.generated.fluxtion_annotated;
+package com.fluxtion.articles.sales.fluxtion_generated;
 
 import com.fluxtion.api.StaticEventProcessor;
 import com.fluxtion.api.lifecycle.BatchHandler;
@@ -32,9 +32,9 @@ import com.fluxtion.ext.streaming.api.test.BooleanFilter;
 
 /*
  * <pre>
- * generation time   : 2020-11-23T10:01:00.892120700
- * generator version : 2.8.2-SNAPSHOT
- * api version       : 2.8.2-SNAPSHOT
+ * generation time   : 2020-11-25T20:39:09.452956600
+ * generator version : 2.8.4-SNAPSHOT
+ * api version       : 2.8.4-SNAPSHOT
  * </pre>
  * @author Greg Higgins
  */
@@ -64,7 +64,7 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
       new Map_getAmountSold_With_multiply0();
   private final NumericPredicates numericPredicates_27 = new NumericPredicates();
   private final String string_24 = "reset";
-  public final Filter_String_By_equalsIgnoreCase0 resetSignal =
+  private final Filter_String_By_equalsIgnoreCase0 filter_String_By_equalsIgnoreCase0_25 =
       new Filter_String_By_equalsIgnoreCase0();
   private final Sum sum_0 = new Sum();
   private final Map_getAmountSold_With_addValue0 map_getAmountSold_With_addValue0_1 =
@@ -110,6 +110,7 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
   private boolean isDirty_defaultIntWrapper_16 = false;
   private boolean isDirty_defaultIntWrapper_21 = false;
   private boolean isDirty_filter_Number_By_lessThan0_28 = false;
+  private boolean isDirty_filter_String_By_equalsIgnoreCase0_25 = false;
   private boolean isDirty_getField_ItemCost_int0_15 = false;
   private boolean isDirty_getField_Price_int0_7 = false;
   private boolean isDirty_handlerDelivery_ = false;
@@ -123,7 +124,6 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
   private boolean isDirty_map_doubleValue_With_subtract0_6 = false;
   private boolean isDirty_map_getAmountDelivered_With_addValue0_4 = false;
   private boolean isDirty_map_getAmountSold_With_addValue0_1 = false;
-  private boolean isDirty_resetSignal = false;
   //Filter constants
 
   public StockProcessor() {
@@ -132,11 +132,11 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
     filter_Number_By_lessThan0_28.filterSubject = map_doubleValue_With_subtract0_6;
     filter_Number_By_lessThan0_28.source_0 = map_doubleValue_With_subtract0_6;
     filter_Number_By_lessThan0_28.f = numericPredicates_27;
-    resetSignal.setNotifyOnChangeOnly(false);
-    resetSignal.setValidOnStart(false);
-    resetSignal.filterSubject = handlerString_;
-    resetSignal.source_0 = handlerString_;
-    resetSignal.f = string_24;
+    filter_String_By_equalsIgnoreCase0_25.setNotifyOnChangeOnly(false);
+    filter_String_By_equalsIgnoreCase0_25.setValidOnStart(false);
+    filter_String_By_equalsIgnoreCase0_25.filterSubject = handlerString_;
+    filter_String_By_equalsIgnoreCase0_25.source_0 = handlerString_;
+    filter_String_By_equalsIgnoreCase0_25.f = string_24;
     getField_ItemCost_int0_15.setNotifyOnChangeOnly(false);
     getField_ItemCost_int0_15.setValidOnStart(false);
     getField_ItemCost_int0_15.filterSubject = handlerItemCost_;
@@ -154,12 +154,12 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
     logMsgBuilder3_22.logLevel = (int) 3;
     logMsgBuilder3_22.initCapacity = (int) 256;
     logMsgBuilder10_26.setLogPrefix(false);
-    logMsgBuilder10_26.source_Map_doubleValue_With_subtract0_6 = map_doubleValue_With_subtract0_6;
-    logMsgBuilder10_26.source_DefaultIntWrapper_4 = defaultIntWrapper_2;
     logMsgBuilder10_26.source_DefaultIntWrapper_8 = defaultIntWrapper_21;
-    logMsgBuilder10_26.source_Map_doubleValue_With_subtract1_9 = map_doubleValue_With_subtract1_23;
-    logMsgBuilder10_26.source_DefaultIntWrapper_5 = defaultIntWrapper_5;
+    logMsgBuilder10_26.source_Map_doubleValue_With_subtract0_6 = map_doubleValue_With_subtract0_6;
     logMsgBuilder10_26.source_DefaultIntWrapper_7 = defaultIntWrapper_13;
+    logMsgBuilder10_26.source_Map_doubleValue_With_subtract1_9 = map_doubleValue_With_subtract1_23;
+    logMsgBuilder10_26.source_DefaultIntWrapper_4 = defaultIntWrapper_2;
+    logMsgBuilder10_26.source_DefaultIntWrapper_5 = defaultIntWrapper_5;
     logMsgBuilder10_26.logLevel = (int) 3;
     logMsgBuilder10_26.initCapacity = (int) 256;
     logMsgBuilder12_29.setLogPrefix(false);
@@ -187,7 +187,8 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
     map_getAmountDelivered_With_addValue0_4.setValidOnStart(false);
     map_getAmountDelivered_With_addValue0_4.filterSubject = handlerDelivery_;
     map_getAmountDelivered_With_addValue0_4.f = sum_3;
-    map_getAmountDelivered_With_addValue0_4.resetNoPublishNotifier = resetSignal;
+    map_getAmountDelivered_With_addValue0_4.resetNoPublishNotifier =
+        filter_String_By_equalsIgnoreCase0_25;
     map_getAmountDelivered_With_multiply0_17.setNotifyOnChangeOnly(false);
     map_getAmountDelivered_With_multiply0_17.setValidOnStart(false);
     map_getAmountDelivered_With_multiply0_17.filterSubject = handlerDelivery_;
@@ -196,17 +197,18 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
     map_getAmountSold_With_addValue0_1.setValidOnStart(false);
     map_getAmountSold_With_addValue0_1.filterSubject = handlerSale_;
     map_getAmountSold_With_addValue0_1.f = sum_0;
-    map_getAmountSold_With_addValue0_1.resetNoPublishNotifier = resetSignal;
+    map_getAmountSold_With_addValue0_1.resetNoPublishNotifier =
+        filter_String_By_equalsIgnoreCase0_25;
     map_getAmountSold_With_multiply0_9.setNotifyOnChangeOnly(false);
     map_getAmountSold_With_multiply0_9.setValidOnStart(false);
     map_getAmountSold_With_multiply0_9.filterSubject = handlerSale_;
     map_getAmountSold_With_multiply0_9.source_0 = defaultIntWrapper_8;
     defaultIntWrapper_2.setNotifyOnChangeOnly(false);
     defaultIntWrapper_2.setValidOnStart(true);
-    defaultIntWrapper_2.resetNoPublishNotifier = resetSignal;
+    defaultIntWrapper_2.resetNoPublishNotifier = filter_String_By_equalsIgnoreCase0_25;
     defaultIntWrapper_5.setNotifyOnChangeOnly(false);
     defaultIntWrapper_5.setValidOnStart(true);
-    defaultIntWrapper_5.resetNoPublishNotifier = resetSignal;
+    defaultIntWrapper_5.resetNoPublishNotifier = filter_String_By_equalsIgnoreCase0_25;
     defaultIntWrapper_8.setNotifyOnChangeOnly(false);
     defaultIntWrapper_8.setValidOnStart(true);
     defaultIntWrapper_13.setNotifyOnChangeOnly(false);
@@ -461,12 +463,15 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
     isDirty_handlerString_ = true;
     handlerString_.onEvent(typedEvent);
     if (isDirty_handlerString_) {
-      isDirty_resetSignal = resetSignal.onEvent();
-      if (isDirty_resetSignal) {
-        map_getAmountSold_With_addValue0_1.resetNoPublishNotification(resetSignal);
-        defaultIntWrapper_2.resetNoPublishNotification(resetSignal);
-        map_getAmountDelivered_With_addValue0_4.resetNoPublishNotification(resetSignal);
-        defaultIntWrapper_5.resetNoPublishNotification(resetSignal);
+      isDirty_filter_String_By_equalsIgnoreCase0_25 =
+          filter_String_By_equalsIgnoreCase0_25.onEvent();
+      if (isDirty_filter_String_By_equalsIgnoreCase0_25) {
+        map_getAmountSold_With_addValue0_1.resetNoPublishNotification(
+            filter_String_By_equalsIgnoreCase0_25);
+        defaultIntWrapper_2.resetNoPublishNotification(filter_String_By_equalsIgnoreCase0_25);
+        map_getAmountDelivered_With_addValue0_4.resetNoPublishNotification(
+            filter_String_By_equalsIgnoreCase0_25);
+        defaultIntWrapper_5.resetNoPublishNotification(filter_String_By_equalsIgnoreCase0_25);
       }
     }
     //event stack unwind callbacks
@@ -483,7 +488,7 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
     map_getAmountDelivered_With_addValue0_4.resetAfterEvent();
     defaultIntWrapper_2.resetAfterEvent();
     map_getAmountSold_With_addValue0_1.resetAfterEvent();
-    resetSignal.resetAfterEvent();
+    filter_String_By_equalsIgnoreCase0_25.resetAfterEvent();
     defaultIntWrapper_8.resetAfterEvent();
     defaultIntWrapper_16.resetAfterEvent();
     isDirty_booleanFilter_10 = false;
@@ -495,6 +500,7 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
     isDirty_defaultIntWrapper_16 = false;
     isDirty_defaultIntWrapper_21 = false;
     isDirty_filter_Number_By_lessThan0_28 = false;
+    isDirty_filter_String_By_equalsIgnoreCase0_25 = false;
     isDirty_getField_ItemCost_int0_15 = false;
     isDirty_getField_Price_int0_7 = false;
     isDirty_handlerDelivery_ = false;
@@ -508,7 +514,6 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
     isDirty_map_doubleValue_With_subtract0_6 = false;
     isDirty_map_getAmountDelivered_With_addValue0_4 = false;
     isDirty_map_getAmountSold_With_addValue0_1 = false;
-    isDirty_resetSignal = false;
   }
 
   @Override
@@ -524,7 +529,7 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
     handlerString_.reset();
     map_getAmountDelivered_With_multiply0_17.reset();
     map_getAmountSold_With_multiply0_9.reset();
-    resetSignal.reset();
+    filter_String_By_equalsIgnoreCase0_25.reset();
     sum_0.reset();
     map_getAmountSold_With_addValue0_1.reset();
     defaultIntWrapper_2.reset();

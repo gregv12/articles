@@ -1,11 +1,11 @@
-package com.fluxtion.articles.sales.generated.fluxtion_annotated;
+package com.fluxtion.articles.sales.fluxtion_generated;
 
 import com.fluxtion.api.annotations.AfterEvent;
 import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.articles.sales.Shop.Delivery;
+import com.fluxtion.articles.sales.Shop.Sale;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.IntFilterEventHandler;
 import com.fluxtion.ext.streaming.api.Stateful;
@@ -22,7 +22,7 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Sum;
  *  <ul>
  *   <li>template file: template/MapperPrimitiveTemplate.vsl
  *   <li>output class : {@link Number}
- *   <li>input class  : {@link Delivery}
+ *   <li>input class  : {@link Sale}
  *   <li>map function : {@link Sum#addValue}
  *   <li>multiArg     : false
  *  </ul>
@@ -30,13 +30,11 @@ import com.fluxtion.ext.streaming.api.stream.StreamFunctions.Sum;
  *
  * @author Greg Higgins
  */
-public class Map_getAmountDelivered_With_addValue0 extends AbstractFilterWrapper<Number> {
+public class Map_getAmountSold_With_addValue0 extends AbstractFilterWrapper<Number> {
 
   public IntFilterEventHandler filterSubject;
   @NoEventReference public Sum f;
   private double result;
-  @NoEventReference public Object resetNotifier;
-//  private boolean parentReset = false;
   private MutableNumber value;
   private MutableNumber oldValue;
 
@@ -45,7 +43,7 @@ public class Map_getAmountDelivered_With_addValue0 extends AbstractFilterWrapper
     boolean updated = true;
     if (recalculate) {
       oldValue.set(result);
-      result = f.addValue((Number) ((Delivery) filterSubject.event()).getAmountDelivered());
+      result = f.addValue((Number) ((Sale) filterSubject.event()).getAmountSold());
       value.set(result);
       updated = !notifyOnChangeOnly | (!oldValue.equals(value));
     }

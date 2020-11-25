@@ -1,4 +1,4 @@
-package com.fluxtion.articles.sales.generated.fluxtion_annotated;
+package com.fluxtion.articles.sales.fluxtion_generated;
 
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
@@ -12,18 +12,18 @@ import com.fluxtion.ext.streaming.api.log.LogMsgBuilder;
 public class LogMsgBuilder10 extends LogMsgBuilder {
 
   //source operand inputs
-  public com.fluxtion.articles.sales.generated.fluxtion_annotated.Map_doubleValue_With_subtract0
+  public com.fluxtion.ext.streaming.api.numeric.DefaultNumberWrapper.DefaultIntWrapper
+      source_DefaultIntWrapper_8;
+  public com.fluxtion.articles.sales.fluxtion_generated.Map_doubleValue_With_subtract0
       source_Map_doubleValue_With_subtract0_6;
+  public com.fluxtion.ext.streaming.api.numeric.DefaultNumberWrapper.DefaultIntWrapper
+      source_DefaultIntWrapper_7;
+  public com.fluxtion.articles.sales.fluxtion_generated.Map_doubleValue_With_subtract1
+      source_Map_doubleValue_With_subtract1_9;
   public com.fluxtion.ext.streaming.api.numeric.DefaultNumberWrapper.DefaultIntWrapper
       source_DefaultIntWrapper_4;
   public com.fluxtion.ext.streaming.api.numeric.DefaultNumberWrapper.DefaultIntWrapper
-      source_DefaultIntWrapper_8;
-  public com.fluxtion.articles.sales.generated.fluxtion_annotated.Map_doubleValue_With_subtract1
-      source_Map_doubleValue_With_subtract1_9;
-  public com.fluxtion.ext.streaming.api.numeric.DefaultNumberWrapper.DefaultIntWrapper
       source_DefaultIntWrapper_5;
-  public com.fluxtion.ext.streaming.api.numeric.DefaultNumberWrapper.DefaultIntWrapper
-      source_DefaultIntWrapper_7;
 
   @OnEvent
   public boolean logMessage() {

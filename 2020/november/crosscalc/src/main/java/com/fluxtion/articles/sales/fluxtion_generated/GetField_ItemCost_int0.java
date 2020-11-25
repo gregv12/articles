@@ -1,11 +1,11 @@
-package com.fluxtion.articles.sales.generated.fluxtion_annotated;
+package com.fluxtion.articles.sales.fluxtion_generated;
 
 import com.fluxtion.api.annotations.AfterEvent;
 import com.fluxtion.api.annotations.Initialise;
 import com.fluxtion.api.annotations.NoEventReference;
 import com.fluxtion.api.annotations.OnEvent;
 import com.fluxtion.api.annotations.OnParentUpdate;
-import com.fluxtion.articles.sales.Shop.Price;
+import com.fluxtion.articles.sales.Shop.ItemCost;
 import com.fluxtion.ext.streaming.api.FilterWrapper;
 import com.fluxtion.ext.streaming.api.IntFilterEventHandler;
 import com.fluxtion.ext.streaming.api.Test;
@@ -20,22 +20,22 @@ import com.fluxtion.ext.streaming.api.stream.AbstractFilterWrapper;
  *  <ul>
  *     <li>template file    : template/MapFieldTemplate.vsl
  *     <li>output class     : {@link Number}
- *     <li>input class      : {@link Price}
- *     <li>source function  : {@link Price#getCustomerPrice}
+ *     <li>input class      : {@link ItemCost}
+ *     <li>source function  : {@link ItemCost#getAmount}
  *     <li>primitive number : true
  *  </ul>
  * </pre>
  *
  * @author Greg Higgins
  */
-public class GetField_Price_int0 extends AbstractFilterWrapper<Number> {
+public class GetField_ItemCost_int0 extends AbstractFilterWrapper<Number> {
 
   public IntFilterEventHandler filterSubject;
   private MutableNumber result;
 
   @OnEvent
   public boolean onEvent() {
-    result.set(((Price) filterSubject.event()).getCustomerPrice());
+    result.set(((ItemCost) filterSubject.event()).getAmount());
     return true;
   }
 
