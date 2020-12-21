@@ -18,7 +18,6 @@
 package com.fluxtion.articles.sales.builder;
 
 import com.fluxtion.articles.sales.Shop;
-import com.fluxtion.builder.annotation.Disabled;
 import com.fluxtion.builder.annotation.SepBuilder;
 import com.fluxtion.builder.node.SEPConfig;
 import static com.fluxtion.ext.streaming.api.stream.Argument.argInt;
@@ -42,6 +41,8 @@ public class EventProcessorBuilder {
         //stock level calculation set default values for amoutnSold and amountDelivered
         //otherwise we need both a sale and a delivery event before calculating stock level
         var amountSold = cumSum(Shop.Sale::getAmountSold).defaultVal(0);
+//        var amountSola = select(Shop.Sale::getAmountSold).map(cumSum()).defaultVal(0);
+//        var amountSolb = select(Shop.Sale.class).get(Shop.Sale::getAmountSold).map(cumSum()).defaultVal(0);
         var amountDelivered = cumSum(Shop.Delivery::getAmountDelivered).defaultVal(0);
         var stockLevel = subtract(amountDelivered, amountSold);
         
@@ -49,12 +50,12 @@ public class EventProcessorBuilder {
         //calculate/notify when a sale event is received, price changes do not trigger child nodes
         var saleReceipt = multiply(Shop.Sale::getAmountSold, defaultVal(25, Shop.Price::getCustomerPrice))
             .notifierOverride(amountSold);
-        var salesTurnover = cumSum(saleReceipt).defaultVal(0).console("sales receipt:", Number::intValue);
+        var salesTurnover = cumSum(saleReceipt).defaultVal(0).log("sales receipt:", Number::intValue);
         
         //calculate stock cost, default cost is 15 - only calculate/notify when there is a delivery, price changes only affect new deliveries
         var deliveryBill = multiply(Shop.Delivery::getAmountDelivered, defaultVal(15, Shop.ItemCost::getAmount))
             .notifierOverride(amountDelivered);
-        var stockCost = cumSum(deliveryBill).defaultVal(0).console("stock cost:", Number::intValue);
+        var stockCost = cumSum(deliveryBill).defaultVal(0).log("stock cost:", Number::intValue);
         
         //profit
         var profit = subtract(salesTurnover, stockCost);

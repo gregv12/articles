@@ -19,6 +19,7 @@ package com.fluxtion.articles.sales.fluxtion_generated;
 import com.fluxtion.api.StaticEventProcessor;
 import com.fluxtion.api.lifecycle.BatchHandler;
 import com.fluxtion.api.lifecycle.Lifecycle;
+
 import com.fluxtion.articles.sales.Shop.Delivery;
 import com.fluxtion.articles.sales.Shop.ItemCost;
 import com.fluxtion.articles.sales.Shop.Price;
@@ -32,9 +33,9 @@ import com.fluxtion.ext.streaming.api.test.BooleanFilter;
 
 /*
  * <pre>
- * generation time   : 2020-11-25T20:39:09.452956600
- * generator version : 2.8.4-SNAPSHOT
- * api version       : 2.8.4-SNAPSHOT
+ * generation time   : 2020-12-21T10:09:08.383228900
+ * generator version : 2.10.8
+ * api version       : 2.10.8
  * </pre>
  * @author Greg Higgins
  */
@@ -154,12 +155,12 @@ public class StockProcessor implements StaticEventProcessor, BatchHandler, Lifec
     logMsgBuilder3_22.logLevel = (int) 3;
     logMsgBuilder3_22.initCapacity = (int) 256;
     logMsgBuilder10_26.setLogPrefix(false);
+    logMsgBuilder10_26.source_DefaultIntWrapper_5 = defaultIntWrapper_5;
+    logMsgBuilder10_26.source_DefaultIntWrapper_4 = defaultIntWrapper_2;
     logMsgBuilder10_26.source_DefaultIntWrapper_8 = defaultIntWrapper_21;
+    logMsgBuilder10_26.source_Map_doubleValue_With_subtract1_9 = map_doubleValue_With_subtract1_23;
     logMsgBuilder10_26.source_Map_doubleValue_With_subtract0_6 = map_doubleValue_With_subtract0_6;
     logMsgBuilder10_26.source_DefaultIntWrapper_7 = defaultIntWrapper_13;
-    logMsgBuilder10_26.source_Map_doubleValue_With_subtract1_9 = map_doubleValue_With_subtract1_23;
-    logMsgBuilder10_26.source_DefaultIntWrapper_4 = defaultIntWrapper_2;
-    logMsgBuilder10_26.source_DefaultIntWrapper_5 = defaultIntWrapper_5;
     logMsgBuilder10_26.logLevel = (int) 3;
     logMsgBuilder10_26.initCapacity = (int) 256;
     logMsgBuilder12_29.setLogPrefix(false);

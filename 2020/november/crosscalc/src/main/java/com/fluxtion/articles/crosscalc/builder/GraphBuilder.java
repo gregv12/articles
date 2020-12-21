@@ -38,20 +38,21 @@ public class GraphBuilder {
     @SepBuilder(name = "TradeExecutor", packageName = "com.fluxtion.articles.crosscalc.generated.fluxtion_functional")
     @Disabled
     public void buildGraphFunctional(SEPConfig cfg) {
-        
-        var cross = multiply(mid("EURCHF"), mid("USDCHF")).id("crossEURUSD");
+
+        var cross = multiply(
+            mid("EURCHF"), mid("USDCHF")).id("crossEURUSD");
         subtract(mid("EURUSD"), cross).id("crossDeltaEURUSD")
-                .get(Number::doubleValue)
-                .map(Math::abs)
-                .filter(gt(0.5)).id("crossBreaachEURUSD");
+            .get(Number::doubleValue)
+            .map(Math::abs)
+            .filter(gt(0.5)).id("crossBreaachEURUSD");
 
     }
 
     //helper for building
     private Wrapper<Double> mid(String instrument) {
         return filter(MarketTick::getInstrument, instrument::equalsIgnoreCase)
-                .get(MarketTick::mid)
-                .id("mid" + instrument);
+            .get(MarketTick::mid)
+            .id("mid" + instrument);
     }
 
     @SepBuilder(name = "TradeExecutor", packageName = "com.fluxtion.articles.crosscalc.generated.fluxtion_compound")
@@ -91,7 +92,6 @@ public class GraphBuilder {
 //        subtractA(Sale::getAmountSold, number);
 //        subtract(number(55, "key_b"), number(12, Sale::getAmountSold));
 //        select(Sale::getAmountSold).map(new NumberStore(23)::getValue).map(cumSum());
-
         //use select to drive subtract
 //        subtractA(Sale::getAmountSold, select(Sale::getAmountSold));
 //        subtract(select(Sale::getAmountSold), select(Number::doubleValue));

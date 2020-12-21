@@ -20,6 +20,7 @@ import com.fluxtion.api.StaticEventProcessor;
 import com.fluxtion.articles.sales.builder.EventProcessorBuilder;
 import com.fluxtion.articles.sales.fluxtion_generated.StockProcessor;
 import com.fluxtion.ext.declarative.builder.stream.StreamInprocessTest;
+import java.util.function.Function;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -33,11 +34,23 @@ public class ShopTest extends StreamInprocessTest {
     @Test
 //    @Ignore
     public void simpleTest() {
+        
+        
+        Function<Shop.ItemCost, Integer> s = f(Shop.ItemCost::getAmount);
+        Integer cost = s.apply(new Shop.ItemCost(20));
+        
+        Function<Shop.ItemCost, Integer> t = Shop.ItemCost::getAmount;
+        
         StockProcessor processor = new StockProcessor();
         processor.init();
         sendTestEvents(processor);
     }
 
+    public <T, R> Function<T, R> f(Function<T, R> s){
+        return s;
+    }
+    
+    
     @Test
     @Ignore
     public void generateAndTest() {

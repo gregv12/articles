@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
-        <fluxtion.ver>2.8.4-SNAPSHOT</fluxtion.ver>
+        <fluxtion.ver>2.10.8</fluxtion.ver>
     </properties>
     
     <profiles>
