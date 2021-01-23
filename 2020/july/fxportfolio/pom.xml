@@ -11,7 +11,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
-        <fluxtion.ver>2.6.3-SNAPSHOT</fluxtion.ver>
+        <fluxtion.ver>2.10.14</fluxtion.ver>
     </properties>
 
     <licenses>
@@ -45,7 +45,7 @@
                     <plugin>
                         <groupId>com.fluxtion</groupId>
                         <artifactId>fluxtion-maven-plugin</artifactId>
-                        <version>2.6.3-SNAPSHOT</version>
+                        <version>${fluxtion.ver}</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -92,13 +92,18 @@
         <dependency>
             <groupId>com.fluxtion.extension</groupId>
             <artifactId>fluxtion-text-api</artifactId>
-            <version>2.6.3-SNAPSHOT</version>
+            <version>${fluxtion.ver}</version>
         </dependency>
         <dependency>
             <groupId>com.fluxtion.extension</groupId>
             <artifactId>fluxtion-text-builder</artifactId>
             <!--<scope>provided</scope>-->
-            <version>2.6.3-SNAPSHOT</version>
+            <version>${fluxtion.ver}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fluxtion.integration</groupId>
+            <artifactId>fluxtion-integration</artifactId>
+            <version>${fluxtion.ver}</version>
         </dependency>
         
         
@@ -130,11 +135,6 @@
             <artifactId>hamcrest-core</artifactId>
             <version>1.3</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fluxtion.integration</groupId>
-            <artifactId>fluxtion-integration</artifactId>
-            <version>2.6.3-SNAPSHOT</version>
         </dependency>
         <!--log4j2 start-->
         <dependency>

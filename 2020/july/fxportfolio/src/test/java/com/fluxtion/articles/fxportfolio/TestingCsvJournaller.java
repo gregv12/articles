@@ -17,7 +17,6 @@
  */
 package com.fluxtion.articles.fxportfolio;
 
-import com.fluxtion.articles.fxportfolio.csvmarshaller.LimitConfigCsvDecoder0;
 import com.fluxtion.articles.fxportfolio.event.LimitConfig;
 import com.fluxtion.integration.eventflow.PipelineFilter;
 import java.io.IOException;
@@ -40,7 +39,7 @@ public class TestingCsvJournaller extends PipelineFilter {
         if(o instanceof LimitConfig){
             try {
                 LimitConfig cfg = (LimitConfig) o;
-                LimitConfigCsvDecoder0.asCsv(cfg, sb);
+                LimitConfigCsvDecoder.asCsv(cfg, sb);
                 log.info(sb);
             } catch (IOException ex) {
                 Logger.getLogger(TestingCsvJournaller.class.getName()).log(Level.SEVERE, null, ex);

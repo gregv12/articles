@@ -32,7 +32,4 @@
          <AppenderRef ref="sepaudit"/>
        </Logger>
     </Loggers>
-    
-    
-    
 </Configuration>
