@@ -17,6 +17,8 @@
  */
 package com.fluxtion.articles.audit;
 
+import com.fluxtion.api.audit.EventLogControlEvent.LogLevel;
+import com.fluxtion.api.audit.EventLogManager;
 import com.fluxtion.builder.annotation.SepBuilder;
 import com.fluxtion.builder.node.SEPConfig;
 import com.fluxtion.ext.streaming.api.Wrapper;
@@ -35,7 +37,7 @@ public class PositionReconciliatorBuilder {
             packageName = "com.fluxtion.articles.audit.generated.reconcile"
     )
     public void buildCalc(SEPConfig cfg) {
-        Wrapper<Position> corePos = filter(Position::getSource, "core"::equals).id("corePosition");
+        Wrapper<Position> corePos = filter(Position::getSource, ("core")::equals).id("corePosition");
 //        Wrapper<Position> coloPos = filter(Position::getSource, "colo"::equals).id("coloPosition"); 
         Log("-> received [{}]", Position.class);
         Trade outTrade = new Trade();
@@ -48,6 +50,8 @@ public class PositionReconciliatorBuilder {
                 .id("clientTrades")
                 .push(new HouseTradePublisher()::publishHouseTrade);
         Log("<- pushing client trade to colo [{}]", clientTrade);
+        cfg.addEventAudit(LogLevel.INFO);
+        cfg.addNode(new MyClockHolder(cfg.clock()));
     }
 
 }
