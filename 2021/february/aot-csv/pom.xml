@@ -8,7 +8,7 @@
     <name>fluxtion.articles.2021-02 :: aot-csv</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <fluxtion.ver>2.10.34-SNAPSHOT</fluxtion.ver>
+        <fluxtion.ver>2.10.34</fluxtion.ver>
         <maven.deploy.skip>true</maven.deploy.skip>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>

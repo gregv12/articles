@@ -31,9 +31,9 @@ import com.fluxtion.ext.text.api.util.marshaller.CharProcessor;
 
 /*
  * <pre>
- * generation time   : 2021-02-07T22:53:25.806709200
- * generator version : 2.10.34-SNAPSHOT
- * api version       : 2.10.34-SNAPSHOT
+ * generation time   : 2021-02-08T08:47:47.730717300
+ * generator version : 2.10.34
+ * api version       : 2.10.34
  * </pre>
  * @author Greg Higgins
  */
